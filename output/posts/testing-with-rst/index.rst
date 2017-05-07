@@ -7,7 +7,7 @@
 .. description: A re-post to make sure I can get the site working.
 .. type: text
 
-This is a re-do of an `old post <https://necromuralist.github.io/posts/processing-test/>`_ I made to `my main site <https://necromuralist.github.io/>`_ about making a `p5 <http://p5js.org/>`_ test based on their `get started <http://p5js.org/get-started/>`_ tutorial. It's about how I got the p5.js code to work in a post. I'm repeating it to make sure I can get it to work here.
+This is a re-do of an `old post <https://necromuralist.github.io/posts/processing-test/>`_ I made to `my main site <https://necromuralist.github.io/>`_ about making a `p5 <http://p5js.org/>`_ restructured-text post in `nikola <https://www.getnikola.com/handbook.html>`_` based on the p5 `get started <http://p5js.org/get-started/>`_ tutorial. I'm repeating it to make sure I can get it to work here, since it's been so long since I've done it.
 
 First the link to the p5 code:
 
