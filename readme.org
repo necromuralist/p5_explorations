@@ -1,0 +1,3 @@
+#+TITLE: Read Me
+
+This is place to collect notes as I once again try to learn [[https://processing.org][processing]] and [[https://processing.org][p5]]. The built documentation is [[https://necromuralist@github.io][here]].
