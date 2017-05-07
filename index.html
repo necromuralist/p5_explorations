@@ -114,64 +114,64 @@ MathJax.Hub.Config({
         </div>
     </header><div class="e-content entry-content">
     <div>
-<p>This is a re-do of an <a class="reference external" href="https://necromuralist.github.io/posts/processing-test/">old post</a> I made to <a class="reference external" href="https://necromuralist.github.io/">my main site</a> about making a <a class="reference external" href="http://p5js.org/">p5</a> restructured-text post in <cite>nikola &lt;https://www.getnikola.com/handbook.html&gt;`_</cite> based on the p5 <a class="reference external" href="http://p5js.org/get-started/">get started</a> tutorial. I'm repeating it to make sure I can get it to work here, since it's been so long since I've done it.</p>
+<p>This is a re-do of an <a class="reference external" href="https://necromuralist.github.io/posts/processing-test/">old post</a> I made to <a class="reference external" href="https://necromuralist.github.io/">my main site</a> about making a <a class="reference external" href="http://p5js.org/">p5</a> restructured-text post in <a class="reference external" href="https://www.getnikola.com/handbook.html">nikola</a> based on the p5 <a class="reference external" href="http://p5js.org/get-started/">get started</a> tutorial. I'm repeating it to make sure I can get it to work here, since it's been so long since I've done it.</p>
 <p>First the link to the p5 code:</p>
-<pre class="code html"><a name="rest_code_2e2690dc649c495f831511ac8600cfae-1"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<pre class="code html"><a name="rest_code_d402334775ff4021bb1540993ed4da91-1"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </pre>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">On the old post I had included the html tag directly in the post (using the <tt class="docutils literal">.. raw::</tt> directive, but I thought that would be wasteful since you can have multiple posts on one page so I moved it the the <tt class="docutils literal">BODY_END</tt> variable in the <tt class="docutils literal">conf.py</tt> file which should add it to the end of the HTML body).</p>
 </div>
 <p>And now to include the sketch in the post. The naming of the <tt class="docutils literal">div</tt> is important (<tt class="docutils literal">"get_started"</tt> in this case) - the javascript has to reference it (in the <tt class="docutils literal"><span class="pre">canvas.parent("get_started")</span></tt> line) or the sketch will not appear right here (see the notes below).</p>
-<pre class="code html"><a name="rest_code_b731d882513d4c89afb6143c3971649d-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"get_started"</span><span class="p">&gt;</span>
-<a name="rest_code_b731d882513d4c89afb6143c3971649d-2"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">language</span><span class="o">=</span><span class="s">"javascript"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span> <span class="na">src</span><span class="o">=</span><span class="s">'get_started.js'</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<a name="rest_code_b731d882513d4c89afb6143c3971649d-3"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<pre class="code html"><a name="rest_code_c5a6a1e04a644a099670b70cbae4df66-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"get_started"</span><span class="p">&gt;</span>
+<a name="rest_code_c5a6a1e04a644a099670b70cbae4df66-2"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">language</span><span class="o">=</span><span class="s">"javascript"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span> <span class="na">src</span><span class="o">=</span><span class="s">'get_started.js'</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a name="rest_code_c5a6a1e04a644a099670b70cbae4df66-3"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </pre>
 <div id="get_started">
 <script language="javascript" type="text/javascript" src="posts/testing-with-rst/get_started.js"></script>
 </div>
 <p><a class="reference external" href="listings/get_started.js.html">get_started.js</a>  <a class="reference external" href="listings/get_started.js">(Source)</a></p>
-<pre class="code javascript"><a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-1"></a><span class="kd">var</span> <span class="nx">diameter</span><span class="p">;</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-2"></a>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-3"></a><span class="kd">function</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-4"></a>    <span class="nx">canvas</span> <span class="o">=</span> <span class="nx">createCanvas</span><span class="p">(</span><span class="mf">0.8</span> <span class="o">*</span> <span class="nx">windowWidth</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-5"></a>    <span class="nx">canvas</span><span class="p">.</span><span class="nx">parent</span><span class="p">(</span><span class="s2">"get_started"</span><span class="p">)</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-6"></a>    <span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-7"></a>    <span class="nx">strokeWeight</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-8"></a>    <span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-9"></a>    <span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-10"></a><span class="p">}</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-11"></a>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-12"></a><span class="kd">function</span> <span class="nx">mousePressed</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-13"></a>    <span class="cm">/* set background to blue */</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-14"></a>    <span class="nx">background</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-15"></a><span class="p">}</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-16"></a>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-17"></a><span class="kd">function</span> <span class="nx">mouseReleased</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-18"></a>    <span class="cm">/* set background to white */</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-19"></a>    <span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-20"></a><span class="p">}</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-21"></a>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-22"></a><span class="kd">function</span> <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-23"></a>    <span class="cm">/* Draw circles that change diameter based on mouse speed */</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-24"></a>    <span class="cm">/* and color based on if mouse-pressed (or not pressed)   */</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-25"></a>    <span class="k">if</span> <span class="p">(</span><span class="nx">mouseIsPressed</span><span class="p">)</span> <span class="p">{</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-26"></a>        <span class="nx">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-27"></a>        <span class="nx">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-28"></a>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-29"></a>        <span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-30"></a>        <span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-31"></a>    <span class="p">}</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-32"></a>    <span class="nx">diameter</span> <span class="o">=</span> <span class="nx">pow</span><span class="p">(</span><span class="nx">dist</span><span class="p">(</span><span class="nx">pmouseX</span><span class="p">,</span> <span class="nx">pmouseY</span><span class="p">,</span> <span class="nx">mouseX</span><span class="p">,</span> <span class="nx">mouseY</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">);</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-33"></a>    <span class="nx">ellipse</span><span class="p">(</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">mouseY</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">);</span>
-<a name="rest_code_82dcc24f2bf7434b8999fc5e40c1446c-34"></a><span class="p">}</span>
+<pre class="code javascript"><a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-1"></a><span class="kd">var</span> <span class="nx">diameter</span><span class="p">;</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-2"></a>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-3"></a><span class="kd">function</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-4"></a>    <span class="nx">canvas</span> <span class="o">=</span> <span class="nx">createCanvas</span><span class="p">(</span><span class="mf">0.8</span> <span class="o">*</span> <span class="nx">windowWidth</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-5"></a>    <span class="nx">canvas</span><span class="p">.</span><span class="nx">parent</span><span class="p">(</span><span class="s2">"get_started"</span><span class="p">)</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-6"></a>    <span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-7"></a>    <span class="nx">strokeWeight</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-8"></a>    <span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-9"></a>    <span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-10"></a><span class="p">}</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-11"></a>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-12"></a><span class="kd">function</span> <span class="nx">mousePressed</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-13"></a>    <span class="cm">/* set background to blue */</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-14"></a>    <span class="nx">background</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-15"></a><span class="p">}</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-16"></a>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-17"></a><span class="kd">function</span> <span class="nx">mouseReleased</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-18"></a>    <span class="cm">/* set background to white */</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-19"></a>    <span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-20"></a><span class="p">}</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-21"></a>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-22"></a><span class="kd">function</span> <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-23"></a>    <span class="cm">/* Draw circles that change diameter based on mouse speed */</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-24"></a>    <span class="cm">/* and color based on if mouse-pressed (or not pressed)   */</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-25"></a>    <span class="k">if</span> <span class="p">(</span><span class="nx">mouseIsPressed</span><span class="p">)</span> <span class="p">{</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-26"></a>        <span class="nx">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-27"></a>        <span class="nx">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-28"></a>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-29"></a>        <span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-30"></a>        <span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-31"></a>    <span class="p">}</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-32"></a>    <span class="nx">diameter</span> <span class="o">=</span> <span class="nx">pow</span><span class="p">(</span><span class="nx">dist</span><span class="p">(</span><span class="nx">pmouseX</span><span class="p">,</span> <span class="nx">pmouseY</span><span class="p">,</span> <span class="nx">mouseX</span><span class="p">,</span> <span class="nx">mouseY</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">);</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-33"></a>    <span class="nx">ellipse</span><span class="p">(</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">mouseY</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">);</span>
+<a name="rest_code_a33aaff98a6848d2b671bae40f5e5f06-34"></a><span class="p">}</span>
 </pre>
 <div class="section" id="notes">
 <h2>Notes</h2>
 <ul class="simple">
 <li>In order to get the javascript into the final HTML you need to put in the <tt class="docutils literal">listings</tt> folder at the root of the nikola folder and use the <a class="reference external" href="https://www.getnikola.com/handbook.html#listing">listing</a> <cite>reStructuredText</cite> directive instead of <tt class="docutils literal">include</tt> (this is a special <em>nikola</em> directive). You can't see it but it says:</li>
 </ul>
-<pre class="code rst"><a name="rest_code_59bc323a044c49b392560f92d9700571-1"></a><span class="p">..</span> <span class="ow">listing</span><span class="p">::</span> get_started.js javascript
+<pre class="code rst"><a name="rest_code_7ec0724bf4854e32be0ad73674daa713-1"></a><span class="p">..</span> <span class="ow">listing</span><span class="p">::</span> get_started.js javascript
 </pre>
 <ul class="simple">
 <li>to get the sketch to stay in the post (instead of showing up on the bottom of the page), you have to use the div trick - create a <cite>div</cite> where you want the sketch to be and give it a unique ID (use the <tt class="docutils literal">raw</tt> <em>reStructuredText</em> to put the HTML tags displayed above into the post), then set the parent in the sketch (<tt class="docutils literal"><span class="pre">canvas.parent("get_started")</span></tt> in this example).</li>
