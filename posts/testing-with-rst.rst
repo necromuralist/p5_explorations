@@ -30,7 +30,7 @@ And now to include the sketch in the post. The naming of the ``div`` is importan
 .. raw:: html
 
    <div id="get_started">
-   <script language="javascript" type="text/javascript" src='get_started.js'></script>
+      <script language="javascript" type="text/javascript" src='get_started.js'></script>
    </div>
 
 If you can't tell, there's a processing sketch in that blank box above this line. If you move your mouse over it p5 will draw some circles with the radii based on how fast your mouse is moving. If you click and drag it inverts the colors.

@@ -1,6 +1,6 @@
 function setup() {
-  var parent_div_id = "get_started";
-  // this sets the width of the canvas to match the div (center column)
+  var parent_div_id = "get_re_started";
+
   canvas = createCanvas($("#" + parent_div_id).outerWidth(true), 300);
   canvas.parent(parent_div_id);
   background(255);
