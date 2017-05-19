@@ -7,38 +7,50 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/</loc>
-  <lastmod>2017-05-07T22:54:00Z</lastmod>
+  <lastmod>2017-05-19T00:22:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/2017/</loc>
-  <lastmod>2017-05-07T22:19:00Z</lastmod>
+  <lastmod>2017-05-19T00:22:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/archive.html</loc>
-  <lastmod>2017-05-07T22:53:00Z</lastmod>
+  <lastmod>2017-05-19T00:41:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/categories/</loc>
-  <lastmod>2017-05-07T22:19:00Z</lastmod>
+  <lastmod>2017-05-19T00:41:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/categories/cat_howto/</loc>
-  <lastmod>2017-05-07T22:19:00Z</lastmod>
+  <lastmod>2017-05-19T00:22:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/categories/cat_p5/</loc>
+  <lastmod>2017-05-19T00:41:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/categories/howto/</loc>
+  <lastmod>2017-05-19T00:41:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/categories/processing-p5-nikola/</loc>
-  <lastmod>2017-05-07T22:19:00Z</lastmod>
+  <lastmod>2017-05-19T00:22:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/listings/</loc>
-  <lastmod>2017-05-07T22:19:00Z</lastmod>
+  <lastmod>2017-05-19T00:22:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/listings/get_started.js.html</loc>
-  <lastmod>2017-05-07T22:19:00Z</lastmod>
+  <lastmod>2017-05-19T00:35:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/posts/re-testing-with-meta-template-plugin/</loc>
+  <lastmod>2017-05-19T00:41:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/posts/testing-with-rst/</loc>
-  <lastmod>2017-05-07T22:34:00Z</lastmod>
+  <lastmod>2017-05-19T00:22:00Z</lastmod>
  </url>
 </urlset>

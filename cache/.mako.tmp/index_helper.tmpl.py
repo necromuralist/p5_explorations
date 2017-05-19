@@ -5,19 +5,30 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1494197910.8886468
+_modified_time = 1495154509.326626
 _enable_loop = True
-_template_filename = '/home/hades/.virtualenvs/processing/lib/python3.5/site-packages/nikola/data/themes/base/templates/index_helper.tmpl'
+_template_filename = '/home/brunhilde/.virtualenvs/p5_explorations/lib/python3.5/site-packages/nikola/data/themes/base/templates/index_helper.tmpl'
 _template_uri = 'index_helper.tmpl'
 _source_encoding = 'utf-8'
 _exports = ['html_pager', 'mathjax_script']
 
+
+def _mako_get_namespace(context, name):
+    try:
+        return context.namespaces[(__name__, name)]
+    except KeyError:
+        _mako_generate_namespaces(context)
+        return context.namespaces[(__name__, name)]
+def _mako_generate_namespaces(context):
+    ns = runtime.TemplateNamespace('math', context._clean_inheritance_tokens(), templateuri='math_helper.tmpl', callables=None,  calling_uri=_template_uri)
+    context.namespaces[(__name__, 'math')] = ns
 
 def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         __M_writer = context.writer()
+        __M_writer('\n')
         __M_writer('\n\n')
         __M_writer('\n')
         return ''
@@ -28,9 +39,9 @@ def render_body(context,**pageargs):
 def render_html_pager(context):
     __M_caller = context.caller_stack._push_frame()
     try:
+        prevlink = context.get('prevlink', UNDEFINED)
         nextlink = context.get('nextlink', UNDEFINED)
         messages = context.get('messages', UNDEFINED)
-        prevlink = context.get('prevlink', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
         if prevlink or nextlink:
@@ -56,29 +67,11 @@ def render_html_pager(context):
 def render_mathjax_script(context,posts):
     __M_caller = context.caller_stack._push_frame()
     try:
-        katex_auto_render = context.get('katex_auto_render', UNDEFINED)
-        use_katex = context.get('use_katex', UNDEFINED)
-        any = context.get('any', UNDEFINED)
-        mathjax_config = context.get('mathjax_config', UNDEFINED)
+        math = _mako_get_namespace(context, 'math')
         __M_writer = context.writer()
+        __M_writer('\n    ')
+        __M_writer(str(math.math_scripts_ifposts(posts)))
         __M_writer('\n')
-        if any(post.is_mathjax for post in posts):
-            if use_katex:
-                __M_writer('            <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>\n            <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/contrib/auto-render.min.js"></script>\n')
-                if katex_auto_render:
-                    __M_writer('                <script>\n                    renderMathInElement(document.body,\n                        {\n                            ')
-                    __M_writer(str(katex_auto_render))
-                    __M_writer('\n                        }\n                    );\n                </script>\n')
-                else:
-                    __M_writer('                <script>\n                    renderMathInElement(document.body);\n                </script>\n')
-            else:
-                __M_writer('            <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>\n')
-                if mathjax_config:
-                    __M_writer('            ')
-                    __M_writer(str(mathjax_config))
-                    __M_writer('\n')
-                else:
-                    __M_writer('            <script type="text/x-mathjax-config">\n            MathJax.Hub.Config({tex2jax: {inlineMath: [[\'$latex \',\'$\'], [\'\\\\(\',\'\\\\)\']]}});\n            </script>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -86,6 +79,6 @@ def render_mathjax_script(context,posts):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/home/hades/.virtualenvs/processing/lib/python3.5/site-packages/nikola/data/themes/base/templates/index_helper.tmpl", "line_map": {"64": 21, "65": 22, "66": 23, "67": 24, "68": 26, "69": 27, "70": 30, "71": 30, "72": 34, "73": 35, "74": 39, "75": 40, "76": 41, "77": 42, "78": 42, "79": 42, "16": 0, "81": 44, "21": 19, "22": 50, "87": 81, "28": 2, "80": 43, "35": 2, "36": 3, "37": 4, "38": 6, "39": 7, "40": 8, "41": 8, "42": 8, "43": 8, "44": 11, "45": 12, "46": 13, "47": 13, "48": 13, "49": 13, "50": 16, "56": 21}, "uri": "index_helper.tmpl", "source_encoding": "utf-8"}
+{"filename": "/home/brunhilde/.virtualenvs/p5_explorations/lib/python3.5/site-packages/nikola/data/themes/base/templates/index_helper.tmpl", "uri": "index_helper.tmpl", "source_encoding": "utf-8", "line_map": {"67": 22, "72": 22, "73": 23, "74": 23, "80": 74, "23": 2, "26": 0, "31": 2, "32": 20, "33": 24, "39": 3, "46": 3, "47": 4, "48": 5, "49": 7, "50": 8, "51": 9, "52": 9, "53": 9, "54": 9, "55": 12, "56": 13, "57": 14, "58": 14, "59": 14, "60": 14, "61": 17}}
 __M_END_METADATA
 """
