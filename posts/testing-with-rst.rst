@@ -15,10 +15,10 @@ First the link to the p5 code:
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.min.js"></script>
 
-.. note:: On the old post I had included the html tag directly in the post (using the ``.. raw::`` directive, but I thought that would be wasteful since you can have multiple posts on one page so I moved it the the ``BODY_END`` variable in the ``conf.py`` file which should add it to the end of the HTML body).
+.. note:: On the old post I had included the html tag directly in the post (using the ``.. raw::`` directive), but I thought that would be wasteful since you can have multiple posts on one page so I moved it the the ``BODY_END`` variable in the ``conf.py`` file which adds it to the end of the HTML body.
 
 
-And now to include the sketch in the post. The naming of the ``div`` is important (``"get_started"`` in this case) - the javascript has to reference it (in the ``canvas.parent("get_started")`` line) or the sketch will not appear right here (see the notes below).
+And now to include the sketch in the post. The naming of the ``div`` is important (``"get_started"`` in this case) - the javascript has to reference it (in the ``canvas.parent("get_started")`` line) or the sketch will not appear right here (see the notes below). I'm also using it to get the width for the image - kind of fragile I guess, but what can you do?
 
 .. code:: html
 
@@ -33,6 +33,10 @@ And now to include the sketch in the post. The naming of the ``div`` is importan
    <script language="javascript" type="text/javascript" src='get_started.js'></script>
    </div>
 
+If you can't tell, there's a processing sketch in that blank box above this line. If you move your mouse over it p5 will draw some circles with the radii based on how fast your mouse is moving. If you click and drag it inverts the colors.
+
+Here's the javascript that created it.
+
          
 .. listing:: get_started.js javascript
 
@@ -40,7 +44,7 @@ And now to include the sketch in the post. The naming of the ``div`` is importan
 Notes
 -----
 
-* In order to get the javascript into the final HTML you need to put in the ``listings`` folder at the root of the nikola folder and use the `listing <https://www.getnikola.com/handbook.html#listing>`_ `reStructuredText` directive instead of ``include`` (this is a special *nikola* directive). You can't see it but it says:
+* In order to get the javascript into the final HTML you need to put in the ``listings`` folder at the root of the nikola folder and use the `listing <https://www.getnikola.com/handbook.html#listing>`_ `reStructuredText` directive instead of ``include`` (this is a special *nikola* directive). This not only shows it but creates two links - the one with the file name links to a formatted version of the code and the `(Source)` link lets you download it as plain-text. Showing the code and creating another page seemed kind of redundant to me, but I think the purpose is to provide `a link you can refer to outside of this post <https://necromuralist.github.io/p5_explorations/listings/get_started.js.html>`_. You can't see it but it says:
 
 .. code:: rst
 
