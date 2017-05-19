@@ -12,7 +12,19 @@
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="https://necromuralist.github.io/p5_explorations/">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script><link rel="prefetch" href="posts/re-testing-with-meta-template-plugin/" type="text/html">
 </head>
 <body>
@@ -101,7 +113,23 @@
             <p class="dateline"><a href="posts/re-testing-with-meta-template-plugin/" rel="bookmark"><time class="published dt-published" datetime="2017-05-18T17:39:18-07:00" title="2017-05-18 17:39">2017-05-18 17:39</time></a></p>
         </div>
     </header><div class="e-content entry-content">
-    <span></span>
+    <div>
+<p>This is a re-do of the <a class="reference external" href="https://necromuralist.github.io/p5_explorations/posts/testing-with-rst/">previous post</a> on getting p5.js working here. In that case I added the reference to the CDN in the <tt class="docutils literal">BODY_END</tt> variable in the <tt class="docutils literal">conf.py</tt> file but I'm going to try to do it using the <a class="reference external" href="https://plugins.getnikola.com/v7/meta_template/">meta-template plugin</a></p>
+<p>After installing the plugin in nikola:</p>
+<pre class="literal-block">
+nikola plugin -i meta_template
+</pre>
+<p>I created a file at <tt class="docutils literal">plugins/meta_template/templates/mako/p5.tmpl</tt> which contains only the link to the CDN.</p>
+<pre class="code html"><a name="rest_code_9cede5e1e4a4415f8265d5cb1a124dba-1"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/p5.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre>
+<p>Then in this file there is a directive that refers to the template-snippet I created.</p>
+<pre class="code rst"><a name="rest_code_f8fdb5d0a93c4194912c2ac1ac41fe2c-1"></a><span class="p">..</span> <span class="ow">template</span><span class="p">::</span> p5
+</pre>
+<p>Inspecting the rendered HTML shows that it inserted the template snippet exactly where the <tt class="docutils literal">.. template:: p5</tt> directive was so it should work. For this particular repository I don't know that this is a better solution, since I'm planning to use p5 in pretty much every post, so I'm probably going to switch back to setting it it <tt class="docutils literal">conf.py</tt>, but I wanted to make sure that it worked, because I might use it elsewhere.</p>
+<div id="get_re_started">
+    <script language="javascript" type="text/javascript" src="posts/re-testing-with-meta-template-plugin/get_re_started.js"></script>
+</div>
+</div>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/testing-with-rst/" class="u-url">Testing With RST</a></h1>
         <div class="metadata">
@@ -114,62 +142,65 @@
     <div>
 <p>This is a re-do of an <a class="reference external" href="https://necromuralist.github.io/posts/processing-test/">old post</a> I made to <a class="reference external" href="https://necromuralist.github.io/">my main site</a> about making a <a class="reference external" href="http://p5js.org/">p5</a> restructured-text post in <a class="reference external" href="https://www.getnikola.com/handbook.html">nikola</a> based on the p5 <a class="reference external" href="http://p5js.org/get-started/">get started</a> tutorial. I'm repeating it to make sure I can get it to work here, since it's been so long since I've done it.</p>
 <p>First the link to the p5 code:</p>
-<pre class="code html"><a name="rest_code_1e4622582b53414b9020291e28fb47b0-1"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<pre class="code html"><a name="rest_code_adaf74a4659d4f68a4de33e14786ecd1-1"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </pre>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">On the old post I had included the html tag directly in the post (using the <tt class="docutils literal">.. raw::</tt> directive, but I thought that would be wasteful since you can have multiple posts on one page so I moved it the the <tt class="docutils literal">BODY_END</tt> variable in the <tt class="docutils literal">conf.py</tt> file which should add it to the end of the HTML body).</p>
+<p class="last">On the old post I had included the html tag directly in the post (using the <tt class="docutils literal">.. raw::</tt> directive), but I thought that would be wasteful since you can have multiple posts on one page so I moved it the the <tt class="docutils literal">BODY_END</tt> variable in the <tt class="docutils literal">conf.py</tt> file which adds it to the end of the HTML body.</p>
 </div>
-<p>And now to include the sketch in the post. The naming of the <tt class="docutils literal">div</tt> is important (<tt class="docutils literal">"get_started"</tt> in this case) - the javascript has to reference it (in the <tt class="docutils literal"><span class="pre">canvas.parent("get_started")</span></tt> line) or the sketch will not appear right here (see the notes below).</p>
-<pre class="code html"><a name="rest_code_05f2d0a5d62147f2b3a70730d81b4ccd-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"get_started"</span><span class="p">&gt;</span>
-<a name="rest_code_05f2d0a5d62147f2b3a70730d81b4ccd-2"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">language</span><span class="o">=</span><span class="s">"javascript"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span> <span class="na">src</span><span class="o">=</span><span class="s">'get_started.js'</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<a name="rest_code_05f2d0a5d62147f2b3a70730d81b4ccd-3"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<p>And now to include the sketch in the post. The naming of the <tt class="docutils literal">div</tt> is important (<tt class="docutils literal">"get_started"</tt> in this case) - the javascript has to reference it (in the <tt class="docutils literal"><span class="pre">canvas.parent("get_started")</span></tt> line) or the sketch will not appear right here (see the notes below). I'm also using it to get the width for the image - kind of fragile I guess, but what can you do?</p>
+<pre class="code html"><a name="rest_code_b65fae19c63d4bc5a8def0ed1fccded6-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"get_started"</span><span class="p">&gt;</span>
+<a name="rest_code_b65fae19c63d4bc5a8def0ed1fccded6-2"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">language</span><span class="o">=</span><span class="s">"javascript"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span> <span class="na">src</span><span class="o">=</span><span class="s">'get_started.js'</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a name="rest_code_b65fae19c63d4bc5a8def0ed1fccded6-3"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </pre>
 <div id="get_started">
-<script language="javascript" type="text/javascript" src="posts/testing-with-rst/get_started.js"></script>
+   <script language="javascript" type="text/javascript" src="posts/testing-with-rst/get_started.js"></script>
 </div>
+<p>If you can't tell, there's a processing sketch in that blank box above this line. If you move your mouse over it p5 will draw some circles with the radii based on how fast your mouse is moving. If you click and drag it inverts the colors.</p>
+<p>Here's the javascript that created it.</p>
 <p><a class="reference external" href="listings/get_started.js.html">get_started.js</a>  <a class="reference external" href="listings/get_started.js">(Source)</a></p>
-<pre class="code javascript"><a name="rest_code_5e89988475f54d9389de3e80a65720e8-1"></a><span class="kd">var</span> <span class="nx">diameter</span><span class="p">;</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-2"></a>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-3"></a><span class="kd">function</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-4"></a>    <span class="nx">canvas</span> <span class="o">=</span> <span class="nx">createCanvas</span><span class="p">(</span><span class="mf">0.8</span> <span class="o">*</span> <span class="nx">windowWidth</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-5"></a>    <span class="nx">canvas</span><span class="p">.</span><span class="nx">parent</span><span class="p">(</span><span class="s2">"get_started"</span><span class="p">)</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-6"></a>    <span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-7"></a>    <span class="nx">strokeWeight</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-8"></a>    <span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-9"></a>    <span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-10"></a><span class="p">}</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-11"></a>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-12"></a><span class="kd">function</span> <span class="nx">mousePressed</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-13"></a>    <span class="cm">/* set background to blue */</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-14"></a>    <span class="nx">background</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-15"></a><span class="p">}</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-16"></a>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-17"></a><span class="kd">function</span> <span class="nx">mouseReleased</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-18"></a>    <span class="cm">/* set background to white */</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-19"></a>    <span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-20"></a><span class="p">}</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-21"></a>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-22"></a><span class="kd">function</span> <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-23"></a>    <span class="cm">/* Draw circles that change diameter based on mouse speed */</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-24"></a>    <span class="cm">/* and color based on if mouse-pressed (or not pressed)   */</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-25"></a>    <span class="k">if</span> <span class="p">(</span><span class="nx">mouseIsPressed</span><span class="p">)</span> <span class="p">{</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-26"></a>        <span class="nx">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-27"></a>        <span class="nx">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-28"></a>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-29"></a>        <span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-30"></a>        <span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-31"></a>    <span class="p">}</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-32"></a>    <span class="nx">diameter</span> <span class="o">=</span> <span class="nx">pow</span><span class="p">(</span><span class="nx">dist</span><span class="p">(</span><span class="nx">pmouseX</span><span class="p">,</span> <span class="nx">pmouseY</span><span class="p">,</span> <span class="nx">mouseX</span><span class="p">,</span> <span class="nx">mouseY</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">);</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-33"></a>    <span class="nx">ellipse</span><span class="p">(</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">mouseY</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">);</span>
-<a name="rest_code_5e89988475f54d9389de3e80a65720e8-34"></a><span class="p">}</span>
+<pre class="code javascript"><a name="rest_code_9737f23131634e529ff32ebafb2b1e07-1"></a><span class="kd">function</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-2"></a>  <span class="kd">var</span> <span class="nx">parent_div_id</span> <span class="o">=</span> <span class="s2">"get_started"</span><span class="p">;</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-3"></a>  <span class="c1">// this sets the width of the canvas to match the div (center column)</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-4"></a>  <span class="nx">canvas</span> <span class="o">=</span> <span class="nx">createCanvas</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">"#"</span> <span class="o">+</span> <span class="nx">parent_div_id</span><span class="p">).</span><span class="nx">outerWidth</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span> <span class="mi">300</span><span class="p">);</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-5"></a>  <span class="nx">canvas</span><span class="p">.</span><span class="nx">parent</span><span class="p">(</span><span class="nx">parent_div_id</span><span class="p">);</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-6"></a>  <span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-7"></a>  <span class="nx">strokeWeight</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-8"></a>  <span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-9"></a>  <span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-10"></a><span class="p">}</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-11"></a>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-12"></a><span class="kd">function</span> <span class="nx">mousePressed</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-13"></a>  <span class="cm">/* set background to blue */</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-14"></a>  <span class="nx">background</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-15"></a><span class="p">}</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-16"></a>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-17"></a><span class="kd">function</span> <span class="nx">mouseReleased</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-18"></a>  <span class="cm">/* set background to white */</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-19"></a>  <span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-20"></a><span class="p">}</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-21"></a>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-22"></a><span class="kd">function</span> <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-23"></a>  <span class="kd">var</span> <span class="nx">diameter</span><span class="p">;</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-24"></a>  <span class="cm">/* Draw circles that change diameter based on mouse speed */</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-25"></a>  <span class="cm">/* and color based on if mouse-pressed (or not pressed)   */</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-26"></a>  <span class="k">if</span> <span class="p">(</span><span class="nx">mouseIsPressed</span><span class="p">)</span> <span class="p">{</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-27"></a>    <span class="nx">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-28"></a>    <span class="nx">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-29"></a>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-30"></a>    <span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-31"></a>    <span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-32"></a>  <span class="p">}</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-33"></a>  <span class="nx">diameter</span> <span class="o">=</span> <span class="nx">pow</span><span class="p">(</span><span class="nx">dist</span><span class="p">(</span><span class="nx">pmouseX</span><span class="p">,</span> <span class="nx">pmouseY</span><span class="p">,</span> <span class="nx">mouseX</span><span class="p">,</span> <span class="nx">mouseY</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">);</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-34"></a>  <span class="nx">ellipse</span><span class="p">(</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">mouseY</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">);</span>
+<a name="rest_code_9737f23131634e529ff32ebafb2b1e07-35"></a><span class="p">}</span>
 </pre>
 <div class="section" id="notes">
 <h2>Notes</h2>
 <ul class="simple">
-<li>In order to get the javascript into the final HTML you need to put in the <tt class="docutils literal">listings</tt> folder at the root of the nikola folder and use the <a class="reference external" href="https://www.getnikola.com/handbook.html#listing">listing</a> <cite>reStructuredText</cite> directive instead of <tt class="docutils literal">include</tt> (this is a special <em>nikola</em> directive). You can't see it but it says:</li>
+<li>In order to get the javascript into the final HTML you need to put in the <tt class="docutils literal">listings</tt> folder at the root of the nikola folder and use the <a class="reference external" href="https://www.getnikola.com/handbook.html#listing">listing</a> <cite>reStructuredText</cite> directive instead of <tt class="docutils literal">include</tt> (this is a special <em>nikola</em> directive). This not only shows it but creates two links - the one with the file name links to a formatted version of the code and the <cite>(Source)</cite> link lets you download it as plain-text. Showing the code and creating another page seemed kind of redundant to me, but I think the purpose is to provide <a class="reference external" href="https://necromuralist.github.io/p5_explorations/listings/get_started.js.html">a link you can refer to outside of this post</a>. You can't see it but it says:</li>
 </ul>
-<pre class="code rst"><a name="rest_code_c9293e74757b400991f708dfae9dc978-1"></a><span class="p">..</span> <span class="ow">listing</span><span class="p">::</span> get_started.js javascript
+<pre class="code rst"><a name="rest_code_44b54fab0d1e45e2be5063215fbf216c-1"></a><span class="p">..</span> <span class="ow">listing</span><span class="p">::</span> get_started.js javascript
 </pre>
 <ul class="simple">
 <li>to get the sketch to stay in the post (instead of showing up on the bottom of the page), you have to use the div trick - create a <cite>div</cite> where you want the sketch to be and give it a unique ID (use the <tt class="docutils literal">raw</tt> <em>reStructuredText</em> to put the HTML tags displayed above into the post), then set the parent in the sketch (<tt class="docutils literal"><span class="pre">canvas.parent("get_started")</span></tt> in this example).</li>
@@ -201,6 +232,7 @@
             <script src="assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates -->
+    </script><!-- end fancy dates --><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.min.js">
+</script>
 </body>
 </html>

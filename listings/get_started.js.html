@@ -12,7 +12,19 @@
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 <link rel="canonical" href="https://necromuralist.github.io/p5_explorations/listings/get_started.js.html">
-<!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 </head>
 <body>
@@ -137,41 +149,43 @@
 <a href="#listingsget_startedjs-31">31</a>
 <a href="#listingsget_startedjs-32">32</a>
 <a href="#listingsget_startedjs-33">33</a>
-<a href="#listingsget_startedjs-34">34</a></pre></div></td>
-<td class="code"><pre class="code literal-block"><a name="listingsget_startedjs-1"></a><span class="kd">var</span> <span class="nx">diameter</span><span class="p">;</span>
-<a name="listingsget_startedjs-2"></a>
-<a name="listingsget_startedjs-3"></a><span class="kd">function</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
-<a name="listingsget_startedjs-4"></a>    <span class="nx">canvas</span> <span class="o">=</span> <span class="nx">createCanvas</span><span class="p">(</span><span class="mf">0.8</span> <span class="o">*</span> <span class="nx">windowWidth</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
-<a name="listingsget_startedjs-5"></a>    <span class="nx">canvas</span><span class="p">.</span><span class="nx">parent</span><span class="p">(</span><span class="s2">"get_started"</span><span class="p">)</span>
-<a name="listingsget_startedjs-6"></a>    <span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="listingsget_startedjs-7"></a>    <span class="nx">strokeWeight</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<a name="listingsget_startedjs-8"></a>    <span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="listingsget_startedjs-9"></a>    <span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a href="#listingsget_startedjs-34">34</a>
+<a href="#listingsget_startedjs-35">35</a></pre></div></td>
+<td class="code"><pre class="code literal-block"><a name="listingsget_startedjs-1"></a><span class="kd">function</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
+<a name="listingsget_startedjs-2"></a>  <span class="kd">var</span> <span class="nx">parent_div_id</span> <span class="o">=</span> <span class="s2">"get_started"</span><span class="p">;</span>
+<a name="listingsget_startedjs-3"></a>  <span class="c1">// this sets the width of the canvas to match the div (center column)</span>
+<a name="listingsget_startedjs-4"></a>  <span class="nx">canvas</span> <span class="o">=</span> <span class="nx">createCanvas</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">"#"</span> <span class="o">+</span> <span class="nx">parent_div_id</span><span class="p">).</span><span class="nx">outerWidth</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span> <span class="mi">300</span><span class="p">);</span>
+<a name="listingsget_startedjs-5"></a>  <span class="nx">canvas</span><span class="p">.</span><span class="nx">parent</span><span class="p">(</span><span class="nx">parent_div_id</span><span class="p">);</span>
+<a name="listingsget_startedjs-6"></a>  <span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="listingsget_startedjs-7"></a>  <span class="nx">strokeWeight</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<a name="listingsget_startedjs-8"></a>  <span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<a name="listingsget_startedjs-9"></a>  <span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
 <a name="listingsget_startedjs-10"></a><span class="p">}</span>
 <a name="listingsget_startedjs-11"></a>
 <a name="listingsget_startedjs-12"></a><span class="kd">function</span> <span class="nx">mousePressed</span><span class="p">()</span> <span class="p">{</span>
-<a name="listingsget_startedjs-13"></a>    <span class="cm">/* set background to blue */</span>
-<a name="listingsget_startedjs-14"></a>    <span class="nx">background</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<a name="listingsget_startedjs-13"></a>  <span class="cm">/* set background to blue */</span>
+<a name="listingsget_startedjs-14"></a>  <span class="nx">background</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
 <a name="listingsget_startedjs-15"></a><span class="p">}</span>
 <a name="listingsget_startedjs-16"></a>
 <a name="listingsget_startedjs-17"></a><span class="kd">function</span> <span class="nx">mouseReleased</span><span class="p">()</span> <span class="p">{</span>
-<a name="listingsget_startedjs-18"></a>    <span class="cm">/* set background to white */</span>
-<a name="listingsget_startedjs-19"></a>    <span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="listingsget_startedjs-18"></a>  <span class="cm">/* set background to white */</span>
+<a name="listingsget_startedjs-19"></a>  <span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
 <a name="listingsget_startedjs-20"></a><span class="p">}</span>
 <a name="listingsget_startedjs-21"></a>
 <a name="listingsget_startedjs-22"></a><span class="kd">function</span> <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span>
-<a name="listingsget_startedjs-23"></a>    <span class="cm">/* Draw circles that change diameter based on mouse speed */</span>
-<a name="listingsget_startedjs-24"></a>    <span class="cm">/* and color based on if mouse-pressed (or not pressed)   */</span>
-<a name="listingsget_startedjs-25"></a>    <span class="k">if</span> <span class="p">(</span><span class="nx">mouseIsPressed</span><span class="p">)</span> <span class="p">{</span>
-<a name="listingsget_startedjs-26"></a>        <span class="nx">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="listingsget_startedjs-27"></a>        <span class="nx">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="listingsget_startedjs-28"></a>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<a name="listingsget_startedjs-29"></a>        <span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="listingsget_startedjs-30"></a>        <span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="listingsget_startedjs-31"></a>    <span class="p">}</span>
-<a name="listingsget_startedjs-32"></a>    <span class="nx">diameter</span> <span class="o">=</span> <span class="nx">pow</span><span class="p">(</span><span class="nx">dist</span><span class="p">(</span><span class="nx">pmouseX</span><span class="p">,</span> <span class="nx">pmouseY</span><span class="p">,</span> <span class="nx">mouseX</span><span class="p">,</span> <span class="nx">mouseY</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">);</span>
-<a name="listingsget_startedjs-33"></a>    <span class="nx">ellipse</span><span class="p">(</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">mouseY</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">);</span>
-<a name="listingsget_startedjs-34"></a><span class="p">}</span>
+<a name="listingsget_startedjs-23"></a>  <span class="kd">var</span> <span class="nx">diameter</span><span class="p">;</span>
+<a name="listingsget_startedjs-24"></a>  <span class="cm">/* Draw circles that change diameter based on mouse speed */</span>
+<a name="listingsget_startedjs-25"></a>  <span class="cm">/* and color based on if mouse-pressed (or not pressed)   */</span>
+<a name="listingsget_startedjs-26"></a>  <span class="k">if</span> <span class="p">(</span><span class="nx">mouseIsPressed</span><span class="p">)</span> <span class="p">{</span>
+<a name="listingsget_startedjs-27"></a>    <span class="nx">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<a name="listingsget_startedjs-28"></a>    <span class="nx">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="listingsget_startedjs-29"></a>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a name="listingsget_startedjs-30"></a>    <span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="listingsget_startedjs-31"></a>    <span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<a name="listingsget_startedjs-32"></a>  <span class="p">}</span>
+<a name="listingsget_startedjs-33"></a>  <span class="nx">diameter</span> <span class="o">=</span> <span class="nx">pow</span><span class="p">(</span><span class="nx">dist</span><span class="p">(</span><span class="nx">pmouseX</span><span class="p">,</span> <span class="nx">pmouseY</span><span class="p">,</span> <span class="nx">mouseX</span><span class="p">,</span> <span class="nx">mouseY</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">);</span>
+<a name="listingsget_startedjs-34"></a>  <span class="nx">ellipse</span><span class="p">(</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">mouseY</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">);</span>
+<a name="listingsget_startedjs-35"></a><span class="p">}</span>
 </pre></td>
 </tr></table>
 </div>
@@ -188,6 +202,7 @@
             <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates -->
+    </script><!-- end fancy dates --><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.min.js">
+</script>
 </body>
 </html>

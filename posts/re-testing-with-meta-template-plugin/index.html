@@ -12,7 +12,19 @@
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="https://necromuralist.github.io/p5_explorations/posts/re-testing-with-meta-template-plugin/">
-<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script><meta name="author" content="The Cloistered Monkey">
 <link rel="prev" href="../testing-with-rst/" title="Testing With RST" type="text/html">
 <meta property="og:site_name" content="p5.js (processing) Explorations">
@@ -118,7 +130,23 @@
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <span></span>
+    <div>
+<p>This is a re-do of the <a class="reference external" href="https://necromuralist.github.io/p5_explorations/posts/testing-with-rst/">previous post</a> on getting p5.js working here. In that case I added the reference to the CDN in the <tt class="docutils literal">BODY_END</tt> variable in the <tt class="docutils literal">conf.py</tt> file but I'm going to try to do it using the <a class="reference external" href="https://plugins.getnikola.com/v7/meta_template/">meta-template plugin</a></p>
+<p>After installing the plugin in nikola:</p>
+<pre class="literal-block">
+nikola plugin -i meta_template
+</pre>
+<p>I created a file at <tt class="docutils literal">plugins/meta_template/templates/mako/p5.tmpl</tt> which contains only the link to the CDN.</p>
+<pre class="code html"><a name="rest_code_9cede5e1e4a4415f8265d5cb1a124dba-1"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/p5.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre>
+<p>Then in this file there is a directive that refers to the template-snippet I created.</p>
+<pre class="code rst"><a name="rest_code_f8fdb5d0a93c4194912c2ac1ac41fe2c-1"></a><span class="p">..</span> <span class="ow">template</span><span class="p">::</span> p5
+</pre>
+<p>Inspecting the rendered HTML shows that it inserted the template snippet exactly where the <tt class="docutils literal">.. template:: p5</tt> directive was so it should work. For this particular repository I don't know that this is a better solution, since I'm planning to use p5 in pretty much every post, so I'm probably going to switch back to setting it it <tt class="docutils literal">conf.py</tt>, but I wanted to make sure that it worked, because I might use it elsewhere.</p>
+<div id="get_re_started">
+    <script language="javascript" type="text/javascript" src="get_re_started.js"></script>
+</div>
+</div>
     </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../categories/howto/" rel="tag">howto</a></li>
@@ -142,6 +170,7 @@
             <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates -->
+    </script><!-- end fancy dates --><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.min.js">
+</script>
 </body>
 </html>

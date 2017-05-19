@@ -1,8 +1,8 @@
 function setup() {
-  var parent_div_id = "get_started";
-  // this sets the width of the canvas to match the div (center column)
-  canvas = createCanvas($("#" + parent_div_id).outerWidth(true), 300);
-  canvas.parent(parent_div_id);
+  var parent_div = "get_re_started";
+
+  canvas = createCanvas($("#" + parent_div).outerWidth(true), 300);
+  canvas.parent(parent_div);
   background(255);
   strokeWeight(3);
   stroke(0, 0, 255);
