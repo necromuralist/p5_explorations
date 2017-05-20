@@ -24,7 +24,10 @@ Then in this file there is a directive that refers to the template-snippet I cre
 .. code:: rst   
 
    .. template:: p5
+              
 
+.. template:: p5
+      
 Inspecting the rendered HTML shows that it inserted the template snippet exactly where the ``.. template:: p5`` directive was so it should work. For this particular repository I don't know that this is a better solution, since I'm planning to use p5 in pretty much every post, so I'm probably going to switch back to setting it it ``conf.py``, but I wanted to make sure that it worked, because I might use it elsewhere.
    
 .. raw:: html
@@ -33,3 +36,6 @@ Inspecting the rendered HTML shows that it inserted the template snippet exactly
        <script language="javascript" type="text/javascript" src='get_re_started.js'></script>
    </div>
 
+
+.. listing:: get_re_started.js   
+   :code: javascript

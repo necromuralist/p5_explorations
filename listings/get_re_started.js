@@ -1,35 +1,42 @@
-function setup() {
-  var parent_div = "get_re_started";
-
-  canvas = createCanvas($("#" + parent_div).outerWidth(true), 300);
-  canvas.parent(parent_div);
-  background(255);
-  strokeWeight(3);
-  stroke(0, 0, 255);
-  fill(255);
+class P5Retest {
+  constructor(p){
+    this.p = p;
+  
+    this.p.setup = function() {
+      var parent_div_id = "get_re_started";
+    
+      var canvas = this.p.createCanvas($("#" + parent_div_id).outerWidth(true), 300);
+      canvas.parent(parent_div_id);
+      this.p.background(255);
+      this.p.strokeWeight(3);
+      this.p.stroke(0, 0, 255);
+      this.p.fill(255);
+    };
+    
+    this.p.mousePressed = function() {
+      /* set background and fill to blue */
+      this.p.background(0, 0, 255);
+      this.p.fill(0, 0, 255);
+      /* set stroke to white */
+      this.p.stroke(255);
+    };
+    
+    this.p.mouseReleased = function() {
+      /* set background and fill to white */
+      this.p.background(255);
+      this.p.fill(255);
+      /* set stroke to blue */
+      this.p.stroke(0, 0, 255);
+    };
+    
+    this.p.draw = function() {
+      var diameter;
+      /* Draw circles that change diameter based on mouse speed */
+      diameter = this.p.pow(this.p.dist(this.p.pmouseX, this.p.mouseY, this.p.mouseX, this.p.mouseY), 1.5);
+      this.p.ellipse(this.p.mouseX, this.p.mouseY, diameter, diameter);
+    };
+  }; // end constructor
 }
+  
+new p5(P5Retest, "canvas_container");
 
-function mousePressed() {
-  /* set background to blue */
-  background(0, 0, 255);
-}
-
-function mouseReleased() {
-  /* set background to white */
-  background(255);
-}
-
-function draw() {
-  var diameter;
-  /* Draw circles that change diameter based on mouse speed */
-  /* and color based on if mouse-pressed (or not pressed)   */
-  if (mouseIsPressed) {
-    fill(0, 0, 255);
-    stroke(255);
-  } else {
-    fill(255);
-    stroke(0, 0, 255);
-  }
-  diameter = pow(dist(pmouseX, pmouseY, mouseX, mouseY), 1.5);
-  ellipse(mouseX, mouseY, diameter, diameter);
-}
