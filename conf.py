@@ -944,25 +944,24 @@ PRETTY_URLS = True
 # EXTRA_HEAD_DATA = """<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">"""
 # USE_KATEX = False
 EXTRA_HEAD_DATA = '''
-<script type="text/javascript" async
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+<script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.min.js'>
 </script>
 '''
-MATHJAX_CONFIG = """
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\\(","\\\)"] ],
-        displayMath: [ ['$$','$$'], ["\\\[","\\\]"] ],
-        processEscapes: true
-    },
-    displayAlign: 'left', // Change this to 'center' to center equations.
-    "HTML-CSS": {
-        styles: {'.MathJax_Display': {"margin": 0}}
-    }
-});
-</script>
-"""
+# MATHJAX_CONFIG = """
+# <script type="text/x-mathjax-config">
+# MathJax.Hub.Config({
+#     tex2jax: {
+#         inlineMath: [ ['$','$'], ["\\\(","\\\)"] ],
+#         displayMath: [ ['$$','$$'], ["\\\[","\\\]"] ],
+#         processEscapes: true
+#     },
+#     displayAlign: 'left', // Change this to 'center' to center equations.
+#     "HTML-CSS": {
+#         styles: {'.MathJax_Display': {"margin": 0}}
+#     }
+# });
+# </script>
+# """
 # Do you want to customize the nbconversion of your IPython notebook?
 # IPYNB_CONFIG = {}
 # With the following example configuration you can use a custom jinja template
@@ -1106,10 +1105,9 @@ SEARCH_FORM = """
 # Google Analytics or whatever else you use. Added to the bottom of <body>
 # in the default template (base.tmpl).
 # (translatable)
-BODY_END = """
-<script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.min.js'>
-</script>
-"""
+# BODY_END = """
+# 
+# """
 
 # The possibility to extract metadata from the filename by using a
 # regular expression.
