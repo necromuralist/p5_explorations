@@ -13,7 +13,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="https://necromuralist.github.io/p5_explorations/">
 <!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.min.js">
-</script><link rel="prefetch" href="posts/testing-the-re-post/" type="text/html">
+</script><link rel="prefetch" href="posts/p5-instance-mode-revisited/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -92,8 +92,189 @@
             
 
     
+
+
+    
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/testing-the-re-post/" class="u-url">Testing The Re-Post</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/p5-instance-mode-revisited/" class="u-url">P5 Instance Mode Revisited</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                The Cloistered Monkey
+            </span></p>
+            <p class="dateline"><a href="posts/p5-instance-mode-revisited/" rel="bookmark"><time class="published dt-published" datetime="2018-03-25T13:58:25-07:00" title="2018-03-25 13:58">2018-03-25 13:58</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>This is a re-do of another <a class="reference external" href="https://necromuralist.github.io/p5_explorations/posts/testing-with-rst/">re-do</a> I did where I tried to remember how to get P5 working again. This is a class-based version that doesn't set everything up in the constructor the way I did it previously. This adds more lines, but it seems better organized to me.</p>
+<div class="section" id="the-code">
+<h2>The Code</h2>
+<p><a class="reference external" href="listings/class_based_instance_mode.js.html">class_based_instance_mode.js</a>  <a class="reference external" href="listings/class_based_instance_mode.js">(Source)</a></p>
+<pre class="code javascript"><a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-1"></a><span class="cm">/**</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-2"></a><span class="cm"> * Class-based instance mode setup</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-3"></a><span class="cm"> * This uses properties instead of building everything in the constructor</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-4"></a><span class="cm"> */</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-5"></a><span class="kr">class</span> <span class="nx">Sketch</span> <span class="p">{</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-6"></a>  <span class="cm">/** Constructor to setup the p5 calls</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-7"></a><span class="cm">   * @param {p5} p: the P5 object</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-8"></a><span class="cm">   * @param {object} setup_arguments: setup settings</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-9"></a><span class="cm">   * @param {object} colors: color settings</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-10"></a><span class="cm">   * @param {object} inverted: inverted color settings</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-11"></a><span class="cm">   */</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-12"></a>  <span class="nx">constructor</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">setup_arguments</span><span class="p">,</span> <span class="nx">colors</span><span class="p">,</span> <span class="nx">inverted</span><span class="p">)</span> <span class="p">{</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-13"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">_reset</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-14"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">_p</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-15"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">setup_arguments</span> <span class="o">=</span> <span class="nx">setup_arguments</span><span class="p">;</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-16"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">colors</span> <span class="o">=</span> <span class="nx">colors</span><span class="p">;</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-17"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">inverted</span> <span class="o">=</span> <span class="nx">inverted</span><span class="p">;</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-18"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">p</span> <span class="o">=</span> <span class="nx">p</span><span class="p">;</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-19"></a>  <span class="p">}</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-20"></a>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-21"></a>  <span class="cm">/**</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-22"></a><span class="cm">   * creates the closure to create the p5 canvas</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-23"></a><span class="cm">   * This is so we have access to our 'this'</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-24"></a><span class="cm">   */</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-25"></a>  <span class="nx">get</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-26"></a>    <span class="kd">let</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-27"></a>    <span class="k">return</span> <span class="kd">function</span><span class="p">(){</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-28"></a>      <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">createCanvas</span><span class="p">(</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-29"></a>        <span class="nx">$</span><span class="p">(</span><span class="s2">"#"</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">setup_arguments</span><span class="p">.</span><span class="nx">parent_id</span><span class="p">).</span><span class="nx">outerWidth</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-30"></a>        <span class="nx">self</span><span class="p">.</span><span class="nx">setup_arguments</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-31"></a>      <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">strokeWeight</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">setup_arguments</span><span class="p">.</span><span class="nx">stroke_weight</span><span class="p">);</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-32"></a>      <span class="nx">self</span><span class="p">.</span><span class="nx">reset</span><span class="p">();</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-33"></a>    <span class="p">};</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-34"></a>  <span class="p">}</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-35"></a>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-36"></a>  <span class="cm">/**</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-37"></a><span class="cm">   * creates the closure to handle a mouse press</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-38"></a><span class="cm">   */</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-39"></a>  <span class="nx">get</span> <span class="nx">mouse_pressed</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-40"></a>    <span class="kd">let</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-41"></a>    <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-42"></a>        <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">inverted</span><span class="p">.</span><span class="nx">background</span><span class="p">);</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-43"></a>        <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">inverted</span><span class="p">.</span><span class="nx">fill</span><span class="p">);</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-44"></a>        <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">inverted</span><span class="p">.</span><span class="nx">stroke</span><span class="p">);</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-45"></a>    <span class="p">};</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-46"></a>  <span class="p">}</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-47"></a>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-48"></a>  <span class="cm">/**</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-49"></a><span class="cm">   * closure to handle a mouse release</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-50"></a><span class="cm">   */</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-51"></a>  <span class="nx">get</span> <span class="nx">mouse_released</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-52"></a>    <span class="kd">let</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-53"></a>    <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-54"></a>      <span class="nx">self</span><span class="p">.</span><span class="nx">reset</span><span class="p">();</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-55"></a>    <span class="p">};</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-56"></a>  <span class="p">}</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-57"></a>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-58"></a>  <span class="cm">/**</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-59"></a><span class="cm">   * creates the closure for the default setup</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-60"></a><span class="cm">   */</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-61"></a>  <span class="nx">get</span> <span class="nx">reset</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-62"></a>    <span class="kd">let</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-63"></a>    <span class="k">if</span> <span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">_reset</span> <span class="o">===</span> <span class="kc">null</span><span class="p">){</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-64"></a>      <span class="nx">self</span><span class="p">.</span><span class="nx">_reset</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-65"></a>        <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">colors</span><span class="p">.</span><span class="nx">background</span><span class="p">);</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-66"></a>        <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">colors</span><span class="p">.</span><span class="nx">fill</span><span class="p">);</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-67"></a>        <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">colors</span><span class="p">.</span><span class="nx">stroke</span><span class="p">);</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-68"></a>      <span class="p">};</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-69"></a>    <span class="p">}</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-70"></a>    <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">_reset</span><span class="p">;</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-71"></a>  <span class="p">}</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-72"></a>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-73"></a>  <span class="cm">/**</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-74"></a><span class="cm">   * creates closure to draw circles that change diameter</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-75"></a><span class="cm">   * based on mouse speed</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-76"></a><span class="cm">   **/</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-77"></a>  <span class="nx">get</span> <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-78"></a>    <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-79"></a>    <span class="k">return</span> <span class="kd">function</span><span class="p">(){</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-80"></a>      <span class="kd">var</span> <span class="nx">diameter</span><span class="p">;</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-81"></a>      <span class="cm">/* get the distance from last click, raise to 1.5 */</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-82"></a>      <span class="nx">diameter</span> <span class="o">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">dist</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">pmouseX</span><span class="p">,</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-83"></a>                                        <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">pmouseY</span><span class="p">,</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-84"></a>                                        <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">mouseX</span><span class="p">,</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-85"></a>                                        <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">);</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-86"></a>      <span class="cm">/* move the ellipse using the new diameter */</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-87"></a>      <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">ellipse</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">);</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-88"></a>    <span class="p">};</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-89"></a>  <span class="p">}</span> <span class="c1">// end draw</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-90"></a>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-91"></a>  <span class="cm">/**</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-92"></a><span class="cm">   * the P5 object with our methods</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-93"></a><span class="cm">   */</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-94"></a>  <span class="nx">get</span> <span class="nx">p</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-95"></a>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_p</span><span class="p">;</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-96"></a>  <span class="p">}</span> <span class="c1">// end get p</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-97"></a>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-98"></a>  <span class="cm">/**</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-99"></a><span class="cm">   * sets up the P5 object with our methods</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-100"></a><span class="cm">   * @param {P5} original: the P5 object</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-101"></a><span class="cm">   */</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-102"></a>  <span class="nx">set</span> <span class="nx">p</span><span class="p">(</span><span class="nx">original</span><span class="p">)</span> <span class="p">{</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-103"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">_p</span> <span class="o">=</span> <span class="nx">original</span><span class="p">;</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-104"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">_p</span><span class="p">.</span><span class="nx">draw</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">draw</span><span class="p">;</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-105"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">_p</span><span class="p">.</span><span class="nx">setup</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">setup</span><span class="p">;</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-106"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">_p</span><span class="p">.</span><span class="nx">mousePressed</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">mouse_pressed</span><span class="p">;</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-107"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">_p</span><span class="p">.</span><span class="nx">mouseReleased</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">mouse_released</span><span class="p">;</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-108"></a>  <span class="p">}</span> <span class="c1">// end set p</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-109"></a><span class="p">}</span> <span class="c1">// end Sketch</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-110"></a>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-111"></a><span class="cm">/** Settings objects **/</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-112"></a><span class="kd">let</span> <span class="nx">COLOR</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">];</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-113"></a><span class="kd">let</span> <span class="nx">WHITE</span> <span class="o">=</span> <span class="mi">255</span><span class="p">;</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-114"></a>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-115"></a><span class="kd">let</span> <span class="nx">setup_arguments</span> <span class="o">=</span> <span class="p">{</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-116"></a>  <span class="nx">stroke_weight</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-117"></a>  <span class="nx">height</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-118"></a>  <span class="nx">parent_id</span><span class="o">:</span> <span class="s2">"class-based-instance-mode"</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-119"></a><span class="p">}</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-120"></a>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-121"></a><span class="kd">let</span> <span class="nx">inverted_colors</span> <span class="o">=</span> <span class="p">{</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-122"></a>  <span class="nx">background</span><span class="o">:</span> <span class="nx">COLOR</span><span class="p">,</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-123"></a>  <span class="nx">fill</span><span class="o">:</span> <span class="nx">COLOR</span><span class="p">,</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-124"></a>  <span class="nx">stroke</span><span class="o">:</span> <span class="nx">WHITE</span><span class="p">,</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-125"></a>  <span class="nx">height</span><span class="o">:</span> <span class="mi">50</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-126"></a><span class="p">}</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-127"></a>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-128"></a><span class="kd">let</span> <span class="nx">default_colors</span> <span class="o">=</span> <span class="p">{</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-129"></a>  <span class="nx">background</span><span class="o">:</span> <span class="nx">WHITE</span><span class="p">,</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-130"></a>  <span class="nx">fill</span><span class="o">:</span> <span class="nx">WHITE</span><span class="p">,</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-131"></a>  <span class="nx">stroke</span><span class="o">:</span> <span class="nx">COLOR</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-132"></a><span class="p">}</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-133"></a>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-134"></a><span class="cm">/** Build the code **/</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-135"></a>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-136"></a><span class="kd">function</span> <span class="nx">builder</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-137"></a>  <span class="nx">sketch</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sketch</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">setup_arguments</span><span class="p">,</span> <span class="nx">default_colors</span><span class="p">,</span> <span class="nx">inverted_colors</span><span class="p">);</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-138"></a><span class="p">}</span>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-139"></a>
+<a name="rest_code_2aeae7a4ea7842a3acc908f198e1e6f5-140"></a><span class="kd">var</span> <span class="nx">sketch</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">p5</span><span class="p">(</span><span class="nx">builder</span><span class="p">,</span> <span class="nx">setup_arguments</span><span class="p">.</span><span class="nx">parent_id</span><span class="p">);</span>
+</pre>
+</div>
+<div class="section" id="the-sketch">
+<h2>The Sketch</h2>
+<p>For completeness, here is the html to include the sketch and the output of the sketch.</p>
+<pre class="code html"><a name="rest_code_ea3904edd81a418f9b72f131a89a4472-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"class-based-instance-mode"</span><span class="p">&gt;</span>
+<a name="rest_code_ea3904edd81a418f9b72f131a89a4472-2"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">language</span><span class="o">=</span><span class="s">"javascript"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span> <span class="na">src</span><span class="o">=</span><span class="s">'class_based_instance_mode.js'</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a name="rest_code_ea3904edd81a418f9b72f131a89a4472-3"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre>
+<div id="class-based-instance-mode">
+   <script language="javascript" type="text/javascript" src="posts/p5-instance-mode-revisited/class_based_instance_mode.js"></script>
+</div>
+</div>
+<div class="section" id="the-closures">
+<h2>The Closures</h2>
+<p>Although I like the way the code looks when things are set up (more or less) outside of the constructor, it created the problem that the object doesn't have access to the right <tt class="docutils literal">this</tt> when P5 calls the methods I created. To get around this I used the <tt class="docutils literal">get</tt> methods to create closures that bind the right context to the implemented <cite>p5</cite> methods.</p>
+<p>In addition, since the <tt class="docutils literal">setup</tt> and <tt class="docutils literal">mouse_released</tt> both set the same colors I created a <tt class="docutils literal">reset</tt> function/property that stores the creation of the function when it's first created. I didn't bother to store <tt class="docutils literal">mouse_pressed</tt> because the getter only gets used once (in the constructor), after that it gets assigned to the <tt class="docutils literal">p5</tt> object anyway.</p>
+<p>Putting the <tt class="docutils literal">p</tt> attribute in a setter allowed me to set it up outside of the constructor, but makes it more fragile, as you have to make sure that it gets set after the other attributes or it will be an error.</p>
+</div>
+<div class="section" id="a-new-problem">
+<h2>A New Problem</h2>
+<p>I just noticed that the Mouse Presses trigger the inverting of colors for all the boxes on the page. Not a big deal in this case, I guess, although that might be something to work on later.</p>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/testing-the-re-post/" class="u-url">Testing The Re-Post</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 The Cloistered Monkey
@@ -113,7 +294,7 @@
 <div class="section" id="what-this-accomplished">
 <h2>What This Accomplished</h2>
 <p>The first thing that happened when I added this post was that both the class based versions crashed and the function-based version started working. I don't think adding this was what caused it, it seems that p5 wasn't getting loadded before I created the p5 object.</p>
-<pre class="code js"><a name="rest_code_63f16a2f0ed24efbb32ec267379a43c2-1"></a><span class="kd">var</span> <span class="nx">p5_restart</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">p5</span><span class="p">(</span><span class="nx">build_get_re_started</span><span class="p">,</span> <span class="nx">parent_div_id</span><span class="p">);</span>
+<pre class="code js"><a name="rest_code_efe4c7e6b79d4309b1abab213b71696d-1"></a><span class="kd">var</span> <span class="nx">p5_restart</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">p5</span><span class="p">(</span><span class="nx">build_get_re_started</span><span class="p">,</span> <span class="nx">parent_div_id</span><span class="p">);</span>
 </pre>
 <p>The question is really why it was working at all before. Anyway, I moved the <tt class="docutils literal">script</tt> tag to download p5 from the CDN to the HTML HEAD and that seems to have fixed it (so far). The main thing is that this post can coexist with the previous post on the same page (and they don't interfere with each other), and the p5 library is only getting downloaded once (in the HEAD).</p>
 </div>
@@ -130,7 +311,7 @@
     <div>
 <p>This is a re-do of an <a class="reference external" href="https://necromuralist.github.io/posts/processing-test/">old post</a> I made to <a class="reference external" href="https://necromuralist.github.io/">my main site</a> about making a <a class="reference external" href="http://p5js.org/">p5</a> restructured-text post in <a class="reference external" href="https://www.getnikola.com/handbook.html">nikola</a> based on the p5 <a class="reference external" href="http://p5js.org/get-started/">get started</a> tutorial. I'm repeating it to make sure I can get it to work here, since it's been so long since I've done it.</p>
 <p>First the link to the p5 code:</p>
-<pre class="code html"><a name="rest_code_fe32a72c68874957b880e5d166ca9741-1"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/p5.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<pre class="code html"><a name="rest_code_918e74d946a843d582035d9e02a3548d-1"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/p5.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </pre>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -140,46 +321,46 @@
 <h2>A Version That Worked Once</h2>
 <p>Here's the javascript for the broken version.</p>
 <p><a class="reference external" href="listings/get_started.js.html">get_started.js</a>  <a class="reference external" href="listings/get_started.js">(Source)</a></p>
-<pre class="code javascript"><a name="rest_code_4653ae8c6e1b4de68175696d757d2651-1"></a><span class="kd">function</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-2"></a>  <span class="kd">var</span> <span class="nx">parent_div_id</span> <span class="o">=</span> <span class="s2">"get_started"</span><span class="p">;</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-3"></a>  <span class="c1">// this sets the width of the canvas to match the div (center column)</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-4"></a>  <span class="nx">canvas</span> <span class="o">=</span> <span class="nx">createCanvas</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">"#"</span> <span class="o">+</span> <span class="nx">parent_div_id</span><span class="p">).</span><span class="nx">outerWidth</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span> <span class="mi">300</span><span class="p">);</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-5"></a>  <span class="nx">canvas</span><span class="p">.</span><span class="nx">parent</span><span class="p">(</span><span class="nx">parent_div_id</span><span class="p">);</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-6"></a>  <span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-7"></a>  <span class="nx">strokeWeight</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-8"></a>  <span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-9"></a>  <span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-10"></a><span class="p">}</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-11"></a>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-12"></a><span class="kd">function</span> <span class="nx">mousePressed</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-13"></a>  <span class="cm">/* set background to blue */</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-14"></a>  <span class="nx">background</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-15"></a><span class="p">}</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-16"></a>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-17"></a><span class="kd">function</span> <span class="nx">mouseReleased</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-18"></a>  <span class="cm">/* set background to white */</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-19"></a>  <span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-20"></a><span class="p">}</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-21"></a>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-22"></a><span class="kd">function</span> <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-23"></a>  <span class="kd">var</span> <span class="nx">diameter</span><span class="p">;</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-24"></a>  <span class="cm">/* Draw circles that change diameter based on mouse speed */</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-25"></a>  <span class="cm">/* and color based on if mouse-pressed (or not pressed)   */</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-26"></a>  <span class="k">if</span> <span class="p">(</span><span class="nx">mouseIsPressed</span><span class="p">)</span> <span class="p">{</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-27"></a>    <span class="nx">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-28"></a>    <span class="nx">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-29"></a>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-30"></a>    <span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-31"></a>    <span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-32"></a>  <span class="p">}</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-33"></a>  <span class="nx">diameter</span> <span class="o">=</span> <span class="nx">pow</span><span class="p">(</span><span class="nx">dist</span><span class="p">(</span><span class="nx">pmouseX</span><span class="p">,</span> <span class="nx">pmouseY</span><span class="p">,</span> <span class="nx">mouseX</span><span class="p">,</span> <span class="nx">mouseY</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">);</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-34"></a>  <span class="nx">ellipse</span><span class="p">(</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">mouseY</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">);</span>
-<a name="rest_code_4653ae8c6e1b4de68175696d757d2651-35"></a><span class="p">}</span>
+<pre class="code javascript"><a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-1"></a><span class="kd">function</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-2"></a>  <span class="kd">var</span> <span class="nx">parent_div_id</span> <span class="o">=</span> <span class="s2">"get_started"</span><span class="p">;</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-3"></a>  <span class="c1">// this sets the width of the canvas to match the div (center column)</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-4"></a>  <span class="nx">canvas</span> <span class="o">=</span> <span class="nx">createCanvas</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">"#"</span> <span class="o">+</span> <span class="nx">parent_div_id</span><span class="p">).</span><span class="nx">outerWidth</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span> <span class="mi">300</span><span class="p">);</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-5"></a>  <span class="nx">canvas</span><span class="p">.</span><span class="nx">parent</span><span class="p">(</span><span class="nx">parent_div_id</span><span class="p">);</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-6"></a>  <span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-7"></a>  <span class="nx">strokeWeight</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-8"></a>  <span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-9"></a>  <span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-10"></a><span class="p">}</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-11"></a>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-12"></a><span class="kd">function</span> <span class="nx">mousePressed</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-13"></a>  <span class="cm">/* set background to blue */</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-14"></a>  <span class="nx">background</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-15"></a><span class="p">}</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-16"></a>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-17"></a><span class="kd">function</span> <span class="nx">mouseReleased</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-18"></a>  <span class="cm">/* set background to white */</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-19"></a>  <span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-20"></a><span class="p">}</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-21"></a>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-22"></a><span class="kd">function</span> <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-23"></a>  <span class="kd">var</span> <span class="nx">diameter</span><span class="p">;</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-24"></a>  <span class="cm">/* Draw circles that change diameter based on mouse speed */</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-25"></a>  <span class="cm">/* and color based on if mouse-pressed (or not pressed)   */</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-26"></a>  <span class="k">if</span> <span class="p">(</span><span class="nx">mouseIsPressed</span><span class="p">)</span> <span class="p">{</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-27"></a>    <span class="nx">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-28"></a>    <span class="nx">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-29"></a>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-30"></a>    <span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-31"></a>    <span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-32"></a>  <span class="p">}</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-33"></a>  <span class="nx">diameter</span> <span class="o">=</span> <span class="nx">pow</span><span class="p">(</span><span class="nx">dist</span><span class="p">(</span><span class="nx">pmouseX</span><span class="p">,</span> <span class="nx">pmouseY</span><span class="p">,</span> <span class="nx">mouseX</span><span class="p">,</span> <span class="nx">mouseY</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">);</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-34"></a>  <span class="nx">ellipse</span><span class="p">(</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">mouseY</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">);</span>
+<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-35"></a><span class="p">}</span>
 </pre>
 <p>This next bit shows how to include the sketch in the post. The naming of the <tt class="docutils literal">div</tt> is important (<tt class="docutils literal">"get_started"</tt> in this case) - the javascript has to reference it (i.e. <tt class="docutils literal"><span class="pre">canvas.parent("get_started")</span></tt>) or the sketch will not appear right here (see the notes below). I'm also using it to get the width for the image. As you can see from the <tt class="docutils literal"><span class="pre">src='get_started.js</span></tt> part, this loads a file called 'get_started.js' that I created earlier and put in the <tt class="docutils literal"><span class="pre">files/posts/testing-with-rst</span></tt> folder (the directory name matches the name of this blog-post file - <tt class="docutils literal"><span class="pre">testing-with-rst.rst</span></tt>).</p>
-<pre class="code html"><a name="rest_code_fb98780770ad4869904d380de183da3e-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"get_started"</span><span class="p">&gt;</span>
-<a name="rest_code_fb98780770ad4869904d380de183da3e-2"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">language</span><span class="o">=</span><span class="s">"javascript"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span> <span class="na">src</span><span class="o">=</span><span class="s">'get_started.js'</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<a name="rest_code_fb98780770ad4869904d380de183da3e-3"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<pre class="code html"><a name="rest_code_c739b508c2af4ba49491e90c8c0544d4-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"get_started"</span><span class="p">&gt;</span>
+<a name="rest_code_c739b508c2af4ba49491e90c8c0544d4-2"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">language</span><span class="o">=</span><span class="s">"javascript"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span> <span class="na">src</span><span class="o">=</span><span class="s">'get_started.js'</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a name="rest_code_c739b508c2af4ba49491e90c8c0544d4-3"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </pre>
 <div id="get_started">
    <script language="javascript" type="text/javascript" src="posts/testing-with-rst/get_started.js"></script>
@@ -195,94 +376,94 @@
 <p>If you can't tell, there's a processing sketch in that blank box above this line. If you move your mouse over it p5 will draw some circles with the radii based on how fast your mouse is moving. If you click and drag it inverts the colors.</p>
 <p>Here's the javascript that created it.</p>
 <p><a class="reference external" href="listings/get_started_2.js.html">get_started_2.js</a>  <a class="reference external" href="listings/get_started_2.js">(Source)</a></p>
-<pre class="code javascript"><a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-1"></a><span class="cm">/**</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-2"></a><span class="cm"> * Instance mode implementation of a simple sketch that draws blue circles</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-3"></a><span class="cm"> * on a white background when the user moves the mouse cursor over it, basing</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-4"></a><span class="cm"> * the size of the circles on how fast the cursor is moving. If the user clicks</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-5"></a><span class="cm"> * and drags the mouse it draws white circles on a blue background instead.</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-6"></a><span class="cm"> **/</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-7"></a><span class="kr">class</span> <span class="nx">GetStarted2</span> <span class="p">{</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-8"></a>  <span class="cm">/**</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-9"></a><span class="cm">   * The constructor sets up the p5 functions</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-10"></a><span class="cm">   *</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-11"></a><span class="cm">   * @param {object} p: the `p5` object</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-12"></a><span class="cm">   * @param {string} parent_div_id: ID of the div to attach the canvas to</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-13"></a><span class="cm">   * @param {integer} height: Pixel-heght for the canvas</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-14"></a><span class="cm">   **/</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-15"></a>  <span class="nx">constructor</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">parent_div_id</span><span class="p">,</span> <span class="nx">height</span><span class="p">){</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-16"></a>    <span class="cm">/**</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-17"></a><span class="cm">     * Creates the canvas using ``height`` and the width of the parent div</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-18"></a><span class="cm">     * Also sets up some coloring</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-19"></a><span class="cm">     **/</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-20"></a>    <span class="nx">p</span><span class="p">.</span><span class="nx">setup</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-21"></a>      <span class="kd">var</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">createCanvas</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">"#"</span> <span class="o">+</span> <span class="nx">parent_div_id</span><span class="p">).</span><span class="nx">outerWidth</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-22"></a>                                  <span class="nx">height</span><span class="p">);</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-23"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-24"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">strokeWeight</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-25"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-26"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-27"></a>    <span class="p">};</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-28"></a>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-29"></a>    <span class="cm">/**</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-30"></a><span class="cm">     * sets the background and fill to blue</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-31"></a><span class="cm">     * and the stroke to white</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-32"></a><span class="cm">     **/</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-33"></a>    <span class="nx">p</span><span class="p">.</span><span class="nx">mousePressed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-34"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-35"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-36"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-37"></a>    <span class="p">};</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-38"></a>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-39"></a>    <span class="cm">/**</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-40"></a><span class="cm">     * sets the background and fill to white</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-41"></a><span class="cm">     * and the stroke to blue</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-42"></a><span class="cm">     **/</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-43"></a>    <span class="nx">p</span><span class="p">.</span><span class="nx">mouseReleased</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-44"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-45"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-46"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-47"></a>    <span class="p">};</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-48"></a>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-49"></a>    <span class="cm">/**</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-50"></a><span class="cm">     * Draws circles that change diameter based on mouse speed</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-51"></a><span class="cm">     **/</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-52"></a>    <span class="nx">p</span><span class="p">.</span><span class="nx">draw</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-53"></a>      <span class="kd">var</span> <span class="nx">diameter</span><span class="p">;</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-54"></a>      <span class="nx">diameter</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">dist</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">pmouseX</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">);</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-55"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">ellipse</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">);</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-56"></a>    <span class="p">};</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-57"></a>  <span class="p">};</span> <span class="c1">// end constructor</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-58"></a><span class="p">};</span><span class="c1">// end GetStarted2</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-59"></a>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-60"></a><span class="cm">/**</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-61"></a><span class="cm"> * Builds the GetStarted2 sketch</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-62"></a><span class="cm"> *</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-63"></a><span class="cm"> * p5 thinks it's getting a function, not a class</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-64"></a><span class="cm"> * so it doesn't use the `new` statement. This function</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-65"></a><span class="cm"> * works around that and passes in some parameters</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-66"></a><span class="cm"> *</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-67"></a><span class="cm"> * @param {object} p: a ``p5`` instance</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-68"></a><span class="cm"> **/</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-69"></a><span class="kd">function</span> <span class="nx">build_get_started_2</span><span class="p">(</span><span class="nx">p</span><span class="p">){</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-70"></a>  <span class="k">return</span> <span class="k">new</span> <span class="nx">GetStarted2</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="s2">"get_started_2"</span><span class="p">,</span> <span class="mi">300</span><span class="p">);</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-71"></a><span class="p">};</span>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-72"></a>
-<a name="rest_code_9c7a5583838d44b49a56f6d8baaa59ee-73"></a><span class="kd">var</span> <span class="nx">p5_retest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">p5</span><span class="p">(</span><span class="nx">build_get_started_2</span><span class="p">,</span> <span class="s2">"get_started_2"</span><span class="p">);</span>
+<pre class="code javascript"><a name="rest_code_2ec5834493bd4cb6bed64a6472010168-1"></a><span class="cm">/**</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-2"></a><span class="cm"> * Instance mode implementation of a simple sketch that draws blue circles</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-3"></a><span class="cm"> * on a white background when the user moves the mouse cursor over it, basing</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-4"></a><span class="cm"> * the size of the circles on how fast the cursor is moving. If the user clicks</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-5"></a><span class="cm"> * and drags the mouse it draws white circles on a blue background instead.</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-6"></a><span class="cm"> **/</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-7"></a><span class="kr">class</span> <span class="nx">GetStarted2</span> <span class="p">{</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-8"></a>  <span class="cm">/**</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-9"></a><span class="cm">   * The constructor sets up the p5 functions</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-10"></a><span class="cm">   *</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-11"></a><span class="cm">   * @param {object} p: the `p5` object</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-12"></a><span class="cm">   * @param {string} parent_div_id: ID of the div to attach the canvas to</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-13"></a><span class="cm">   * @param {integer} height: Pixel-heght for the canvas</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-14"></a><span class="cm">   **/</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-15"></a>  <span class="nx">constructor</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">parent_div_id</span><span class="p">,</span> <span class="nx">height</span><span class="p">){</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-16"></a>    <span class="cm">/**</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-17"></a><span class="cm">     * Creates the canvas using ``height`` and the width of the parent div</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-18"></a><span class="cm">     * Also sets up some coloring</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-19"></a><span class="cm">     **/</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-20"></a>    <span class="nx">p</span><span class="p">.</span><span class="nx">setup</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-21"></a>      <span class="kd">var</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">createCanvas</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">"#"</span> <span class="o">+</span> <span class="nx">parent_div_id</span><span class="p">).</span><span class="nx">outerWidth</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-22"></a>                                  <span class="nx">height</span><span class="p">);</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-23"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-24"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">strokeWeight</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-25"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-26"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-27"></a>    <span class="p">};</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-28"></a>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-29"></a>    <span class="cm">/**</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-30"></a><span class="cm">     * sets the background and fill to blue</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-31"></a><span class="cm">     * and the stroke to white</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-32"></a><span class="cm">     **/</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-33"></a>    <span class="nx">p</span><span class="p">.</span><span class="nx">mousePressed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-34"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-35"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-36"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-37"></a>    <span class="p">};</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-38"></a>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-39"></a>    <span class="cm">/**</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-40"></a><span class="cm">     * sets the background and fill to white</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-41"></a><span class="cm">     * and the stroke to blue</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-42"></a><span class="cm">     **/</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-43"></a>    <span class="nx">p</span><span class="p">.</span><span class="nx">mouseReleased</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-44"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-45"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-46"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-47"></a>    <span class="p">};</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-48"></a>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-49"></a>    <span class="cm">/**</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-50"></a><span class="cm">     * Draws circles that change diameter based on mouse speed</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-51"></a><span class="cm">     **/</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-52"></a>    <span class="nx">p</span><span class="p">.</span><span class="nx">draw</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-53"></a>      <span class="kd">var</span> <span class="nx">diameter</span><span class="p">;</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-54"></a>      <span class="nx">diameter</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">dist</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">pmouseX</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">);</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-55"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">ellipse</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">);</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-56"></a>    <span class="p">};</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-57"></a>  <span class="p">};</span> <span class="c1">// end constructor</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-58"></a><span class="p">};</span><span class="c1">// end GetStarted2</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-59"></a>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-60"></a><span class="cm">/**</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-61"></a><span class="cm"> * Builds the GetStarted2 sketch</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-62"></a><span class="cm"> *</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-63"></a><span class="cm"> * p5 thinks it's getting a function, not a class</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-64"></a><span class="cm"> * so it doesn't use the `new` statement. This function</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-65"></a><span class="cm"> * works around that and passes in some parameters</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-66"></a><span class="cm"> *</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-67"></a><span class="cm"> * @param {object} p: a ``p5`` instance</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-68"></a><span class="cm"> **/</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-69"></a><span class="kd">function</span> <span class="nx">build_get_started_2</span><span class="p">(</span><span class="nx">p</span><span class="p">){</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-70"></a>  <span class="k">return</span> <span class="k">new</span> <span class="nx">GetStarted2</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="s2">"get_started_2"</span><span class="p">,</span> <span class="mi">300</span><span class="p">);</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-71"></a><span class="p">};</span>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-72"></a>
+<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-73"></a><span class="kd">var</span> <span class="nx">p5_retest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">p5</span><span class="p">(</span><span class="nx">build_get_started_2</span><span class="p">,</span> <span class="s2">"get_started_2"</span><span class="p">);</span>
 </pre>
 </div>
 <div class="section" id="a-little-explanation">
 <h2>A Little Explanation</h2>
 <p>So, for my future self who will likely forget what this is doing, here's some notes.</p>
-<pre class="code js"><a name="rest_code_cbf60b21e6af4091a8f5f2406750fb14-1"></a><span class="kd">var</span> <span class="nx">p5_retest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">p5</span><span class="p">(</span><span class="nx">build_get_started_2</span><span class="p">,</span> <span class="s2">"get_started_2"</span><span class="p">);</span>
+<pre class="code js"><a name="rest_code_77bcbef764154392ae3b377277a670e8-1"></a><span class="kd">var</span> <span class="nx">p5_retest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">p5</span><span class="p">(</span><span class="nx">build_get_started_2</span><span class="p">,</span> <span class="s2">"get_started_2"</span><span class="p">);</span>
 </pre>
 <p>The last line creates a <tt class="docutils literal">p5</tt> object which calls the <tt class="docutils literal">build_get_started_2</tt> function, passing the instance into it. In addition, if you pass in the ID of the container, it will attach the sketch to it. So the second argument <tt class="docutils literal">"get_started_2"</tt> does what you would otherwise do in the constructor like this:</p>
-<pre class="code js"><a name="rest_code_99751ce5d7a8444c9524412f528cb0d8-1"></a><span class="nx">p</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">parent</span><span class="p">(</span><span class="s2">"get_started_2"</span><span class="p">);</span>
+<pre class="code js"><a name="rest_code_23379ec7613f4e809e95a6079dddb2ac-1"></a><span class="nx">p</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">parent</span><span class="p">(</span><span class="s2">"get_started_2"</span><span class="p">);</span>
 </pre>
 <p>If you omit the name of the parent ID when creating the <tt class="docutils literal">p5</tt> object then this line would need to go back into the constructor. I kind of like using the explicit <tt class="docutils literal"><span class="pre">p.canvas.parent("get_started_2");</span></tt> call, but I already did something similar to it in the previous (broken) sketch so I thought I'd pass it in to the <tt class="docutils literal">p5</tt> constructor here so I'd have it documented.</p>
 <p>The <tt class="docutils literal">build_get_started_2</tt> function:</p>
-<pre class="code js"><a name="rest_code_5fa68122e14f45fbbbfa2d56598fe665-1"></a><span class="kd">function</span> <span class="nx">build_get_started_2</span><span class="p">(</span><span class="nx">p</span><span class="p">){</span>
-<a name="rest_code_5fa68122e14f45fbbbfa2d56598fe665-2"></a>  <span class="k">return</span> <span class="k">new</span> <span class="nx">GetStarted2</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="s2">"get_started_2"</span><span class="p">,</span> <span class="mi">300</span><span class="p">);</span>
-<a name="rest_code_5fa68122e14f45fbbbfa2d56598fe665-3"></a><span class="p">};</span>
+<pre class="code js"><a name="rest_code_45fc7ac6ba6744869a5407ae7fda349c-1"></a><span class="kd">function</span> <span class="nx">build_get_started_2</span><span class="p">(</span><span class="nx">p</span><span class="p">){</span>
+<a name="rest_code_45fc7ac6ba6744869a5407ae7fda349c-2"></a>  <span class="k">return</span> <span class="k">new</span> <span class="nx">GetStarted2</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="s2">"get_started_2"</span><span class="p">,</span> <span class="mi">300</span><span class="p">);</span>
+<a name="rest_code_45fc7ac6ba6744869a5407ae7fda349c-3"></a><span class="p">};</span>
 </pre>
 <p>This works around a problem that I've often frequently with callback-functions - you have no control over how the function is going to be called, and without the code or explicit documentation you have to work with it as a black-box (I'm sure it's documented somewhere but I find the processing documentation for things other than the sketching to be a little hard to find). In this case I didn't really plan on it being a function, which probably wouldn't be a problem for someone who works with javascript a lot, but I'm not one of them. I'm not really taking advantage of any class-based features in my sketch so I could have converted it to a function, but I prefer classes (probably because I mostly code in python) so I'll probably be using them in the future, so it was good to get this figured out now. Also, since I had to make a builder anyway, this allowed me to put the constants (like the height) outside of the class and pass them in as parameters.</p>
 <p>Other than that, the code is pretty close to the function-based version, except using th. <tt class="docutils literal">p5</tt> instance instead of the global functions.</p>
@@ -292,7 +473,7 @@
 <ul class="simple">
 <li>In order to get the javascript into the final HTML you need to put in the <tt class="docutils literal">listings</tt> folder at the root of the nikola folder and use the <a class="reference external" href="https://www.getnikola.com/handbook.html#listing">listing</a> <cite>reStructuredText</cite> directive instead of <tt class="docutils literal">include</tt> (this is a special <em>nikola</em> directive). This not only shows it but creates two links - the one with the file name links to a formatted version of the code and the <cite>(Source)</cite> link lets you download it as plain-text. Showing the code and creating another page seemed kind of redundant to me, but I think the purpose is to provide <a class="reference external" href="https://necromuralist.github.io/p5_explorations/listings/get_started.js.html">a link you can refer to outside of this post</a>. You can't see the directive but it says:</li>
 </ul>
-<pre class="code rst"><a name="rest_code_4cc5e2f004924d47aef54e5848d28b1c-1"></a><span class="p">..</span> <span class="ow">listing</span><span class="p">::</span> get_started.js javascript
+<pre class="code rst"><a name="rest_code_d3271d70f22b4127a5ca599b60dbebcd-1"></a><span class="p">..</span> <span class="ow">listing</span><span class="p">::</span> get_started.js javascript
 </pre>
 <ul class="simple">
 <li>Another thing I forgot to mention in the other post was that <em>nikola</em> looks for the javascript (when it includes it in the html, not when it wants to show it as in the first note) in the <tt class="docutils literal"><span class="pre">files/posts/&lt;post-name-slugified&gt;/</span></tt> directory, so in this case, besides putting the javascript in the listings folder, I also had to put another copy of it in <tt class="docutils literal"><span class="pre">files/posts/testing-with-rst/</span></tt>. There must be an easier way. Well, I guess it's not hard, it just seems inefficient.</li>
@@ -313,7 +494,7 @@
         <!--End of body content-->
 
         <footer id="footer">
-            Contents © 2017         <a href="mailto:necromuralist@gmail.com/p5_explorations">The Cloistered Monkey</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+            Contents © 2018         <a href="mailto:necromuralist@gmail.com/p5_explorations">The Cloistered Monkey</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
             
         </footer>
 </div>
