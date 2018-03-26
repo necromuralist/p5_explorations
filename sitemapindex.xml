@@ -6,19 +6,39 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
+  <loc>https://necromuralist.github.io/p5_explorations/categories/bibliography.xml</loc>
+  <lastmod>2018-03-25T23:02:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://necromuralist.github.io/p5_explorations/categories/cat_bibliography-p5.xml</loc>
+  <lastmod>2018-03-25T23:02:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://necromuralist.github.io/p5_explorations/categories/cat_emergence.xml</loc>
+  <lastmod>2018-03-26T04:30:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://necromuralist.github.io/p5_explorations/categories/cat_howto.xml</loc>
-  <lastmod>2018-03-25T22:38:00Z</lastmod>
+  <lastmod>2018-03-25T22:46:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://necromuralist.github.io/p5_explorations/categories/p5-emergence-draft.xml</loc>
+  <lastmod>2018-03-26T04:30:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://necromuralist.github.io/p5_explorations/categories/p5-emergence.xml</loc>
+  <lastmod>2018-03-26T00:20:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://necromuralist.github.io/p5_explorations/categories/processing-p5-nikola.xml</loc>
-  <lastmod>2018-03-25T22:38:00Z</lastmod>
+  <lastmod>2018-03-25T22:46:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://necromuralist.github.io/p5_explorations/rss.xml</loc>
-  <lastmod>2018-03-25T22:38:00Z</lastmod>
+  <lastmod>2018-03-26T04:30:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://necromuralist.github.io/p5_explorations/sitemap.xml</loc>
-  <lastmod>2018-03-25T22:38:00Z</lastmod>
+  <lastmod>2018-03-26T04:30:00Z</lastmod>
  </sitemap>
 </sitemapindex>
