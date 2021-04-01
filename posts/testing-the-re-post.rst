@@ -6,6 +6,7 @@
 .. link: 
 .. description: A re-post to make sure things are working like I think they are.
 .. type: text
+.. template: p5.tmpl
 
 This is a re-do of the :doc:`last post <testing-with-rst>` to make sure that a second post will work like I think it will.
 
@@ -23,7 +24,7 @@ If you can't tell, there's a processing sketch in that blank box above this line
 What This Accomplished
 ----------------------
 
-The first thing that happened when I added this post was that both the class based versions crashed and the function-based version started working. I don't think adding this was what caused it, it seems that p5 wasn't getting loadded before I created the p5 object.
+The first thing that happened when I added this post was that both the class based versions crashed and the function-based version started working. I don't think adding this was what caused it, it seems that p5 wasn't getting loafed before I created the p5 object.
 
 .. code:: js
 
