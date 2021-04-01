@@ -1,318 +1,266 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="A re-post to make sure I can get the site working.">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Testing With RST | p5.js (processing) Explorations</title>
+<meta content="A re-post to make sure I can get the site working." name="description">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>Testing With RST | Set and Setting</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
 <link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
-<meta name="theme-color" content="#5670d4">
-<meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
-<link rel="canonical" href="https://necromuralist.github.io/p5_explorations/posts/testing-with-rst/">
-<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.min.js">
-</script><meta name="author" content="The Cloistered Monkey">
-<link rel="next" href="../testing-the-re-post/" title="Testing The Re-Post" type="text/html">
-<meta property="og:site_name" content="p5.js (processing) Explorations">
-<meta property="og:title" content="Testing With RST">
-<meta property="og:url" content="https://necromuralist.github.io/p5_explorations/posts/testing-with-rst/">
-<meta property="og:description" content="A re-post to make sure I can get the site working.">
-<meta property="og:type" content="article">
-<meta property="article:published_time" content="2017-05-07T14:59:44-07:00">
-<meta property="article:tag" content="processing p5 nikola">
+<meta content="#5670d4" name="theme-color">
+<meta content="Nikola (getnikola.com)" name="generator">
+<link href="../../rss.xml" hreflang="en" rel="alternate" title="RSS" type="application/rss+xml">
+<link href="https://necromuralist.github.io/p5_explorations/posts/testing-with-rst/" rel="canonical"><!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><!-- favicons --><!-- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"> -->
+<link href="../../favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="../../favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="../../site.webmanifest" rel="manifest"><!--
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"  integrity="sha512-gQVBYBvfC+uyor5Teonjr9nmY1bN+DlOCezkhzg4ShpC5q81ogvFsr5IV4xXAj6HEtG7M1Pb2JCha97tVFItYQ==" crossorigin="anonymous"></script>
+-->
+<meta content="Cloistered Monkey" name="author">
+<link href="../testing-the-re-post/" rel="next" title="Testing The Re-Post" type="text/html">
+<meta content="Set and Setting" property="og:site_name">
+<meta content="Testing With RST" property="og:title">
+<meta content="https://necromuralist.github.io/p5_explorations/posts/testing-with-rst/" property="og:url">
+<meta content="A re-post to make sure I can get the site working." property="og:description">
+<meta content="article" property="og:type">
+<meta content="2017-05-07T14:59:44-07:00" property="article:published_time">
+<meta content="processing p5 nikola" property="article:tag">
+<script crossorigin="anonymous" integrity="sha512-gQVBYBvfC+uyor5Teonjr9nmY1bN+DlOCezkhzg4ShpC5q81ogvFsr5IV4xXAj6HEtG7M1Pb2JCha97tVFItYQ==" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
 </head>
 <body>
-<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
-
-<!-- Menubar -->
-
-<nav class="navbar navbar-default navbar-static-top"><div class="container">
-<!-- This keeps the margins nice -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="https://necromuralist.github.io/p5_explorations/">
-
-                <span id="blog-title">p5.js (processing) Explorations</span>
-            </a>
-        </div>
-<!-- /.navbar-header -->
-        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
-            <ul class="nav navbar-nav">
-<li>
-<a href="../../archive.html">Archive</a>
-                </li>
-<li>
-<a href="../../categories/">Tags</a>
-                </li>
-<li>
-<a href="../../rss.xml">RSS feed</a>
-            </li>
-<li class="dropdown">
-<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Projects <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-<li>
-<a href="../../machine-learning-projects/">Machine Learning</a>
-                    </li>
-<li>
-<a href="https://necromuralist.github.io/p5_explorations/">P5 Explorations</a>
-                    </li>
-<li>
-<a href="https://necromuralist.github.io/tddmachinelearning/">TDD Machine Learning</a>
-                    </li>
-<li>
-<a href="https://necromuralist.github.io/student_intervention/">Student Intervention Project</a>
-                    </li>
-<li>
-<a href="https://necromuralist.github.io/boston_housing/">Boston Housing Project</a>
-            </li>
-</ul>
+<a class="sr-only sr-only-focusable" href="#content">Skip to main content</a> <!-- Menubar -->
+<nav class="navbar navbar-expand-md static-top mb-4 navbar-light bg-light">
+<div class="container"><!-- This keeps the margins nice -->
+ <a class="navbar-brand" href="../../"><span id="blog-title">Set and Setting</span></a> <button aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#bs-navbar" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="bs-navbar">
+<ul class="navbar-nav mr-auto">
+<li class="nav-item"><a class="nav-link" href="../../archive.html">Archive</a></li>
+<li class="nav-item"><a class="nav-link" href="../../categories/">Tags</a></li>
+<li class="nav-item"><a class="nav-link" href="../../rss.xml">RSS feed</a></li>
+<li class="nav-item dropdown"><a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Pages</a>
+<div class="dropdown-menu"><a class="dropdown-item" href="https://necromuralist.github.io/">Cloistered Monkey</a></div>
 </li>
 </ul>
-<!-- Google custom search --><form method="get" action="https://www.google.com/search" class="navbar-form navbar-right" role="search">
-<div class="form-group">
-<input type="text" name="q" class="form-control" placeholder="Search">
-</div>
-<button type="submit" class="btn btn-primary">
-	<span class="glyphicon glyphicon-search"></span>
-</button>
-<input type="hidden" name="sitesearch" value="https://necromuralist.github.io/p5_explorations/">
-</form>
+<!-- DuckDuckGo custom search -->
+<form action="https://duckduckgo.com/" class="navbar-form pull-left" id="search" method="get" name="search"><input name="sites" type="hidden" value="https://necromuralist.github.io/p5_explorations/"><input name="k8" type="hidden" value="#444444"><input name="k9" type="hidden" value="#D51920"><input name="kt" type="hidden" value="h"><input class="span2" maxlength="255" name="q" placeholder="Search…" type="text"><input style="visibility: hidden;display:none" type="submit" value="DuckDuckGo Search"></form>
 <!-- End of custom search -->
-
-
-            <ul class="nav navbar-nav navbar-right">
-<li>
-    <a href="index.rst" id="sourcelink">Source</a>
-    </li>
-
-                
-            </ul>
+<ul class="navbar-nav navbar-right">
+<li class="nav-item"><a class="nav-link" href="index.rst" id="sourcelink">Source</a></li>
+</ul>
 </div>
-<!-- /.navbar-collapse -->
-    </div>
-<!-- /.container -->
-</nav><!-- End of Menubar --><div class="container" id="content" role="main">
-    <div class="body-content">
-        <!--Body content-->
-        <div class="row">
-            
-            
-<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Testing With RST</a></h1>
-
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                    The Cloistered Monkey
-            </span></p>
-            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-05-07T14:59:44-07:00" itemprop="datePublished" title="2017-05-07 14:59">2017-05-07 14:59</time></a></p>
-            
-        <p class="sourceline"><a href="index.rst" class="sourcelink">Source</a></p>
-
-        </div>
-        
-
-    </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
+<!-- /.navbar-collapse --></div>
+<!-- /.container --></nav>
+<!-- End of Menubar -->
+<div class="container" id="content" role="main">
+<div class="body-content"><!--Body content-->
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
+<header>
+<h1 class="p-name entry-title" itemprop="headline name"><a class="u-url" href=".">Testing With RST</a></h1>
+<div class="metadata">
+<p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">Cloistered Monkey</span></p>
+<p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-05-07T14:59:44-07:00" itemprop="datePublished" title="2017-05-07 14:59">2017-05-07 14:59</time></a></p>
+<p class="sourceline"><a class="sourcelink" href="index.rst">Source</a></p>
+</div>
+</header>
+<div class="e-content entry-content" itemprop="articleBody text">
+<div>
 <p>This is a re-do of an <a class="reference external" href="https://necromuralist.github.io/posts/processing-test/">old post</a> I made to <a class="reference external" href="https://necromuralist.github.io/">my main site</a> about making a <a class="reference external" href="http://p5js.org/">p5</a> restructured-text post in <a class="reference external" href="https://www.getnikola.com/handbook.html">nikola</a> based on the p5 <a class="reference external" href="http://p5js.org/get-started/">get started</a> tutorial. I'm repeating it to make sure I can get it to work here, since it's been so long since I've done it.</p>
 <p>First the link to the p5 code:</p>
-<pre class="code html"><a name="rest_code_918e74d946a843d582035d9e02a3548d-1"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/p5.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<pre class="code html"><a id="rest_code_69f98f0fd5b2469f82d3c81b6fba3b5f-1" name="rest_code_69f98f0fd5b2469f82d3c81b6fba3b5f-1"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/p5.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </pre>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">On the old post I had included the html tag directly in the post (using the <tt class="docutils literal">.. raw::</tt> directive), but I thought that would be wasteful since you can have multiple posts on one page so I moved it the the <tt class="docutils literal">BODY_END</tt> variable in the <tt class="docutils literal">conf.py</tt> file which adds it to the end of the HTML body. This seemed to work for the first sketch but when I moved to the <tt class="docutils literal"><span class="pre">instance-mode</span></tt> version (see below) it broke (probably because <cite>p5</cite> wasn't loaded when I was trying to create an instance of it) so I moved it to <tt class="docutils literal">EXTRA_HEAD_DATA</tt> which so far seems to work. I also experimented with the <a class="reference external" href="https://plugins.getnikola.com/v7/meta_template/">meta-template plugin</a> but since this repository is all about using P5, that didn't seem the way to go, since it would basically have the same problem as using the <tt class="docutils literal">.. raw::</tt> directive (which is really doing the same thing as the <tt class="docutils literal">meta_template</tt> approach, <tt class="docutils literal">meta_template</tt> just makes it a little more convenient to do it).</p>
+<p class="admonition-title">Note</p>
+<p>On the old post I had included the html tag directly in the post (using the <code class="docutils literal">.. raw::</code> directive), but I thought that would be wasteful since you can have multiple posts on one page so I moved it the the <code class="docutils literal">BODY_END</code> variable in the <code class="docutils literal">conf.py</code> file which adds it to the end of the HTML body. This seemed to work for the first sketch but when I moved to the <code class="docutils literal"><span class="pre">instance-mode</span></code> version (see below) it broke (probably because <cite>p5</cite> wasn't loaded when I was trying to create an instance of it) so I moved it to <code class="docutils literal">EXTRA_HEAD_DATA</code> which so far seems to work. I also experimented with the <a class="reference external" href="https://plugins.getnikola.com/v7/meta_template/">meta-template plugin</a> but since this repository is all about using P5, that didn't seem the way to go, since it would basically have the same problem as using the <code class="docutils literal">.. raw::</code> directive (which is really doing the same thing as the <code class="docutils literal">meta_template</code> approach, <code class="docutils literal">meta_template</code> just makes it a little more convenient to do it).</p>
 </div>
 <div class="section" id="a-version-that-worked-once">
 <h2>A Version That Worked Once</h2>
 <p>Here's the javascript for the broken version.</p>
-<p><a class="reference external" href="../../listings/get_started.js.html">get_started.js</a>  <a class="reference external" href="../../listings/get_started.js">(Source)</a></p>
-<pre class="code javascript"><a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-1"></a><span class="kd">function</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-2"></a>  <span class="kd">var</span> <span class="nx">parent_div_id</span> <span class="o">=</span> <span class="s2">"get_started"</span><span class="p">;</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-3"></a>  <span class="c1">// this sets the width of the canvas to match the div (center column)</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-4"></a>  <span class="nx">canvas</span> <span class="o">=</span> <span class="nx">createCanvas</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">"#"</span> <span class="o">+</span> <span class="nx">parent_div_id</span><span class="p">).</span><span class="nx">outerWidth</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span> <span class="mi">300</span><span class="p">);</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-5"></a>  <span class="nx">canvas</span><span class="p">.</span><span class="nx">parent</span><span class="p">(</span><span class="nx">parent_div_id</span><span class="p">);</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-6"></a>  <span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-7"></a>  <span class="nx">strokeWeight</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-8"></a>  <span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-9"></a>  <span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-10"></a><span class="p">}</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-11"></a>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-12"></a><span class="kd">function</span> <span class="nx">mousePressed</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-13"></a>  <span class="cm">/* set background to blue */</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-14"></a>  <span class="nx">background</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-15"></a><span class="p">}</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-16"></a>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-17"></a><span class="kd">function</span> <span class="nx">mouseReleased</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-18"></a>  <span class="cm">/* set background to white */</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-19"></a>  <span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-20"></a><span class="p">}</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-21"></a>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-22"></a><span class="kd">function</span> <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-23"></a>  <span class="kd">var</span> <span class="nx">diameter</span><span class="p">;</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-24"></a>  <span class="cm">/* Draw circles that change diameter based on mouse speed */</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-25"></a>  <span class="cm">/* and color based on if mouse-pressed (or not pressed)   */</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-26"></a>  <span class="k">if</span> <span class="p">(</span><span class="nx">mouseIsPressed</span><span class="p">)</span> <span class="p">{</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-27"></a>    <span class="nx">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-28"></a>    <span class="nx">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-29"></a>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-30"></a>    <span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-31"></a>    <span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-32"></a>  <span class="p">}</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-33"></a>  <span class="nx">diameter</span> <span class="o">=</span> <span class="nx">pow</span><span class="p">(</span><span class="nx">dist</span><span class="p">(</span><span class="nx">pmouseX</span><span class="p">,</span> <span class="nx">pmouseY</span><span class="p">,</span> <span class="nx">mouseX</span><span class="p">,</span> <span class="nx">mouseY</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">);</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-34"></a>  <span class="nx">ellipse</span><span class="p">(</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">mouseY</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">);</span>
-<a name="rest_code_73ce2dcd97ee4c479e2d9f592b65bcab-35"></a><span class="p">}</span>
+<p><a class="reference external" href="../../listings/get_started.js.html">get_started.js</a> <a class="reference external" href="../../listings/get_started.js">(Source)</a></p>
+<pre class="code javascript"><a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-1" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-1"></a><span class="kd">function</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-2" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-2"></a>  <span class="kd">var</span> <span class="nx">parent_div_id</span> <span class="o">=</span> <span class="s2">"get_started"</span><span class="p">;</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-3" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-3"></a>  <span class="c1">// this sets the width of the canvas to match the div (center column)</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-4" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-4"></a>  <span class="nx">canvas</span> <span class="o">=</span> <span class="nx">createCanvas</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">"#"</span> <span class="o">+</span> <span class="nx">parent_div_id</span><span class="p">).</span><span class="nx">outerWidth</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span> <span class="mf">300</span><span class="p">);</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-5" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-5"></a>  <span class="nx">canvas</span><span class="p">.</span><span class="nx">parent</span><span class="p">(</span><span class="nx">parent_div_id</span><span class="p">);</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-6" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-6"></a>  <span class="nx">background</span><span class="p">(</span><span class="mf">255</span><span class="p">);</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-7" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-7"></a>  <span class="nx">strokeWeight</span><span class="p">(</span><span class="mf">3</span><span class="p">);</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-8" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-8"></a>  <span class="nx">stroke</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">255</span><span class="p">);</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-9" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-9"></a>  <span class="nx">fill</span><span class="p">(</span><span class="mf">255</span><span class="p">);</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-10" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-10"></a><span class="p">}</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-11" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-11"></a>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-12" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-12"></a><span class="kd">function</span> <span class="nx">mousePressed</span><span class="p">()</span> <span class="p">{</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-13" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-13"></a>  <span class="cm">/* set background to blue */</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-14" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-14"></a>  <span class="nx">background</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">255</span><span class="p">);</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-15" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-15"></a><span class="p">}</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-16" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-16"></a>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-17" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-17"></a><span class="kd">function</span> <span class="nx">mouseReleased</span><span class="p">()</span> <span class="p">{</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-18" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-18"></a>  <span class="cm">/* set background to white */</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-19" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-19"></a>  <span class="nx">background</span><span class="p">(</span><span class="mf">255</span><span class="p">);</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-20" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-20"></a><span class="p">}</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-21" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-21"></a>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-22" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-22"></a><span class="kd">function</span> <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-23" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-23"></a>  <span class="kd">var</span> <span class="nx">diameter</span><span class="p">;</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-24" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-24"></a>  <span class="cm">/* Draw circles that change diameter based on mouse speed */</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-25" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-25"></a>  <span class="cm">/* and color based on if mouse-pressed (or not pressed)   */</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-26" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-26"></a>  <span class="k">if</span> <span class="p">(</span><span class="nx">mouseIsPressed</span><span class="p">)</span> <span class="p">{</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-27" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-27"></a>    <span class="nx">fill</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">255</span><span class="p">);</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-28" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-28"></a>    <span class="nx">stroke</span><span class="p">(</span><span class="mf">255</span><span class="p">);</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-29" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-29"></a>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-30" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-30"></a>    <span class="nx">fill</span><span class="p">(</span><span class="mf">255</span><span class="p">);</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-31" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-31"></a>    <span class="nx">stroke</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">255</span><span class="p">);</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-32" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-32"></a>  <span class="p">}</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-33" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-33"></a>  <span class="nx">diameter</span> <span class="o">=</span> <span class="nx">pow</span><span class="p">(</span><span class="nx">dist</span><span class="p">(</span><span class="nx">pmouseX</span><span class="p">,</span> <span class="nx">pmouseY</span><span class="p">,</span> <span class="nx">mouseX</span><span class="p">,</span> <span class="nx">mouseY</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">);</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-34" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-34"></a>  <span class="nx">ellipse</span><span class="p">(</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">mouseY</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">);</span>
+<a id="rest_code_47e7b38e7de6466fb5ff314d02f11302-35" name="rest_code_47e7b38e7de6466fb5ff314d02f11302-35"></a><span class="p">}</span>
 </pre>
-<p>This next bit shows how to include the sketch in the post. The naming of the <tt class="docutils literal">div</tt> is important (<tt class="docutils literal">"get_started"</tt> in this case) - the javascript has to reference it (i.e. <tt class="docutils literal"><span class="pre">canvas.parent("get_started")</span></tt>) or the sketch will not appear right here (see the notes below). I'm also using it to get the width for the image. As you can see from the <tt class="docutils literal"><span class="pre">src='get_started.js</span></tt> part, this loads a file called 'get_started.js' that I created earlier and put in the <tt class="docutils literal"><span class="pre">files/posts/testing-with-rst</span></tt> folder (the directory name matches the name of this blog-post file - <tt class="docutils literal"><span class="pre">testing-with-rst.rst</span></tt>).</p>
-<pre class="code html"><a name="rest_code_c739b508c2af4ba49491e90c8c0544d4-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"get_started"</span><span class="p">&gt;</span>
-<a name="rest_code_c739b508c2af4ba49491e90c8c0544d4-2"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">language</span><span class="o">=</span><span class="s">"javascript"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span> <span class="na">src</span><span class="o">=</span><span class="s">'get_started.js'</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<a name="rest_code_c739b508c2af4ba49491e90c8c0544d4-3"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<p>This next bit shows how to include the sketch in the post. The naming of the <code class="docutils literal">div</code> is important (<code class="docutils literal">"get_started"</code> in this case) - the javascript has to reference it (i.e. <code class="docutils literal"><span class="pre">canvas.parent("get_started")</span></code>) or the sketch will not appear right here (see the notes below). I'm also using it to get the width for the image. As you can see from the <code class="docutils literal"><span class="pre">src='get_started.js</span></code> part, this loads a file called 'get_started.js' that I created earlier and put in the <code class="docutils literal"><span class="pre">files/posts/testing-with-rst</span></code> folder (the directory name matches the name of this blog-post file - <code class="docutils literal"><span class="pre">testing-with-rst.rst</span></code>).</p>
+<pre class="code html"><a id="rest_code_f74a0945d03c43c0a080056a1fbcbbfe-1" name="rest_code_f74a0945d03c43c0a080056a1fbcbbfe-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"get_started"</span><span class="p">&gt;</span>
+<a id="rest_code_f74a0945d03c43c0a080056a1fbcbbfe-2" name="rest_code_f74a0945d03c43c0a080056a1fbcbbfe-2"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">language</span><span class="o">=</span><span class="s">"javascript"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span> <span class="na">src</span><span class="o">=</span><span class="s">'get_started.js'</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="rest_code_f74a0945d03c43c0a080056a1fbcbbfe-3" name="rest_code_f74a0945d03c43c0a080056a1fbcbbfe-3"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </pre>
 <div id="get_started">
-   <script language="javascript" type="text/javascript" src="get_started.js"></script>
-</div>
-<p>This at first worked to create a processing sketch in that blank box above this line, but once I added another sketch it broke. Originally this sketch seemed to break the second one, but then I fixed the second sketch and it broke this one. I realized that I was defining the same function names (e.g. <tt class="docutils literal">mousePressed</tt>) in both so one of them was overwriting the other. Now it seems to work again, kind of... If you move your mouse cursor over fast enough that the circle is large while the sketch below is visible you'll see that the two of them have created some kind of super-canvas where they events over one also effects the other. So leaving this in has broken both of them to some degree. I think this function-based approach just won't work.</p>
+<script language="javascript" src="get_started.js" type="text/javascript"></script></div>
+<p>This at first worked to create a processing sketch in that blank box above this line, but once I added another sketch it broke. Originally this sketch seemed to break the second one, but then I fixed the second sketch and it broke this one. I realized that I was defining the same function names (e.g. <code class="docutils literal">mousePressed</code>) in both so one of them was overwriting the other. Now it seems to work again, kind of... If you move your mouse cursor over fast enough that the circle is large while the sketch below is visible you'll see that the two of them have created some kind of super-canvas where they events over one also effects the other. So leaving this in has broken both of them to some degree. I think this function-based approach just won't work.</p>
 </div>
 <div class="section" id="the-class-based-version">
 <h2>The Class-Based Version</h2>
 <p>My solution was to use the <a class="reference external" href="https://github.com/processing/p5.js/wiki/p5.js-overview#instantiation--namespace">instance mode</a> concept (which was surprisingly hard to find using google), basically wrapping everything in a class rather than using the global namespace.</p>
 <div id="get_started_2">
-   <script language="javascript" type="text/javascript" src="get_started_2.js"></script>
-</div>
+<script language="javascript" src="get_started_2.js" type="text/javascript"></script></div>
 <p>If you can't tell, there's a processing sketch in that blank box above this line. If you move your mouse over it p5 will draw some circles with the radii based on how fast your mouse is moving. If you click and drag it inverts the colors.</p>
 <p>Here's the javascript that created it.</p>
-<p><a class="reference external" href="../../listings/get_started_2.js.html">get_started_2.js</a>  <a class="reference external" href="../../listings/get_started_2.js">(Source)</a></p>
-<pre class="code javascript"><a name="rest_code_2ec5834493bd4cb6bed64a6472010168-1"></a><span class="cm">/**</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-2"></a><span class="cm"> * Instance mode implementation of a simple sketch that draws blue circles</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-3"></a><span class="cm"> * on a white background when the user moves the mouse cursor over it, basing</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-4"></a><span class="cm"> * the size of the circles on how fast the cursor is moving. If the user clicks</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-5"></a><span class="cm"> * and drags the mouse it draws white circles on a blue background instead.</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-6"></a><span class="cm"> **/</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-7"></a><span class="kr">class</span> <span class="nx">GetStarted2</span> <span class="p">{</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-8"></a>  <span class="cm">/**</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-9"></a><span class="cm">   * The constructor sets up the p5 functions</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-10"></a><span class="cm">   *</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-11"></a><span class="cm">   * @param {object} p: the `p5` object</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-12"></a><span class="cm">   * @param {string} parent_div_id: ID of the div to attach the canvas to</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-13"></a><span class="cm">   * @param {integer} height: Pixel-heght for the canvas</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-14"></a><span class="cm">   **/</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-15"></a>  <span class="nx">constructor</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">parent_div_id</span><span class="p">,</span> <span class="nx">height</span><span class="p">){</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-16"></a>    <span class="cm">/**</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-17"></a><span class="cm">     * Creates the canvas using ``height`` and the width of the parent div</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-18"></a><span class="cm">     * Also sets up some coloring</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-19"></a><span class="cm">     **/</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-20"></a>    <span class="nx">p</span><span class="p">.</span><span class="nx">setup</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-21"></a>      <span class="kd">var</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">createCanvas</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">"#"</span> <span class="o">+</span> <span class="nx">parent_div_id</span><span class="p">).</span><span class="nx">outerWidth</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-22"></a>                                  <span class="nx">height</span><span class="p">);</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-23"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-24"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">strokeWeight</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-25"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-26"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-27"></a>    <span class="p">};</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-28"></a>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-29"></a>    <span class="cm">/**</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-30"></a><span class="cm">     * sets the background and fill to blue</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-31"></a><span class="cm">     * and the stroke to white</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-32"></a><span class="cm">     **/</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-33"></a>    <span class="nx">p</span><span class="p">.</span><span class="nx">mousePressed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-34"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-35"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-36"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-37"></a>    <span class="p">};</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-38"></a>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-39"></a>    <span class="cm">/**</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-40"></a><span class="cm">     * sets the background and fill to white</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-41"></a><span class="cm">     * and the stroke to blue</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-42"></a><span class="cm">     **/</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-43"></a>    <span class="nx">p</span><span class="p">.</span><span class="nx">mouseReleased</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-44"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-45"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-46"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-47"></a>    <span class="p">};</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-48"></a>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-49"></a>    <span class="cm">/**</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-50"></a><span class="cm">     * Draws circles that change diameter based on mouse speed</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-51"></a><span class="cm">     **/</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-52"></a>    <span class="nx">p</span><span class="p">.</span><span class="nx">draw</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-53"></a>      <span class="kd">var</span> <span class="nx">diameter</span><span class="p">;</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-54"></a>      <span class="nx">diameter</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">dist</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">pmouseX</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">);</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-55"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">ellipse</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">);</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-56"></a>    <span class="p">};</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-57"></a>  <span class="p">};</span> <span class="c1">// end constructor</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-58"></a><span class="p">};</span><span class="c1">// end GetStarted2</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-59"></a>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-60"></a><span class="cm">/**</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-61"></a><span class="cm"> * Builds the GetStarted2 sketch</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-62"></a><span class="cm"> *</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-63"></a><span class="cm"> * p5 thinks it's getting a function, not a class</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-64"></a><span class="cm"> * so it doesn't use the `new` statement. This function</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-65"></a><span class="cm"> * works around that and passes in some parameters</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-66"></a><span class="cm"> *</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-67"></a><span class="cm"> * @param {object} p: a ``p5`` instance</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-68"></a><span class="cm"> **/</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-69"></a><span class="kd">function</span> <span class="nx">build_get_started_2</span><span class="p">(</span><span class="nx">p</span><span class="p">){</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-70"></a>  <span class="k">return</span> <span class="k">new</span> <span class="nx">GetStarted2</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="s2">"get_started_2"</span><span class="p">,</span> <span class="mi">300</span><span class="p">);</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-71"></a><span class="p">};</span>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-72"></a>
-<a name="rest_code_2ec5834493bd4cb6bed64a6472010168-73"></a><span class="kd">var</span> <span class="nx">p5_retest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">p5</span><span class="p">(</span><span class="nx">build_get_started_2</span><span class="p">,</span> <span class="s2">"get_started_2"</span><span class="p">);</span>
-</pre>
-</div>
+<p><a class="reference external" href="../../listings/get_started_2.js.html">get_started_2.js</a> <a class="reference external" href="../../listings/get_started_2.js">(Source)</a></p>
+<pre class="code javascript"><a id="rest_code_87223ac3e2c5487487694cde32e98742-1" name="rest_code_87223ac3e2c5487487694cde32e98742-1"></a><span class="cm">/**</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-2" name="rest_code_87223ac3e2c5487487694cde32e98742-2"></a><span class="cm"> * Instance mode implementation of a simple sketch that draws blue circles</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-3" name="rest_code_87223ac3e2c5487487694cde32e98742-3"></a><span class="cm"> * on a white background when the user moves the mouse cursor over it, basing</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-4" name="rest_code_87223ac3e2c5487487694cde32e98742-4"></a><span class="cm"> * the size of the circles on how fast the cursor is moving. If the user clicks</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-5" name="rest_code_87223ac3e2c5487487694cde32e98742-5"></a><span class="cm"> * and drags the mouse it draws white circles on a blue background instead.</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-6" name="rest_code_87223ac3e2c5487487694cde32e98742-6"></a><span class="cm"> **/</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-7" name="rest_code_87223ac3e2c5487487694cde32e98742-7"></a><span class="kd">class</span> <span class="nx">GetStarted2</span> <span class="p">{</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-8" name="rest_code_87223ac3e2c5487487694cde32e98742-8"></a>  <span class="cm">/**</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-9" name="rest_code_87223ac3e2c5487487694cde32e98742-9"></a><span class="cm">   * The constructor sets up the p5 functions</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-10" name="rest_code_87223ac3e2c5487487694cde32e98742-10"></a><span class="cm">   *</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-11" name="rest_code_87223ac3e2c5487487694cde32e98742-11"></a><span class="cm">   * @param {object} p: the `p5` object</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-12" name="rest_code_87223ac3e2c5487487694cde32e98742-12"></a><span class="cm">   * @param {string} parent_div_id: ID of the div to attach the canvas to</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-13" name="rest_code_87223ac3e2c5487487694cde32e98742-13"></a><span class="cm">   * @param {integer} height: Pixel-heght for the canvas</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-14" name="rest_code_87223ac3e2c5487487694cde32e98742-14"></a><span class="cm">   **/</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-15" name="rest_code_87223ac3e2c5487487694cde32e98742-15"></a>  <span class="nx">constructor</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">parent_div_id</span><span class="p">,</span> <span class="nx">height</span><span class="p">){</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-16" name="rest_code_87223ac3e2c5487487694cde32e98742-16"></a>    <span class="cm">/**</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-17" name="rest_code_87223ac3e2c5487487694cde32e98742-17"></a><span class="cm">     * Creates the canvas using ``height`` and the width of the parent div</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-18" name="rest_code_87223ac3e2c5487487694cde32e98742-18"></a><span class="cm">     * Also sets up some coloring</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-19" name="rest_code_87223ac3e2c5487487694cde32e98742-19"></a><span class="cm">     **/</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-20" name="rest_code_87223ac3e2c5487487694cde32e98742-20"></a>    <span class="nx">p</span><span class="p">.</span><span class="nx">setup</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-21" name="rest_code_87223ac3e2c5487487694cde32e98742-21"></a>      <span class="kd">var</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">createCanvas</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">"#"</span> <span class="o">+</span> <span class="nx">parent_div_id</span><span class="p">).</span><span class="nx">outerWidth</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-22" name="rest_code_87223ac3e2c5487487694cde32e98742-22"></a>                                  <span class="nx">height</span><span class="p">);</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-23" name="rest_code_87223ac3e2c5487487694cde32e98742-23"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="mf">255</span><span class="p">);</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-24" name="rest_code_87223ac3e2c5487487694cde32e98742-24"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">strokeWeight</span><span class="p">(</span><span class="mf">3</span><span class="p">);</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-25" name="rest_code_87223ac3e2c5487487694cde32e98742-25"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">255</span><span class="p">);</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-26" name="rest_code_87223ac3e2c5487487694cde32e98742-26"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mf">255</span><span class="p">);</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-27" name="rest_code_87223ac3e2c5487487694cde32e98742-27"></a>    <span class="p">};</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-28" name="rest_code_87223ac3e2c5487487694cde32e98742-28"></a>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-29" name="rest_code_87223ac3e2c5487487694cde32e98742-29"></a>    <span class="cm">/**</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-30" name="rest_code_87223ac3e2c5487487694cde32e98742-30"></a><span class="cm">     * sets the background and fill to blue</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-31" name="rest_code_87223ac3e2c5487487694cde32e98742-31"></a><span class="cm">     * and the stroke to white</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-32" name="rest_code_87223ac3e2c5487487694cde32e98742-32"></a><span class="cm">     **/</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-33" name="rest_code_87223ac3e2c5487487694cde32e98742-33"></a>    <span class="nx">p</span><span class="p">.</span><span class="nx">mousePressed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-34" name="rest_code_87223ac3e2c5487487694cde32e98742-34"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">255</span><span class="p">);</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-35" name="rest_code_87223ac3e2c5487487694cde32e98742-35"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">255</span><span class="p">);</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-36" name="rest_code_87223ac3e2c5487487694cde32e98742-36"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="mf">255</span><span class="p">);</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-37" name="rest_code_87223ac3e2c5487487694cde32e98742-37"></a>    <span class="p">};</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-38" name="rest_code_87223ac3e2c5487487694cde32e98742-38"></a>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-39" name="rest_code_87223ac3e2c5487487694cde32e98742-39"></a>    <span class="cm">/**</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-40" name="rest_code_87223ac3e2c5487487694cde32e98742-40"></a><span class="cm">     * sets the background and fill to white</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-41" name="rest_code_87223ac3e2c5487487694cde32e98742-41"></a><span class="cm">     * and the stroke to blue</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-42" name="rest_code_87223ac3e2c5487487694cde32e98742-42"></a><span class="cm">     **/</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-43" name="rest_code_87223ac3e2c5487487694cde32e98742-43"></a>    <span class="nx">p</span><span class="p">.</span><span class="nx">mouseReleased</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-44" name="rest_code_87223ac3e2c5487487694cde32e98742-44"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="mf">255</span><span class="p">);</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-45" name="rest_code_87223ac3e2c5487487694cde32e98742-45"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mf">255</span><span class="p">);</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-46" name="rest_code_87223ac3e2c5487487694cde32e98742-46"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">255</span><span class="p">);</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-47" name="rest_code_87223ac3e2c5487487694cde32e98742-47"></a>    <span class="p">};</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-48" name="rest_code_87223ac3e2c5487487694cde32e98742-48"></a>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-49" name="rest_code_87223ac3e2c5487487694cde32e98742-49"></a>    <span class="cm">/**</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-50" name="rest_code_87223ac3e2c5487487694cde32e98742-50"></a><span class="cm">     * Draws circles that change diameter based on mouse speed</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-51" name="rest_code_87223ac3e2c5487487694cde32e98742-51"></a><span class="cm">     **/</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-52" name="rest_code_87223ac3e2c5487487694cde32e98742-52"></a>    <span class="nx">p</span><span class="p">.</span><span class="nx">draw</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-53" name="rest_code_87223ac3e2c5487487694cde32e98742-53"></a>      <span class="kd">var</span> <span class="nx">diameter</span><span class="p">;</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-54" name="rest_code_87223ac3e2c5487487694cde32e98742-54"></a>      <span class="nx">diameter</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">dist</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">pmouseX</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">);</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-55" name="rest_code_87223ac3e2c5487487694cde32e98742-55"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">ellipse</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">);</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-56" name="rest_code_87223ac3e2c5487487694cde32e98742-56"></a>    <span class="p">};</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-57" name="rest_code_87223ac3e2c5487487694cde32e98742-57"></a>  <span class="p">};</span> <span class="c1">// end constructor</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-58" name="rest_code_87223ac3e2c5487487694cde32e98742-58"></a><span class="p">};</span><span class="c1">// end GetStarted2</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-59" name="rest_code_87223ac3e2c5487487694cde32e98742-59"></a>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-60" name="rest_code_87223ac3e2c5487487694cde32e98742-60"></a><span class="cm">/**</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-61" name="rest_code_87223ac3e2c5487487694cde32e98742-61"></a><span class="cm"> * Builds the GetStarted2 sketch</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-62" name="rest_code_87223ac3e2c5487487694cde32e98742-62"></a><span class="cm"> *</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-63" name="rest_code_87223ac3e2c5487487694cde32e98742-63"></a><span class="cm"> * p5 thinks it's getting a function, not a class</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-64" name="rest_code_87223ac3e2c5487487694cde32e98742-64"></a><span class="cm"> * so it doesn't use the `new` statement. This function</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-65" name="rest_code_87223ac3e2c5487487694cde32e98742-65"></a><span class="cm"> * works around that and passes in some parameters</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-66" name="rest_code_87223ac3e2c5487487694cde32e98742-66"></a><span class="cm"> *</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-67" name="rest_code_87223ac3e2c5487487694cde32e98742-67"></a><span class="cm"> * @param {object} p: a ``p5`` instance</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-68" name="rest_code_87223ac3e2c5487487694cde32e98742-68"></a><span class="cm"> **/</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-69" name="rest_code_87223ac3e2c5487487694cde32e98742-69"></a><span class="kd">function</span> <span class="nx">build_get_started_2</span><span class="p">(</span><span class="nx">p</span><span class="p">){</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-70" name="rest_code_87223ac3e2c5487487694cde32e98742-70"></a>  <span class="k">return</span> <span class="k">new</span> <span class="nx">GetStarted2</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="s2">"get_started_2"</span><span class="p">,</span> <span class="mf">300</span><span class="p">);</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-71" name="rest_code_87223ac3e2c5487487694cde32e98742-71"></a><span class="p">};</span>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-72" name="rest_code_87223ac3e2c5487487694cde32e98742-72"></a>
+<a id="rest_code_87223ac3e2c5487487694cde32e98742-73" name="rest_code_87223ac3e2c5487487694cde32e98742-73"></a><span class="kd">var</span> <span class="nx">p5_retest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">p5</span><span class="p">(</span><span class="nx">build_get_started_2</span><span class="p">,</span> <span class="s2">"get_started_2"</span><span class="p">);</span>
+</pre></div>
 <div class="section" id="a-little-explanation">
 <h2>A Little Explanation</h2>
 <p>So, for my future self who will likely forget what this is doing, here's some notes.</p>
-<pre class="code js"><a name="rest_code_77bcbef764154392ae3b377277a670e8-1"></a><span class="kd">var</span> <span class="nx">p5_retest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">p5</span><span class="p">(</span><span class="nx">build_get_started_2</span><span class="p">,</span> <span class="s2">"get_started_2"</span><span class="p">);</span>
+<pre class="code js"><a id="rest_code_4e50a2cd729f420bb81f4d1317cab26e-1" name="rest_code_4e50a2cd729f420bb81f4d1317cab26e-1"></a><span class="kd">var</span> <span class="nx">p5_retest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">p5</span><span class="p">(</span><span class="nx">build_get_started_2</span><span class="p">,</span> <span class="s2">"get_started_2"</span><span class="p">);</span>
 </pre>
-<p>The last line creates a <tt class="docutils literal">p5</tt> object which calls the <tt class="docutils literal">build_get_started_2</tt> function, passing the instance into it. In addition, if you pass in the ID of the container, it will attach the sketch to it. So the second argument <tt class="docutils literal">"get_started_2"</tt> does what you would otherwise do in the constructor like this:</p>
-<pre class="code js"><a name="rest_code_23379ec7613f4e809e95a6079dddb2ac-1"></a><span class="nx">p</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">parent</span><span class="p">(</span><span class="s2">"get_started_2"</span><span class="p">);</span>
+<p>The last line creates a <code class="docutils literal">p5</code> object which calls the <code class="docutils literal">build_get_started_2</code> function, passing the instance into it. In addition, if you pass in the ID of the container, it will attach the sketch to it. So the second argument <code class="docutils literal">"get_started_2"</code> does what you would otherwise do in the constructor like this:</p>
+<pre class="code js"><a id="rest_code_e48726b2a67841a6b27d60693e375d7f-1" name="rest_code_e48726b2a67841a6b27d60693e375d7f-1"></a><span class="nx">p</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">parent</span><span class="p">(</span><span class="s2">"get_started_2"</span><span class="p">);</span>
 </pre>
-<p>If you omit the name of the parent ID when creating the <tt class="docutils literal">p5</tt> object then this line would need to go back into the constructor. I kind of like using the explicit <tt class="docutils literal"><span class="pre">p.canvas.parent("get_started_2");</span></tt> call, but I already did something similar to it in the previous (broken) sketch so I thought I'd pass it in to the <tt class="docutils literal">p5</tt> constructor here so I'd have it documented.</p>
-<p>The <tt class="docutils literal">build_get_started_2</tt> function:</p>
-<pre class="code js"><a name="rest_code_45fc7ac6ba6744869a5407ae7fda349c-1"></a><span class="kd">function</span> <span class="nx">build_get_started_2</span><span class="p">(</span><span class="nx">p</span><span class="p">){</span>
-<a name="rest_code_45fc7ac6ba6744869a5407ae7fda349c-2"></a>  <span class="k">return</span> <span class="k">new</span> <span class="nx">GetStarted2</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="s2">"get_started_2"</span><span class="p">,</span> <span class="mi">300</span><span class="p">);</span>
-<a name="rest_code_45fc7ac6ba6744869a5407ae7fda349c-3"></a><span class="p">};</span>
+<p>If you omit the name of the parent ID when creating the <code class="docutils literal">p5</code> object then this line would need to go back into the constructor. I kind of like using the explicit <code class="docutils literal"><span class="pre">p.canvas.parent("get_started_2");</span></code> call, but I already did something similar to it in the previous (broken) sketch so I thought I'd pass it in to the <code class="docutils literal">p5</code> constructor here so I'd have it documented.</p>
+<p>The <code class="docutils literal">build_get_started_2</code> function:</p>
+<pre class="code js"><a id="rest_code_9fbb9f7411fe42aab84a9f0a509f32f1-1" name="rest_code_9fbb9f7411fe42aab84a9f0a509f32f1-1"></a><span class="kd">function</span> <span class="nx">build_get_started_2</span><span class="p">(</span><span class="nx">p</span><span class="p">){</span>
+<a id="rest_code_9fbb9f7411fe42aab84a9f0a509f32f1-2" name="rest_code_9fbb9f7411fe42aab84a9f0a509f32f1-2"></a>  <span class="k">return</span> <span class="k">new</span> <span class="nx">GetStarted2</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="s2">"get_started_2"</span><span class="p">,</span> <span class="mf">300</span><span class="p">);</span>
+<a id="rest_code_9fbb9f7411fe42aab84a9f0a509f32f1-3" name="rest_code_9fbb9f7411fe42aab84a9f0a509f32f1-3"></a><span class="p">};</span>
 </pre>
 <p>This works around a problem that I've often frequently with callback-functions - you have no control over how the function is going to be called, and without the code or explicit documentation you have to work with it as a black-box (I'm sure it's documented somewhere but I find the processing documentation for things other than the sketching to be a little hard to find). In this case I didn't really plan on it being a function, which probably wouldn't be a problem for someone who works with javascript a lot, but I'm not one of them. I'm not really taking advantage of any class-based features in my sketch so I could have converted it to a function, but I prefer classes (probably because I mostly code in python) so I'll probably be using them in the future, so it was good to get this figured out now. Also, since I had to make a builder anyway, this allowed me to put the constants (like the height) outside of the class and pass them in as parameters.</p>
-<p>Other than that, the code is pretty close to the function-based version, except using th. <tt class="docutils literal">p5</tt> instance instead of the global functions.</p>
+<p>Other than that, the code is pretty close to the function-based version, except using th. <code class="docutils literal">p5</code> instance instead of the global functions.</p>
 </div>
 <div class="section" id="notes">
 <h2>Notes</h2>
 <ul class="simple">
-<li>In order to get the javascript into the final HTML you need to put in the <tt class="docutils literal">listings</tt> folder at the root of the nikola folder and use the <a class="reference external" href="https://www.getnikola.com/handbook.html#listing">listing</a> <cite>reStructuredText</cite> directive instead of <tt class="docutils literal">include</tt> (this is a special <em>nikola</em> directive). This not only shows it but creates two links - the one with the file name links to a formatted version of the code and the <cite>(Source)</cite> link lets you download it as plain-text. Showing the code and creating another page seemed kind of redundant to me, but I think the purpose is to provide <a class="reference external" href="https://necromuralist.github.io/p5_explorations/listings/get_started.js.html">a link you can refer to outside of this post</a>. You can't see the directive but it says:</li>
+<li>
+<p>In order to get the javascript into the final HTML you need to put in the <code class="docutils literal">listings</code> folder at the root of the nikola folder and use the <a class="reference external" href="https://www.getnikola.com/handbook.html#listing">listing</a> <cite>reStructuredText</cite> directive instead of <code class="docutils literal">include</code> (this is a special <em>nikola</em> directive). This not only shows it but creates two links - the one with the file name links to a formatted version of the code and the <cite>(Source)</cite> link lets you download it as plain-text. Showing the code and creating another page seemed kind of redundant to me, but I think the purpose is to provide <a class="reference external" href="https://necromuralist.github.io/p5_explorations/listings/get_started.js.html">a link you can refer to outside of this post</a>. You can't see the directive but it says:</p>
+</li>
 </ul>
-<pre class="code rst"><a name="rest_code_d3271d70f22b4127a5ca599b60dbebcd-1"></a><span class="p">..</span> <span class="ow">listing</span><span class="p">::</span> get_started.js javascript
+<pre class="code rst"><a id="rest_code_205a6014b7d6480191a2b40217dca974-1" name="rest_code_205a6014b7d6480191a2b40217dca974-1"></a><span class="p">..</span> <span class="ow">listing</span><span class="p">::</span> get_started.js javascript
 </pre>
 <ul class="simple">
-<li>Another thing I forgot to mention in the other post was that <em>nikola</em> looks for the javascript (when it includes it in the html, not when it wants to show it as in the first note) in the <tt class="docutils literal"><span class="pre">files/posts/&lt;post-name-slugified&gt;/</span></tt> directory, so in this case, besides putting the javascript in the listings folder, I also had to put another copy of it in <tt class="docutils literal"><span class="pre">files/posts/testing-with-rst/</span></tt>. There must be an easier way. Well, I guess it's not hard, it just seems inefficient.</li>
+<li>
+<p>Another thing I forgot to mention in the other post was that <em>nikola</em> looks for the javascript (when it includes it in the html, not when it wants to show it as in the first note) in the <code class="docutils literal"><span class="pre">files/posts/&lt;post-name-slugified&gt;/</span></code> directory, so in this case, besides putting the javascript in the listings folder, I also had to put another copy of it in <code class="docutils literal"><span class="pre">files/posts/testing-with-rst/</span></code>. There must be an easier way. Well, I guess it's not hard, it just seems inefficient.</p>
+</li>
 </ul>
 </div>
 </div>
-    </div>
-    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+</div>
+<aside class="postpromonav">
+<nav>
+<ul class="tags" itemprop="keywords">
 <li><a class="tag p-category" href="../../categories/processing-p5-nikola/" rel="tag">processing p5 nikola</a></li>
-        </ul>
+</ul>
 <ul class="pager hidden-print">
-<li class="next">
-                <a href="../testing-the-re-post/" rel="next" title="Testing The Re-Post">Next post</a>
-            </li>
-        </ul></nav></aside></article>
-</div>
-        <!--End of body content-->
-
-        <footer id="footer">
-            Contents © 2018         <a href="mailto:necromuralist@gmail.com/p5_explorations">The Cloistered Monkey</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
-            
-        </footer>
+<li class="next"><a href="../testing-the-re-post/" rel="next" title="Testing The Re-Post">Next post</a></li>
+</ul>
+</nav>
+</aside>
+</article>
+<!--End of body content-->
+<footer id="footer">Contents © 2021 Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a>
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a href="https://necromuralist.github.io/Ape-Iron/" property="dct:title" rel="cc:attributionURL">Ape Iron</a> by <a href="https://github.com/necromuralist" property="cc:attributionName" rel="cc:attributionURL dct:creator">The Cloistered Monkey</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" rel="license noopener noreferrer" style="display:inline-block;" target="_blank">CC BY 4.0<img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"></a></p>
+<a href="https://commons.wikimedia.org/wiki/File:Seth-gehend.png">Nephiliskos</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons</footer>
 </div>
 </div>
+<script src="../../assets/js/all-nocdn.js"></script>
+<script>
 
-
-            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
-    moment.locale("en");
-    fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates -->
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+</script>
 </body>
 </html>

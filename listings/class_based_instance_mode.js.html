@@ -1,405 +1,632 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="class_based_instance_mode.js">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>class_based_instance_mode.js | p5.js (processing) Explorations</title>
+<meta content="class_based_instance_mode.js" name="description">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>class_based_instance_mode.js | Set and Setting</title>
 <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link href="../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
 <link href="../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
-<meta name="theme-color" content="#5670d4">
-<meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-<link rel="canonical" href="https://necromuralist.github.io/p5_explorations/listings/class_based_instance_mode.js.html">
-<!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.min.js">
-</script>
+<meta content="#5670d4" name="theme-color">
+<meta content="Nikola (getnikola.com)" name="generator">
+<link href="../rss.xml" hreflang="en" rel="alternate" title="RSS" type="application/rss+xml">
+<link href="https://necromuralist.github.io/p5_explorations/listings/class_based_instance_mode.js.html" rel="canonical"><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><!-- favicons --><!-- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"> -->
+<link href="../favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="../favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="../site.webmanifest" rel="manifest"><!--
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"  integrity="sha512-gQVBYBvfC+uyor5Teonjr9nmY1bN+DlOCezkhzg4ShpC5q81ogvFsr5IV4xXAj6HEtG7M1Pb2JCha97tVFItYQ==" crossorigin="anonymous"></script>
+-->
 </head>
 <body>
-<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
-
-<!-- Menubar -->
-
-<nav class="navbar navbar-default navbar-static-top"><div class="container">
-<!-- This keeps the margins nice -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="https://necromuralist.github.io/p5_explorations/">
-
-                <span id="blog-title">p5.js (processing) Explorations</span>
-            </a>
-        </div>
-<!-- /.navbar-header -->
-        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
-            <ul class="nav navbar-nav">
-<li>
-<a href="../archive.html">Archive</a>
-                </li>
-<li>
-<a href="../categories/">Tags</a>
-                </li>
-<li>
-<a href="../rss.xml">RSS feed</a>
-            </li>
-<li class="dropdown">
-<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Projects <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-<li>
-<a href="../machine-learning-projects/">Machine Learning</a>
-                    </li>
-<li>
-<a href="https://necromuralist.github.io/p5_explorations/">P5 Explorations</a>
-                    </li>
-<li>
-<a href="https://necromuralist.github.io/tddmachinelearning/">TDD Machine Learning</a>
-                    </li>
-<li>
-<a href="https://necromuralist.github.io/student_intervention/">Student Intervention Project</a>
-                    </li>
-<li>
-<a href="https://necromuralist.github.io/boston_housing/">Boston Housing Project</a>
-            </li>
-</ul>
+<a class="sr-only sr-only-focusable" href="#content">Skip to main content</a> <!-- Menubar -->
+<nav class="navbar navbar-expand-md static-top mb-4 navbar-light bg-light">
+<div class="container"><!-- This keeps the margins nice -->
+ <a class="navbar-brand" href="../"><span id="blog-title">Set and Setting</span></a> <button aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#bs-navbar" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="bs-navbar">
+<ul class="navbar-nav mr-auto">
+<li class="nav-item"><a class="nav-link" href="../archive.html">Archive</a></li>
+<li class="nav-item"><a class="nav-link" href="../categories/">Tags</a></li>
+<li class="nav-item"><a class="nav-link" href="../rss.xml">RSS feed</a></li>
+<li class="nav-item dropdown"><a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Pages</a>
+<div class="dropdown-menu"><a class="dropdown-item" href="https://necromuralist.github.io/">Cloistered Monkey</a></div>
 </li>
 </ul>
-<!-- Google custom search --><form method="get" action="https://www.google.com/search" class="navbar-form navbar-right" role="search">
-<div class="form-group">
-<input type="text" name="q" class="form-control" placeholder="Search">
-</div>
-<button type="submit" class="btn btn-primary">
-	<span class="glyphicon glyphicon-search"></span>
-</button>
-<input type="hidden" name="sitesearch" value="https://necromuralist.github.io/p5_explorations/">
-</form>
+<!-- DuckDuckGo custom search -->
+<form action="https://duckduckgo.com/" class="navbar-form pull-left" id="search" method="get" name="search"><input name="sites" type="hidden" value="https://necromuralist.github.io/p5_explorations/"><input name="k8" type="hidden" value="#444444"><input name="k9" type="hidden" value="#D51920"><input name="kt" type="hidden" value="h"><input class="span2" maxlength="255" name="q" placeholder="Search…" type="text"><input style="visibility: hidden;display:none" type="submit" value="DuckDuckGo Search"></form>
 <!-- End of custom search -->
-
-
-            <ul class="nav navbar-nav navbar-right">
-<li>
-    <a href="class_based_instance_mode.js" id="sourcelink">Source</a>
-    </li>
-
-                
-            </ul>
+<ul class="navbar-nav navbar-right">
+<li class="nav-item"><a class="nav-link" href="class_based_instance_mode.js" id="sourcelink">Source</a></li>
+</ul>
 </div>
-<!-- /.navbar-collapse -->
-    </div>
-<!-- /.container -->
-</nav><!-- End of Menubar --><div class="container" id="content" role="main">
-    <div class="body-content">
-        <!--Body content-->
-        <div class="row">
-            
-            
-
-<nav class="breadcrumbs"><ul class="breadcrumb">
-<li><a href=".">listings</a></li>
-                <li>class_based_instance_mode.js</li>
-</ul></nav><h1>class_based_instance_mode.js
-        <small><a href="class_based_instance_mode.js">(Source)</a></small>
-    </h1>
-    <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#listingsclass_based_instance_modejs-1">  1</a>
-<a href="#listingsclass_based_instance_modejs-2">  2</a>
-<a href="#listingsclass_based_instance_modejs-3">  3</a>
-<a href="#listingsclass_based_instance_modejs-4">  4</a>
-<a href="#listingsclass_based_instance_modejs-5">  5</a>
-<a href="#listingsclass_based_instance_modejs-6">  6</a>
-<a href="#listingsclass_based_instance_modejs-7">  7</a>
-<a href="#listingsclass_based_instance_modejs-8">  8</a>
-<a href="#listingsclass_based_instance_modejs-9">  9</a>
-<a href="#listingsclass_based_instance_modejs-10"> 10</a>
-<a href="#listingsclass_based_instance_modejs-11"> 11</a>
-<a href="#listingsclass_based_instance_modejs-12"> 12</a>
-<a href="#listingsclass_based_instance_modejs-13"> 13</a>
-<a href="#listingsclass_based_instance_modejs-14"> 14</a>
-<a href="#listingsclass_based_instance_modejs-15"> 15</a>
-<a href="#listingsclass_based_instance_modejs-16"> 16</a>
-<a href="#listingsclass_based_instance_modejs-17"> 17</a>
-<a href="#listingsclass_based_instance_modejs-18"> 18</a>
-<a href="#listingsclass_based_instance_modejs-19"> 19</a>
-<a href="#listingsclass_based_instance_modejs-20"> 20</a>
-<a href="#listingsclass_based_instance_modejs-21"> 21</a>
-<a href="#listingsclass_based_instance_modejs-22"> 22</a>
-<a href="#listingsclass_based_instance_modejs-23"> 23</a>
-<a href="#listingsclass_based_instance_modejs-24"> 24</a>
-<a href="#listingsclass_based_instance_modejs-25"> 25</a>
-<a href="#listingsclass_based_instance_modejs-26"> 26</a>
-<a href="#listingsclass_based_instance_modejs-27"> 27</a>
-<a href="#listingsclass_based_instance_modejs-28"> 28</a>
-<a href="#listingsclass_based_instance_modejs-29"> 29</a>
-<a href="#listingsclass_based_instance_modejs-30"> 30</a>
-<a href="#listingsclass_based_instance_modejs-31"> 31</a>
-<a href="#listingsclass_based_instance_modejs-32"> 32</a>
-<a href="#listingsclass_based_instance_modejs-33"> 33</a>
-<a href="#listingsclass_based_instance_modejs-34"> 34</a>
-<a href="#listingsclass_based_instance_modejs-35"> 35</a>
-<a href="#listingsclass_based_instance_modejs-36"> 36</a>
-<a href="#listingsclass_based_instance_modejs-37"> 37</a>
-<a href="#listingsclass_based_instance_modejs-38"> 38</a>
-<a href="#listingsclass_based_instance_modejs-39"> 39</a>
-<a href="#listingsclass_based_instance_modejs-40"> 40</a>
-<a href="#listingsclass_based_instance_modejs-41"> 41</a>
-<a href="#listingsclass_based_instance_modejs-42"> 42</a>
-<a href="#listingsclass_based_instance_modejs-43"> 43</a>
-<a href="#listingsclass_based_instance_modejs-44"> 44</a>
-<a href="#listingsclass_based_instance_modejs-45"> 45</a>
-<a href="#listingsclass_based_instance_modejs-46"> 46</a>
-<a href="#listingsclass_based_instance_modejs-47"> 47</a>
-<a href="#listingsclass_based_instance_modejs-48"> 48</a>
-<a href="#listingsclass_based_instance_modejs-49"> 49</a>
-<a href="#listingsclass_based_instance_modejs-50"> 50</a>
-<a href="#listingsclass_based_instance_modejs-51"> 51</a>
-<a href="#listingsclass_based_instance_modejs-52"> 52</a>
-<a href="#listingsclass_based_instance_modejs-53"> 53</a>
-<a href="#listingsclass_based_instance_modejs-54"> 54</a>
-<a href="#listingsclass_based_instance_modejs-55"> 55</a>
-<a href="#listingsclass_based_instance_modejs-56"> 56</a>
-<a href="#listingsclass_based_instance_modejs-57"> 57</a>
-<a href="#listingsclass_based_instance_modejs-58"> 58</a>
-<a href="#listingsclass_based_instance_modejs-59"> 59</a>
-<a href="#listingsclass_based_instance_modejs-60"> 60</a>
-<a href="#listingsclass_based_instance_modejs-61"> 61</a>
-<a href="#listingsclass_based_instance_modejs-62"> 62</a>
-<a href="#listingsclass_based_instance_modejs-63"> 63</a>
-<a href="#listingsclass_based_instance_modejs-64"> 64</a>
-<a href="#listingsclass_based_instance_modejs-65"> 65</a>
-<a href="#listingsclass_based_instance_modejs-66"> 66</a>
-<a href="#listingsclass_based_instance_modejs-67"> 67</a>
-<a href="#listingsclass_based_instance_modejs-68"> 68</a>
-<a href="#listingsclass_based_instance_modejs-69"> 69</a>
-<a href="#listingsclass_based_instance_modejs-70"> 70</a>
-<a href="#listingsclass_based_instance_modejs-71"> 71</a>
-<a href="#listingsclass_based_instance_modejs-72"> 72</a>
-<a href="#listingsclass_based_instance_modejs-73"> 73</a>
-<a href="#listingsclass_based_instance_modejs-74"> 74</a>
-<a href="#listingsclass_based_instance_modejs-75"> 75</a>
-<a href="#listingsclass_based_instance_modejs-76"> 76</a>
-<a href="#listingsclass_based_instance_modejs-77"> 77</a>
-<a href="#listingsclass_based_instance_modejs-78"> 78</a>
-<a href="#listingsclass_based_instance_modejs-79"> 79</a>
-<a href="#listingsclass_based_instance_modejs-80"> 80</a>
-<a href="#listingsclass_based_instance_modejs-81"> 81</a>
-<a href="#listingsclass_based_instance_modejs-82"> 82</a>
-<a href="#listingsclass_based_instance_modejs-83"> 83</a>
-<a href="#listingsclass_based_instance_modejs-84"> 84</a>
-<a href="#listingsclass_based_instance_modejs-85"> 85</a>
-<a href="#listingsclass_based_instance_modejs-86"> 86</a>
-<a href="#listingsclass_based_instance_modejs-87"> 87</a>
-<a href="#listingsclass_based_instance_modejs-88"> 88</a>
-<a href="#listingsclass_based_instance_modejs-89"> 89</a>
-<a href="#listingsclass_based_instance_modejs-90"> 90</a>
-<a href="#listingsclass_based_instance_modejs-91"> 91</a>
-<a href="#listingsclass_based_instance_modejs-92"> 92</a>
-<a href="#listingsclass_based_instance_modejs-93"> 93</a>
-<a href="#listingsclass_based_instance_modejs-94"> 94</a>
-<a href="#listingsclass_based_instance_modejs-95"> 95</a>
-<a href="#listingsclass_based_instance_modejs-96"> 96</a>
-<a href="#listingsclass_based_instance_modejs-97"> 97</a>
-<a href="#listingsclass_based_instance_modejs-98"> 98</a>
-<a href="#listingsclass_based_instance_modejs-99"> 99</a>
-<a href="#listingsclass_based_instance_modejs-100">100</a>
-<a href="#listingsclass_based_instance_modejs-101">101</a>
-<a href="#listingsclass_based_instance_modejs-102">102</a>
-<a href="#listingsclass_based_instance_modejs-103">103</a>
-<a href="#listingsclass_based_instance_modejs-104">104</a>
-<a href="#listingsclass_based_instance_modejs-105">105</a>
-<a href="#listingsclass_based_instance_modejs-106">106</a>
-<a href="#listingsclass_based_instance_modejs-107">107</a>
-<a href="#listingsclass_based_instance_modejs-108">108</a>
-<a href="#listingsclass_based_instance_modejs-109">109</a>
-<a href="#listingsclass_based_instance_modejs-110">110</a>
-<a href="#listingsclass_based_instance_modejs-111">111</a>
-<a href="#listingsclass_based_instance_modejs-112">112</a>
-<a href="#listingsclass_based_instance_modejs-113">113</a>
-<a href="#listingsclass_based_instance_modejs-114">114</a>
-<a href="#listingsclass_based_instance_modejs-115">115</a>
-<a href="#listingsclass_based_instance_modejs-116">116</a>
-<a href="#listingsclass_based_instance_modejs-117">117</a>
-<a href="#listingsclass_based_instance_modejs-118">118</a>
-<a href="#listingsclass_based_instance_modejs-119">119</a>
-<a href="#listingsclass_based_instance_modejs-120">120</a>
-<a href="#listingsclass_based_instance_modejs-121">121</a>
-<a href="#listingsclass_based_instance_modejs-122">122</a>
-<a href="#listingsclass_based_instance_modejs-123">123</a>
-<a href="#listingsclass_based_instance_modejs-124">124</a>
-<a href="#listingsclass_based_instance_modejs-125">125</a>
-<a href="#listingsclass_based_instance_modejs-126">126</a>
-<a href="#listingsclass_based_instance_modejs-127">127</a>
-<a href="#listingsclass_based_instance_modejs-128">128</a>
-<a href="#listingsclass_based_instance_modejs-129">129</a>
-<a href="#listingsclass_based_instance_modejs-130">130</a>
-<a href="#listingsclass_based_instance_modejs-131">131</a>
-<a href="#listingsclass_based_instance_modejs-132">132</a>
-<a href="#listingsclass_based_instance_modejs-133">133</a>
-<a href="#listingsclass_based_instance_modejs-134">134</a>
-<a href="#listingsclass_based_instance_modejs-135">135</a>
-<a href="#listingsclass_based_instance_modejs-136">136</a>
-<a href="#listingsclass_based_instance_modejs-137">137</a>
-<a href="#listingsclass_based_instance_modejs-138">138</a>
-<a href="#listingsclass_based_instance_modejs-139">139</a>
-<a href="#listingsclass_based_instance_modejs-140">140</a></pre></div></td>
-<td class="code"><pre class="code literal-block"><a name="listingsclass_based_instance_modejs-1"></a><span class="cm">/**</span>
-<a name="listingsclass_based_instance_modejs-2"></a><span class="cm"> * Class-based instance mode setup</span>
-<a name="listingsclass_based_instance_modejs-3"></a><span class="cm"> * This uses properties instead of building everything in the constructor</span>
-<a name="listingsclass_based_instance_modejs-4"></a><span class="cm"> */</span>
-<a name="listingsclass_based_instance_modejs-5"></a><span class="kr">class</span> <span class="nx">Sketch</span> <span class="p">{</span>
-<a name="listingsclass_based_instance_modejs-6"></a>  <span class="cm">/** Constructor to setup the p5 calls</span>
-<a name="listingsclass_based_instance_modejs-7"></a><span class="cm">   * @param {p5} p: the P5 object</span>
-<a name="listingsclass_based_instance_modejs-8"></a><span class="cm">   * @param {object} setup_arguments: setup settings</span>
-<a name="listingsclass_based_instance_modejs-9"></a><span class="cm">   * @param {object} colors: color settings</span>
-<a name="listingsclass_based_instance_modejs-10"></a><span class="cm">   * @param {object} inverted: inverted color settings</span>
-<a name="listingsclass_based_instance_modejs-11"></a><span class="cm">   */</span>
-<a name="listingsclass_based_instance_modejs-12"></a>  <span class="nx">constructor</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">setup_arguments</span><span class="p">,</span> <span class="nx">colors</span><span class="p">,</span> <span class="nx">inverted</span><span class="p">)</span> <span class="p">{</span>
-<a name="listingsclass_based_instance_modejs-13"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">_reset</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-<a name="listingsclass_based_instance_modejs-14"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">_p</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-<a name="listingsclass_based_instance_modejs-15"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">setup_arguments</span> <span class="o">=</span> <span class="nx">setup_arguments</span><span class="p">;</span>
-<a name="listingsclass_based_instance_modejs-16"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">colors</span> <span class="o">=</span> <span class="nx">colors</span><span class="p">;</span>
-<a name="listingsclass_based_instance_modejs-17"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">inverted</span> <span class="o">=</span> <span class="nx">inverted</span><span class="p">;</span>
-<a name="listingsclass_based_instance_modejs-18"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">p</span> <span class="o">=</span> <span class="nx">p</span><span class="p">;</span>
-<a name="listingsclass_based_instance_modejs-19"></a>  <span class="p">}</span>
-<a name="listingsclass_based_instance_modejs-20"></a>
-<a name="listingsclass_based_instance_modejs-21"></a>  <span class="cm">/**</span>
-<a name="listingsclass_based_instance_modejs-22"></a><span class="cm">   * creates the closure to create the p5 canvas</span>
-<a name="listingsclass_based_instance_modejs-23"></a><span class="cm">   * This is so we have access to our 'this'</span>
-<a name="listingsclass_based_instance_modejs-24"></a><span class="cm">   */</span>
-<a name="listingsclass_based_instance_modejs-25"></a>  <span class="nx">get</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
-<a name="listingsclass_based_instance_modejs-26"></a>    <span class="kd">let</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-<a name="listingsclass_based_instance_modejs-27"></a>    <span class="k">return</span> <span class="kd">function</span><span class="p">(){</span>
-<a name="listingsclass_based_instance_modejs-28"></a>      <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">createCanvas</span><span class="p">(</span>
-<a name="listingsclass_based_instance_modejs-29"></a>        <span class="nx">$</span><span class="p">(</span><span class="s2">"#"</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">setup_arguments</span><span class="p">.</span><span class="nx">parent_id</span><span class="p">).</span><span class="nx">outerWidth</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span>
-<a name="listingsclass_based_instance_modejs-30"></a>        <span class="nx">self</span><span class="p">.</span><span class="nx">setup_arguments</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
-<a name="listingsclass_based_instance_modejs-31"></a>      <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">strokeWeight</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">setup_arguments</span><span class="p">.</span><span class="nx">stroke_weight</span><span class="p">);</span>
-<a name="listingsclass_based_instance_modejs-32"></a>      <span class="nx">self</span><span class="p">.</span><span class="nx">reset</span><span class="p">();</span>
-<a name="listingsclass_based_instance_modejs-33"></a>    <span class="p">};</span>
-<a name="listingsclass_based_instance_modejs-34"></a>  <span class="p">}</span>
-<a name="listingsclass_based_instance_modejs-35"></a>
-<a name="listingsclass_based_instance_modejs-36"></a>  <span class="cm">/**</span>
-<a name="listingsclass_based_instance_modejs-37"></a><span class="cm">   * creates the closure to handle a mouse press</span>
-<a name="listingsclass_based_instance_modejs-38"></a><span class="cm">   */</span>
-<a name="listingsclass_based_instance_modejs-39"></a>  <span class="nx">get</span> <span class="nx">mouse_pressed</span><span class="p">()</span> <span class="p">{</span>
-<a name="listingsclass_based_instance_modejs-40"></a>    <span class="kd">let</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-<a name="listingsclass_based_instance_modejs-41"></a>    <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<a name="listingsclass_based_instance_modejs-42"></a>        <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">inverted</span><span class="p">.</span><span class="nx">background</span><span class="p">);</span>
-<a name="listingsclass_based_instance_modejs-43"></a>        <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">inverted</span><span class="p">.</span><span class="nx">fill</span><span class="p">);</span>
-<a name="listingsclass_based_instance_modejs-44"></a>        <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">inverted</span><span class="p">.</span><span class="nx">stroke</span><span class="p">);</span>
-<a name="listingsclass_based_instance_modejs-45"></a>    <span class="p">};</span>
-<a name="listingsclass_based_instance_modejs-46"></a>  <span class="p">}</span>
-<a name="listingsclass_based_instance_modejs-47"></a>
-<a name="listingsclass_based_instance_modejs-48"></a>  <span class="cm">/**</span>
-<a name="listingsclass_based_instance_modejs-49"></a><span class="cm">   * closure to handle a mouse release</span>
-<a name="listingsclass_based_instance_modejs-50"></a><span class="cm">   */</span>
-<a name="listingsclass_based_instance_modejs-51"></a>  <span class="nx">get</span> <span class="nx">mouse_released</span><span class="p">()</span> <span class="p">{</span>
-<a name="listingsclass_based_instance_modejs-52"></a>    <span class="kd">let</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-<a name="listingsclass_based_instance_modejs-53"></a>    <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<a name="listingsclass_based_instance_modejs-54"></a>      <span class="nx">self</span><span class="p">.</span><span class="nx">reset</span><span class="p">();</span> 
-<a name="listingsclass_based_instance_modejs-55"></a>    <span class="p">};</span>
-<a name="listingsclass_based_instance_modejs-56"></a>  <span class="p">}</span>
-<a name="listingsclass_based_instance_modejs-57"></a>
-<a name="listingsclass_based_instance_modejs-58"></a>  <span class="cm">/**</span>
-<a name="listingsclass_based_instance_modejs-59"></a><span class="cm">   * creates the closure for the default setup</span>
-<a name="listingsclass_based_instance_modejs-60"></a><span class="cm">   */</span>
-<a name="listingsclass_based_instance_modejs-61"></a>  <span class="nx">get</span> <span class="nx">reset</span><span class="p">()</span> <span class="p">{</span>
-<a name="listingsclass_based_instance_modejs-62"></a>    <span class="kd">let</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-<a name="listingsclass_based_instance_modejs-63"></a>    <span class="k">if</span> <span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">_reset</span> <span class="o">===</span> <span class="kc">null</span><span class="p">){</span>
-<a name="listingsclass_based_instance_modejs-64"></a>      <span class="nx">self</span><span class="p">.</span><span class="nx">_reset</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<a name="listingsclass_based_instance_modejs-65"></a>        <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">colors</span><span class="p">.</span><span class="nx">background</span><span class="p">);</span>
-<a name="listingsclass_based_instance_modejs-66"></a>        <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">colors</span><span class="p">.</span><span class="nx">fill</span><span class="p">);</span>
-<a name="listingsclass_based_instance_modejs-67"></a>        <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">colors</span><span class="p">.</span><span class="nx">stroke</span><span class="p">);</span>
-<a name="listingsclass_based_instance_modejs-68"></a>      <span class="p">};</span>
-<a name="listingsclass_based_instance_modejs-69"></a>    <span class="p">}</span>
-<a name="listingsclass_based_instance_modejs-70"></a>    <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">_reset</span><span class="p">;</span>
-<a name="listingsclass_based_instance_modejs-71"></a>  <span class="p">}</span>
-<a name="listingsclass_based_instance_modejs-72"></a>
-<a name="listingsclass_based_instance_modejs-73"></a>  <span class="cm">/**</span>
-<a name="listingsclass_based_instance_modejs-74"></a><span class="cm">   * creates closure to draw circles that change diameter </span>
-<a name="listingsclass_based_instance_modejs-75"></a><span class="cm">   * based on mouse speed</span>
-<a name="listingsclass_based_instance_modejs-76"></a><span class="cm">   **/</span>
-<a name="listingsclass_based_instance_modejs-77"></a>  <span class="nx">get</span> <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span>
-<a name="listingsclass_based_instance_modejs-78"></a>    <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-<a name="listingsclass_based_instance_modejs-79"></a>    <span class="k">return</span> <span class="kd">function</span><span class="p">(){</span>
-<a name="listingsclass_based_instance_modejs-80"></a>      <span class="kd">var</span> <span class="nx">diameter</span><span class="p">;</span>
-<a name="listingsclass_based_instance_modejs-81"></a>      <span class="cm">/* get the distance from last click, raise to 1.5 */</span>
-<a name="listingsclass_based_instance_modejs-82"></a>      <span class="nx">diameter</span> <span class="o">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">dist</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">pmouseX</span><span class="p">,</span>
-<a name="listingsclass_based_instance_modejs-83"></a>                                        <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">pmouseY</span><span class="p">,</span>
-<a name="listingsclass_based_instance_modejs-84"></a>                                        <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">mouseX</span><span class="p">,</span>
-<a name="listingsclass_based_instance_modejs-85"></a>                                        <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">);</span>
-<a name="listingsclass_based_instance_modejs-86"></a>      <span class="cm">/* move the ellipse using the new diameter */</span>
-<a name="listingsclass_based_instance_modejs-87"></a>      <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">ellipse</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">);</span>
-<a name="listingsclass_based_instance_modejs-88"></a>    <span class="p">};</span>
-<a name="listingsclass_based_instance_modejs-89"></a>  <span class="p">}</span> <span class="c1">// end draw</span>
-<a name="listingsclass_based_instance_modejs-90"></a>
-<a name="listingsclass_based_instance_modejs-91"></a>  <span class="cm">/**</span>
-<a name="listingsclass_based_instance_modejs-92"></a><span class="cm">   * the P5 object with our methods</span>
-<a name="listingsclass_based_instance_modejs-93"></a><span class="cm">   */</span>
-<a name="listingsclass_based_instance_modejs-94"></a>  <span class="nx">get</span> <span class="nx">p</span><span class="p">()</span> <span class="p">{</span>
-<a name="listingsclass_based_instance_modejs-95"></a>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_p</span><span class="p">;</span>
-<a name="listingsclass_based_instance_modejs-96"></a>  <span class="p">}</span> <span class="c1">// end get p</span>
-<a name="listingsclass_based_instance_modejs-97"></a>
-<a name="listingsclass_based_instance_modejs-98"></a>  <span class="cm">/**</span>
-<a name="listingsclass_based_instance_modejs-99"></a><span class="cm">   * sets up the P5 object with our methods</span>
-<a name="listingsclass_based_instance_modejs-100"></a><span class="cm">   * @param {P5} original: the P5 object</span>
-<a name="listingsclass_based_instance_modejs-101"></a><span class="cm">   */</span>
-<a name="listingsclass_based_instance_modejs-102"></a>  <span class="nx">set</span> <span class="nx">p</span><span class="p">(</span><span class="nx">original</span><span class="p">)</span> <span class="p">{</span>
-<a name="listingsclass_based_instance_modejs-103"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">_p</span> <span class="o">=</span> <span class="nx">original</span><span class="p">;</span>
-<a name="listingsclass_based_instance_modejs-104"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">_p</span><span class="p">.</span><span class="nx">draw</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">draw</span><span class="p">;</span>
-<a name="listingsclass_based_instance_modejs-105"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">_p</span><span class="p">.</span><span class="nx">setup</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">setup</span><span class="p">;</span>
-<a name="listingsclass_based_instance_modejs-106"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">_p</span><span class="p">.</span><span class="nx">mousePressed</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">mouse_pressed</span><span class="p">;</span>
-<a name="listingsclass_based_instance_modejs-107"></a>    <span class="k">this</span><span class="p">.</span><span class="nx">_p</span><span class="p">.</span><span class="nx">mouseReleased</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">mouse_released</span><span class="p">;</span>
-<a name="listingsclass_based_instance_modejs-108"></a>  <span class="p">}</span> <span class="c1">// end set p</span>
-<a name="listingsclass_based_instance_modejs-109"></a><span class="p">}</span> <span class="c1">// end Sketch</span>
-<a name="listingsclass_based_instance_modejs-110"></a>
-<a name="listingsclass_based_instance_modejs-111"></a><span class="cm">/** Settings objects **/</span>
-<a name="listingsclass_based_instance_modejs-112"></a><span class="kd">let</span> <span class="nx">COLOR</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">];</span>
-<a name="listingsclass_based_instance_modejs-113"></a><span class="kd">let</span> <span class="nx">WHITE</span> <span class="o">=</span> <span class="mi">255</span><span class="p">;</span>
-<a name="listingsclass_based_instance_modejs-114"></a>
-<a name="listingsclass_based_instance_modejs-115"></a><span class="kd">let</span> <span class="nx">setup_arguments</span> <span class="o">=</span> <span class="p">{</span>
-<a name="listingsclass_based_instance_modejs-116"></a>  <span class="nx">stroke_weight</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
-<a name="listingsclass_based_instance_modejs-117"></a>  <span class="nx">height</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
-<a name="listingsclass_based_instance_modejs-118"></a>  <span class="nx">parent_id</span><span class="o">:</span> <span class="s2">"class-based-instance-mode"</span>
-<a name="listingsclass_based_instance_modejs-119"></a><span class="p">}</span>
-<a name="listingsclass_based_instance_modejs-120"></a>
-<a name="listingsclass_based_instance_modejs-121"></a><span class="kd">let</span> <span class="nx">inverted_colors</span> <span class="o">=</span> <span class="p">{</span>
-<a name="listingsclass_based_instance_modejs-122"></a>  <span class="nx">background</span><span class="o">:</span> <span class="nx">COLOR</span><span class="p">,</span>
-<a name="listingsclass_based_instance_modejs-123"></a>  <span class="nx">fill</span><span class="o">:</span> <span class="nx">COLOR</span><span class="p">,</span>
-<a name="listingsclass_based_instance_modejs-124"></a>  <span class="nx">stroke</span><span class="o">:</span> <span class="nx">WHITE</span><span class="p">,</span>
-<a name="listingsclass_based_instance_modejs-125"></a>  <span class="nx">height</span><span class="o">:</span> <span class="mi">50</span>
-<a name="listingsclass_based_instance_modejs-126"></a><span class="p">}</span>
-<a name="listingsclass_based_instance_modejs-127"></a>
-<a name="listingsclass_based_instance_modejs-128"></a><span class="kd">let</span> <span class="nx">default_colors</span> <span class="o">=</span> <span class="p">{</span>
-<a name="listingsclass_based_instance_modejs-129"></a>  <span class="nx">background</span><span class="o">:</span> <span class="nx">WHITE</span><span class="p">,</span>
-<a name="listingsclass_based_instance_modejs-130"></a>  <span class="nx">fill</span><span class="o">:</span> <span class="nx">WHITE</span><span class="p">,</span>
-<a name="listingsclass_based_instance_modejs-131"></a>  <span class="nx">stroke</span><span class="o">:</span> <span class="nx">COLOR</span>
-<a name="listingsclass_based_instance_modejs-132"></a><span class="p">}</span>
-<a name="listingsclass_based_instance_modejs-133"></a>
-<a name="listingsclass_based_instance_modejs-134"></a><span class="cm">/** Build the code **/</span>
-<a name="listingsclass_based_instance_modejs-135"></a>
-<a name="listingsclass_based_instance_modejs-136"></a><span class="kd">function</span> <span class="nx">builder</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span>
-<a name="listingsclass_based_instance_modejs-137"></a>  <span class="nx">sketch</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sketch</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">setup_arguments</span><span class="p">,</span> <span class="nx">default_colors</span><span class="p">,</span> <span class="nx">inverted_colors</span><span class="p">);</span>
-<a name="listingsclass_based_instance_modejs-138"></a><span class="p">}</span>
-<a name="listingsclass_based_instance_modejs-139"></a>
-<a name="listingsclass_based_instance_modejs-140"></a><span class="kd">var</span> <span class="nx">sketch</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">p5</span><span class="p">(</span><span class="nx">builder</span><span class="p">,</span> <span class="nx">setup_arguments</span><span class="p">.</span><span class="nx">parent_id</span><span class="p">);</span>
-</pre></td>
-</tr></table>
+<!-- /.navbar-collapse --></div>
+<!-- /.container --></nav>
+<!-- End of Menubar -->
+<div class="container" id="content" role="main">
+<div class="body-content"><!--Body content-->
+<nav class="breadcrumbs">
+<ul class="breadcrumb">
+<li class="breadcrumb-item"><a href=".">listings</a></li>
+<li class="breadcrumb-item active">class_based_instance_mode.js</li>
+</ul>
+</nav>
+<h1>class_based_instance_mode.js <small><a href="class_based_instance_mode.js">(Source)</a></small></h1>
+<div class="code">
+<table class="codetable">
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-1"><code data-line-number="1"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-1" name="listingsclass_based_instance_modejs-1"></a><span class="cm">/**</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-2"><code data-line-number="2"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-2" name="listingsclass_based_instance_modejs-2"></a> <span class="cm">* Class-based instance mode setup</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-3"><code data-line-number="3"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-3" name="listingsclass_based_instance_modejs-3"></a> <span class="cm">* This uses properties instead of building everything in the constructor</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-4"><code data-line-number="4"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-4" name="listingsclass_based_instance_modejs-4"></a> <span class="cm">*/</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-5"><code data-line-number="5"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-5" name="listingsclass_based_instance_modejs-5"></a><span class="kd">class</span> <span class="nx">Sketch</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-6"><code data-line-number="6"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-6" name="listingsclass_based_instance_modejs-6"></a>&nbsp;&nbsp;<span class="cm">/** Constructor to setup the p5 calls</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-7"><code data-line-number="7"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-7" name="listingsclass_based_instance_modejs-7"></a><span class="cm">&nbsp;&nbsp;&nbsp;* @param {p5} p: the P5 object</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-8"><code data-line-number="8"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-8" name="listingsclass_based_instance_modejs-8"></a><span class="cm">&nbsp;&nbsp;&nbsp;* @param {object} setup_arguments: setup settings</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-9"><code data-line-number="9"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-9" name="listingsclass_based_instance_modejs-9"></a><span class="cm">&nbsp;&nbsp;&nbsp;* @param {object} colors: color settings</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-10"><code data-line-number="10"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-10" name="listingsclass_based_instance_modejs-10"></a><span class="cm">&nbsp;&nbsp;&nbsp;* @param {object} inverted: inverted color settings</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-11"><code data-line-number="11"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-11" name="listingsclass_based_instance_modejs-11"></a><span class="cm">&nbsp;&nbsp;&nbsp;*/</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-12"><code data-line-number="12"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-12" name="listingsclass_based_instance_modejs-12"></a>&nbsp;&nbsp;<span class="nx">constructor</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">setup_arguments</span><span class="p">,</span> <span class="nx">colors</span><span class="p">,</span> <span class="nx">inverted</span><span class="p">)</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-13"><code data-line-number="13"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-13" name="listingsclass_based_instance_modejs-13"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">this</span><span class="p">.</span><span class="nx">_reset</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-14"><code data-line-number="14"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-14" name="listingsclass_based_instance_modejs-14"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">this</span><span class="p">.</span><span class="nx">_p</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-15"><code data-line-number="15"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-15" name="listingsclass_based_instance_modejs-15"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">this</span><span class="p">.</span><span class="nx">setup_arguments</span> <span class="o">=</span> <span class="nx">setup_arguments</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-16"><code data-line-number="16"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-16" name="listingsclass_based_instance_modejs-16"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">this</span><span class="p">.</span><span class="nx">colors</span> <span class="o">=</span> <span class="nx">colors</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-17"><code data-line-number="17"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-17" name="listingsclass_based_instance_modejs-17"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">this</span><span class="p">.</span><span class="nx">inverted</span> <span class="o">=</span> <span class="nx">inverted</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-18"><code data-line-number="18"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-18" name="listingsclass_based_instance_modejs-18"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">this</span><span class="p">.</span><span class="nx">p</span> <span class="o">=</span> <span class="nx">p</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-19"><code data-line-number="19"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-19" name="listingsclass_based_instance_modejs-19"></a>&nbsp;&nbsp;<span class="p">}</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-20"><code data-line-number="20"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-20" name="listingsclass_based_instance_modejs-20"></a></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-21"><code data-line-number="21"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-21" name="listingsclass_based_instance_modejs-21"></a>&nbsp;&nbsp;<span class="cm">/**</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-22"><code data-line-number="22"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-22" name="listingsclass_based_instance_modejs-22"></a><span class="cm">&nbsp;&nbsp;&nbsp;* creates the closure to create the p5 canvas</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-23"><code data-line-number="23"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-23" name="listingsclass_based_instance_modejs-23"></a><span class="cm">&nbsp;&nbsp;&nbsp;* This is so we have access to our 'this'</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-24"><code data-line-number="24"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-24" name="listingsclass_based_instance_modejs-24"></a><span class="cm">&nbsp;&nbsp;&nbsp;*/</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-25"><code data-line-number="25"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-25" name="listingsclass_based_instance_modejs-25"></a>&nbsp;&nbsp;<span class="nx">get</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-26"><code data-line-number="26"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-26" name="listingsclass_based_instance_modejs-26"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kd">let</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-27"><code data-line-number="27"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-27" name="listingsclass_based_instance_modejs-27"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">return</span> <span class="kd">function</span><span class="p">(){</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-28"><code data-line-number="28"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-28" name="listingsclass_based_instance_modejs-28"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">createCanvas</span><span class="p">(</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-29"><code data-line-number="29"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-29" name="listingsclass_based_instance_modejs-29"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">$</span><span class="p">(</span><span class="s2">"#"</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">setup_arguments</span><span class="p">.</span><span class="nx">parent_id</span><span class="p">).</span><span class="nx">outerWidth</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-30"><code data-line-number="30"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-30" name="listingsclass_based_instance_modejs-30"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">self</span><span class="p">.</span><span class="nx">setup_arguments</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-31"><code data-line-number="31"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-31" name="listingsclass_based_instance_modejs-31"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">strokeWeight</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">setup_arguments</span><span class="p">.</span><span class="nx">stroke_weight</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-32"><code data-line-number="32"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-32" name="listingsclass_based_instance_modejs-32"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">self</span><span class="p">.</span><span class="nx">reset</span><span class="p">();</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-33"><code data-line-number="33"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-33" name="listingsclass_based_instance_modejs-33"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="p">};</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-34"><code data-line-number="34"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-34" name="listingsclass_based_instance_modejs-34"></a>&nbsp;&nbsp;<span class="p">}</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-35"><code data-line-number="35"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-35" name="listingsclass_based_instance_modejs-35"></a></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-36"><code data-line-number="36"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-36" name="listingsclass_based_instance_modejs-36"></a>&nbsp;&nbsp;<span class="cm">/**</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-37"><code data-line-number="37"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-37" name="listingsclass_based_instance_modejs-37"></a><span class="cm">&nbsp;&nbsp;&nbsp;* creates the closure to handle a mouse press</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-38"><code data-line-number="38"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-38" name="listingsclass_based_instance_modejs-38"></a><span class="cm">&nbsp;&nbsp;&nbsp;*/</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-39"><code data-line-number="39"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-39" name="listingsclass_based_instance_modejs-39"></a>&nbsp;&nbsp;<span class="nx">get</span> <span class="nx">mouse_pressed</span><span class="p">()</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-40"><code data-line-number="40"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-40" name="listingsclass_based_instance_modejs-40"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kd">let</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-41"><code data-line-number="41"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-41" name="listingsclass_based_instance_modejs-41"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-42"><code data-line-number="42"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-42" name="listingsclass_based_instance_modejs-42"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">inverted</span><span class="p">.</span><span class="nx">background</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-43"><code data-line-number="43"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-43" name="listingsclass_based_instance_modejs-43"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">inverted</span><span class="p">.</span><span class="nx">fill</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-44"><code data-line-number="44"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-44" name="listingsclass_based_instance_modejs-44"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">inverted</span><span class="p">.</span><span class="nx">stroke</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-45"><code data-line-number="45"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-45" name="listingsclass_based_instance_modejs-45"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="p">};</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-46"><code data-line-number="46"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-46" name="listingsclass_based_instance_modejs-46"></a>&nbsp;&nbsp;<span class="p">}</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-47"><code data-line-number="47"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-47" name="listingsclass_based_instance_modejs-47"></a></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-48"><code data-line-number="48"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-48" name="listingsclass_based_instance_modejs-48"></a>&nbsp;&nbsp;<span class="cm">/**</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-49"><code data-line-number="49"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-49" name="listingsclass_based_instance_modejs-49"></a><span class="cm">&nbsp;&nbsp;&nbsp;* closure to handle a mouse release</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-50"><code data-line-number="50"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-50" name="listingsclass_based_instance_modejs-50"></a><span class="cm">&nbsp;&nbsp;&nbsp;*/</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-51"><code data-line-number="51"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-51" name="listingsclass_based_instance_modejs-51"></a>&nbsp;&nbsp;<span class="nx">get</span> <span class="nx">mouse_released</span><span class="p">()</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-52"><code data-line-number="52"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-52" name="listingsclass_based_instance_modejs-52"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kd">let</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-53"><code data-line-number="53"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-53" name="listingsclass_based_instance_modejs-53"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-54"><code data-line-number="54"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-54" name="listingsclass_based_instance_modejs-54"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">self</span><span class="p">.</span><span class="nx">reset</span><span class="p">();</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-55"><code data-line-number="55"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-55" name="listingsclass_based_instance_modejs-55"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="p">};</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-56"><code data-line-number="56"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-56" name="listingsclass_based_instance_modejs-56"></a>&nbsp;&nbsp;<span class="p">}</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-57"><code data-line-number="57"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-57" name="listingsclass_based_instance_modejs-57"></a></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-58"><code data-line-number="58"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-58" name="listingsclass_based_instance_modejs-58"></a>&nbsp;&nbsp;<span class="cm">/**</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-59"><code data-line-number="59"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-59" name="listingsclass_based_instance_modejs-59"></a><span class="cm">&nbsp;&nbsp;&nbsp;* creates the closure for the default setup</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-60"><code data-line-number="60"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-60" name="listingsclass_based_instance_modejs-60"></a><span class="cm">&nbsp;&nbsp;&nbsp;*/</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-61"><code data-line-number="61"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-61" name="listingsclass_based_instance_modejs-61"></a>&nbsp;&nbsp;<span class="nx">get</span> <span class="nx">reset</span><span class="p">()</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-62"><code data-line-number="62"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-62" name="listingsclass_based_instance_modejs-62"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kd">let</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-63"><code data-line-number="63"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-63" name="listingsclass_based_instance_modejs-63"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">if</span> <span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">_reset</span> <span class="o">===</span> <span class="kc">null</span><span class="p">){</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-64"><code data-line-number="64"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-64" name="listingsclass_based_instance_modejs-64"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">self</span><span class="p">.</span><span class="nx">_reset</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-65"><code data-line-number="65"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-65" name="listingsclass_based_instance_modejs-65"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">colors</span><span class="p">.</span><span class="nx">background</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-66"><code data-line-number="66"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-66" name="listingsclass_based_instance_modejs-66"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">colors</span><span class="p">.</span><span class="nx">fill</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-67"><code data-line-number="67"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-67" name="listingsclass_based_instance_modejs-67"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">colors</span><span class="p">.</span><span class="nx">stroke</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-68"><code data-line-number="68"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-68" name="listingsclass_based_instance_modejs-68"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="p">};</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-69"><code data-line-number="69"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-69" name="listingsclass_based_instance_modejs-69"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="p">}</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-70"><code data-line-number="70"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-70" name="listingsclass_based_instance_modejs-70"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">_reset</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-71"><code data-line-number="71"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-71" name="listingsclass_based_instance_modejs-71"></a>&nbsp;&nbsp;<span class="p">}</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-72"><code data-line-number="72"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-72" name="listingsclass_based_instance_modejs-72"></a></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-73"><code data-line-number="73"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-73" name="listingsclass_based_instance_modejs-73"></a>&nbsp;&nbsp;<span class="cm">/**</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-74"><code data-line-number="74"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-74" name="listingsclass_based_instance_modejs-74"></a><span class="cm">&nbsp;&nbsp;&nbsp;* creates closure to draw circles that change diameter</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-75"><code data-line-number="75"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-75" name="listingsclass_based_instance_modejs-75"></a><span class="cm">&nbsp;&nbsp;&nbsp;* based on mouse speed</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-76"><code data-line-number="76"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-76" name="listingsclass_based_instance_modejs-76"></a><span class="cm">&nbsp;&nbsp;&nbsp;**/</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-77"><code data-line-number="77"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-77" name="listingsclass_based_instance_modejs-77"></a>&nbsp;&nbsp;<span class="nx">get</span> <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-78"><code data-line-number="78"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-78" name="listingsclass_based_instance_modejs-78"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-79"><code data-line-number="79"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-79" name="listingsclass_based_instance_modejs-79"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">return</span> <span class="kd">function</span><span class="p">(){</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-80"><code data-line-number="80"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-80" name="listingsclass_based_instance_modejs-80"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kd">var</span> <span class="nx">diameter</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-81"><code data-line-number="81"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-81" name="listingsclass_based_instance_modejs-81"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">/* get the distance from last click, raise to 1.5 */</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-82"><code data-line-number="82"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-82" name="listingsclass_based_instance_modejs-82"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">diameter</span> <span class="o">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">dist</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">pmouseX</span><span class="p">,</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-83"><code data-line-number="83"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-83" name="listingsclass_based_instance_modejs-83"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">pmouseY</span><span class="p">,</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-84"><code data-line-number="84"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-84" name="listingsclass_based_instance_modejs-84"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">mouseX</span><span class="p">,</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-85"><code data-line-number="85"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-85" name="listingsclass_based_instance_modejs-85"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-86"><code data-line-number="86"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-86" name="listingsclass_based_instance_modejs-86"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">/* move the ellipse using the new diameter */</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-87"><code data-line-number="87"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-87" name="listingsclass_based_instance_modejs-87"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">ellipse</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">self</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-88"><code data-line-number="88"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-88" name="listingsclass_based_instance_modejs-88"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="p">};</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-89"><code data-line-number="89"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-89" name="listingsclass_based_instance_modejs-89"></a>&nbsp;&nbsp;<span class="p">}</span> <span class="c1">// end draw</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-90"><code data-line-number="90"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-90" name="listingsclass_based_instance_modejs-90"></a></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-91"><code data-line-number="91"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-91" name="listingsclass_based_instance_modejs-91"></a>&nbsp;&nbsp;<span class="cm">/**</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-92"><code data-line-number="92"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-92" name="listingsclass_based_instance_modejs-92"></a><span class="cm">&nbsp;&nbsp;&nbsp;* the P5 object with our methods</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-93"><code data-line-number="93"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-93" name="listingsclass_based_instance_modejs-93"></a><span class="cm">&nbsp;&nbsp;&nbsp;*/</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-94"><code data-line-number="94"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-94" name="listingsclass_based_instance_modejs-94"></a>&nbsp;&nbsp;<span class="nx">get</span> <span class="nx">p</span><span class="p">()</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-95"><code data-line-number="95"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-95" name="listingsclass_based_instance_modejs-95"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_p</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-96"><code data-line-number="96"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-96" name="listingsclass_based_instance_modejs-96"></a>&nbsp;&nbsp;<span class="p">}</span> <span class="c1">// end get p</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-97"><code data-line-number="97"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-97" name="listingsclass_based_instance_modejs-97"></a></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-98"><code data-line-number="98"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-98" name="listingsclass_based_instance_modejs-98"></a>&nbsp;&nbsp;<span class="cm">/**</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-99"><code data-line-number="99"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-99" name="listingsclass_based_instance_modejs-99"></a><span class="cm">&nbsp;&nbsp;&nbsp;* sets up the P5 object with our methods</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-100"><code data-line-number="100"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-100" name="listingsclass_based_instance_modejs-100"></a><span class="cm">&nbsp;&nbsp;&nbsp;* @param {P5} original: the P5 object</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-101"><code data-line-number="101"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-101" name="listingsclass_based_instance_modejs-101"></a><span class="cm">&nbsp;&nbsp;&nbsp;*/</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-102"><code data-line-number="102"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-102" name="listingsclass_based_instance_modejs-102"></a>&nbsp;&nbsp;<span class="nx">set</span> <span class="nx">p</span><span class="p">(</span><span class="nx">original</span><span class="p">)</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-103"><code data-line-number="103"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-103" name="listingsclass_based_instance_modejs-103"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">this</span><span class="p">.</span><span class="nx">_p</span> <span class="o">=</span> <span class="nx">original</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-104"><code data-line-number="104"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-104" name="listingsclass_based_instance_modejs-104"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">this</span><span class="p">.</span><span class="nx">_p</span><span class="p">.</span><span class="nx">draw</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">draw</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-105"><code data-line-number="105"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-105" name="listingsclass_based_instance_modejs-105"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">this</span><span class="p">.</span><span class="nx">_p</span><span class="p">.</span><span class="nx">setup</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">setup</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-106"><code data-line-number="106"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-106" name="listingsclass_based_instance_modejs-106"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">this</span><span class="p">.</span><span class="nx">_p</span><span class="p">.</span><span class="nx">mousePressed</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">mouse_pressed</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-107"><code data-line-number="107"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-107" name="listingsclass_based_instance_modejs-107"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">this</span><span class="p">.</span><span class="nx">_p</span><span class="p">.</span><span class="nx">mouseReleased</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">mouse_released</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-108"><code data-line-number="108"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-108" name="listingsclass_based_instance_modejs-108"></a>&nbsp;&nbsp;<span class="p">}</span> <span class="c1">// end set p</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-109"><code data-line-number="109"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-109" name="listingsclass_based_instance_modejs-109"></a><span class="p">}</span> <span class="c1">// end Sketch</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-110"><code data-line-number="110"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-110" name="listingsclass_based_instance_modejs-110"></a></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-111"><code data-line-number="111"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-111" name="listingsclass_based_instance_modejs-111"></a><span class="cm">/** Settings objects **/</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-112"><code data-line-number="112"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-112" name="listingsclass_based_instance_modejs-112"></a><span class="kd">let</span> <span class="nx">COLOR</span> <span class="o">=</span> <span class="p">[</span><span class="mf">50</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">255</span><span class="p">];</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-113"><code data-line-number="113"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-113" name="listingsclass_based_instance_modejs-113"></a><span class="kd">let</span> <span class="nx">WHITE</span> <span class="o">=</span> <span class="mf">255</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-114"><code data-line-number="114"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-114" name="listingsclass_based_instance_modejs-114"></a></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-115"><code data-line-number="115"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-115" name="listingsclass_based_instance_modejs-115"></a><span class="kd">let</span> <span class="nx">setup_arguments</span> <span class="o">=</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-116"><code data-line-number="116"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-116" name="listingsclass_based_instance_modejs-116"></a>&nbsp;&nbsp;<span class="nx">stroke_weight</span><span class="o">:</span> <span class="mf">3</span><span class="p">,</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-117"><code data-line-number="117"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-117" name="listingsclass_based_instance_modejs-117"></a>&nbsp;&nbsp;<span class="nx">height</span><span class="o">:</span> <span class="mf">200</span><span class="p">,</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-118"><code data-line-number="118"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-118" name="listingsclass_based_instance_modejs-118"></a>&nbsp;&nbsp;<span class="nx">parent_id</span><span class="o">:</span> <span class="s2">"class-based-instance-mode"</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-119"><code data-line-number="119"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-119" name="listingsclass_based_instance_modejs-119"></a><span class="p">}</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-120"><code data-line-number="120"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-120" name="listingsclass_based_instance_modejs-120"></a></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-121"><code data-line-number="121"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-121" name="listingsclass_based_instance_modejs-121"></a><span class="kd">let</span> <span class="nx">inverted_colors</span> <span class="o">=</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-122"><code data-line-number="122"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-122" name="listingsclass_based_instance_modejs-122"></a>&nbsp;&nbsp;<span class="nx">background</span><span class="o">:</span> <span class="nx">COLOR</span><span class="p">,</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-123"><code data-line-number="123"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-123" name="listingsclass_based_instance_modejs-123"></a>&nbsp;&nbsp;<span class="nx">fill</span><span class="o">:</span> <span class="nx">COLOR</span><span class="p">,</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-124"><code data-line-number="124"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-124" name="listingsclass_based_instance_modejs-124"></a>&nbsp;&nbsp;<span class="nx">stroke</span><span class="o">:</span> <span class="nx">WHITE</span><span class="p">,</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-125"><code data-line-number="125"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-125" name="listingsclass_based_instance_modejs-125"></a>&nbsp;&nbsp;<span class="nx">height</span><span class="o">:</span> <span class="mf">50</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-126"><code data-line-number="126"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-126" name="listingsclass_based_instance_modejs-126"></a><span class="p">}</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-127"><code data-line-number="127"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-127" name="listingsclass_based_instance_modejs-127"></a></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-128"><code data-line-number="128"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-128" name="listingsclass_based_instance_modejs-128"></a><span class="kd">let</span> <span class="nx">default_colors</span> <span class="o">=</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-129"><code data-line-number="129"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-129" name="listingsclass_based_instance_modejs-129"></a>&nbsp;&nbsp;<span class="nx">background</span><span class="o">:</span> <span class="nx">WHITE</span><span class="p">,</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-130"><code data-line-number="130"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-130" name="listingsclass_based_instance_modejs-130"></a>&nbsp;&nbsp;<span class="nx">fill</span><span class="o">:</span> <span class="nx">WHITE</span><span class="p">,</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-131"><code data-line-number="131"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-131" name="listingsclass_based_instance_modejs-131"></a>&nbsp;&nbsp;<span class="nx">stroke</span><span class="o">:</span> <span class="nx">COLOR</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-132"><code data-line-number="132"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-132" name="listingsclass_based_instance_modejs-132"></a><span class="p">}</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-133"><code data-line-number="133"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-133" name="listingsclass_based_instance_modejs-133"></a></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-134"><code data-line-number="134"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-134" name="listingsclass_based_instance_modejs-134"></a><span class="cm">/** Build the code **/</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-135"><code data-line-number="135"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-135" name="listingsclass_based_instance_modejs-135"></a></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-136"><code data-line-number="136"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-136" name="listingsclass_based_instance_modejs-136"></a><span class="kd">function</span> <span class="nx">builder</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-137"><code data-line-number="137"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-137" name="listingsclass_based_instance_modejs-137"></a>&nbsp;&nbsp;<span class="nx">sketch</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sketch</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">setup_arguments</span><span class="p">,</span> <span class="nx">default_colors</span><span class="p">,</span> <span class="nx">inverted_colors</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-138"><code data-line-number="138"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-138" name="listingsclass_based_instance_modejs-138"></a><span class="p">}</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-139"><code data-line-number="139"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-139" name="listingsclass_based_instance_modejs-139"></a></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsclass_based_instance_modejs-140"><code data-line-number="140"></code></a></td>
+<td class="code"><code><a id="listingsclass_based_instance_modejs-140" name="listingsclass_based_instance_modejs-140"></a><span class="kd">var</span> <span class="nx">sketch</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">p5</span><span class="p">(</span><span class="nx">builder</span><span class="p">,</span> <span class="nx">setup_arguments</span><span class="p">.</span><span class="nx">parent_id</span><span class="p">);</span></code></td>
+</tr>
+</table>
 </div>
-        <!--End of body content-->
-
-        <footer id="footer">
-            Contents © 2018         <a href="mailto:necromuralist@gmail.com/p5_explorations">The Cloistered Monkey</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
-            
-        </footer>
+<!--End of body content-->
+<footer id="footer">Contents © 2021 Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a>
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a href="https://necromuralist.github.io/Ape-Iron/" property="dct:title" rel="cc:attributionURL">Ape Iron</a> by <a href="https://github.com/necromuralist" property="cc:attributionName" rel="cc:attributionURL dct:creator">The Cloistered Monkey</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" rel="license noopener noreferrer" style="display:inline-block;" target="_blank">CC BY 4.0<img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"></a></p>
+<a href="https://commons.wikimedia.org/wiki/File:Seth-gehend.png">Nephiliskos</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons</footer>
 </div>
 </div>
+<script src="../assets/js/all-nocdn.js"></script>
+<script>
 
-
-            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
-    moment.locale("en");
-    fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates -->
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+</script>
 </body>
 </html>

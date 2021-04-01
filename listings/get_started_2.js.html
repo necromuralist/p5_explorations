@@ -1,271 +1,364 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="get_started_2.js">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>get_started_2.js | p5.js (processing) Explorations</title>
+<meta content="get_started_2.js" name="description">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>get_started_2.js | Set and Setting</title>
 <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link href="../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
 <link href="../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
-<meta name="theme-color" content="#5670d4">
-<meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-<link rel="canonical" href="https://necromuralist.github.io/p5_explorations/listings/get_started_2.js.html">
-<!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.min.js">
-</script>
+<meta content="#5670d4" name="theme-color">
+<meta content="Nikola (getnikola.com)" name="generator">
+<link href="../rss.xml" hreflang="en" rel="alternate" title="RSS" type="application/rss+xml">
+<link href="https://necromuralist.github.io/p5_explorations/listings/get_started_2.js.html" rel="canonical"><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><!-- favicons --><!-- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"> -->
+<link href="../favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="../favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="../site.webmanifest" rel="manifest"><!--
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"  integrity="sha512-gQVBYBvfC+uyor5Teonjr9nmY1bN+DlOCezkhzg4ShpC5q81ogvFsr5IV4xXAj6HEtG7M1Pb2JCha97tVFItYQ==" crossorigin="anonymous"></script>
+-->
 </head>
 <body>
-<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
-
-<!-- Menubar -->
-
-<nav class="navbar navbar-default navbar-static-top"><div class="container">
-<!-- This keeps the margins nice -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="https://necromuralist.github.io/p5_explorations/">
-
-                <span id="blog-title">p5.js (processing) Explorations</span>
-            </a>
-        </div>
-<!-- /.navbar-header -->
-        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
-            <ul class="nav navbar-nav">
-<li>
-<a href="../archive.html">Archive</a>
-                </li>
-<li>
-<a href="../categories/">Tags</a>
-                </li>
-<li>
-<a href="../rss.xml">RSS feed</a>
-            </li>
-<li class="dropdown">
-<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Projects <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-<li>
-<a href="../machine-learning-projects/">Machine Learning</a>
-                    </li>
-<li>
-<a href="https://necromuralist.github.io/p5_explorations/">P5 Explorations</a>
-                    </li>
-<li>
-<a href="https://necromuralist.github.io/tddmachinelearning/">TDD Machine Learning</a>
-                    </li>
-<li>
-<a href="https://necromuralist.github.io/student_intervention/">Student Intervention Project</a>
-                    </li>
-<li>
-<a href="https://necromuralist.github.io/boston_housing/">Boston Housing Project</a>
-            </li>
-</ul>
+<a class="sr-only sr-only-focusable" href="#content">Skip to main content</a> <!-- Menubar -->
+<nav class="navbar navbar-expand-md static-top mb-4 navbar-light bg-light">
+<div class="container"><!-- This keeps the margins nice -->
+ <a class="navbar-brand" href="../"><span id="blog-title">Set and Setting</span></a> <button aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#bs-navbar" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="bs-navbar">
+<ul class="navbar-nav mr-auto">
+<li class="nav-item"><a class="nav-link" href="../archive.html">Archive</a></li>
+<li class="nav-item"><a class="nav-link" href="../categories/">Tags</a></li>
+<li class="nav-item"><a class="nav-link" href="../rss.xml">RSS feed</a></li>
+<li class="nav-item dropdown"><a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Pages</a>
+<div class="dropdown-menu"><a class="dropdown-item" href="https://necromuralist.github.io/">Cloistered Monkey</a></div>
 </li>
 </ul>
-<!-- Google custom search --><form method="get" action="https://www.google.com/search" class="navbar-form navbar-right" role="search">
-<div class="form-group">
-<input type="text" name="q" class="form-control" placeholder="Search">
-</div>
-<button type="submit" class="btn btn-primary">
-	<span class="glyphicon glyphicon-search"></span>
-</button>
-<input type="hidden" name="sitesearch" value="https://necromuralist.github.io/p5_explorations/">
-</form>
+<!-- DuckDuckGo custom search -->
+<form action="https://duckduckgo.com/" class="navbar-form pull-left" id="search" method="get" name="search"><input name="sites" type="hidden" value="https://necromuralist.github.io/p5_explorations/"><input name="k8" type="hidden" value="#444444"><input name="k9" type="hidden" value="#D51920"><input name="kt" type="hidden" value="h"><input class="span2" maxlength="255" name="q" placeholder="Search…" type="text"><input style="visibility: hidden;display:none" type="submit" value="DuckDuckGo Search"></form>
 <!-- End of custom search -->
-
-
-            <ul class="nav navbar-nav navbar-right">
-<li>
-    <a href="get_started_2.js" id="sourcelink">Source</a>
-    </li>
-
-                
-            </ul>
+<ul class="navbar-nav navbar-right">
+<li class="nav-item"><a class="nav-link" href="get_started_2.js" id="sourcelink">Source</a></li>
+</ul>
 </div>
-<!-- /.navbar-collapse -->
-    </div>
-<!-- /.container -->
-</nav><!-- End of Menubar --><div class="container" id="content" role="main">
-    <div class="body-content">
-        <!--Body content-->
-        <div class="row">
-            
-            
-
-<nav class="breadcrumbs"><ul class="breadcrumb">
-<li><a href=".">listings</a></li>
-                <li>get_started_2.js</li>
-</ul></nav><h1>get_started_2.js
-        <small><a href="get_started_2.js">(Source)</a></small>
-    </h1>
-    <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="#listingsget_started_2js-1"> 1</a>
-<a href="#listingsget_started_2js-2"> 2</a>
-<a href="#listingsget_started_2js-3"> 3</a>
-<a href="#listingsget_started_2js-4"> 4</a>
-<a href="#listingsget_started_2js-5"> 5</a>
-<a href="#listingsget_started_2js-6"> 6</a>
-<a href="#listingsget_started_2js-7"> 7</a>
-<a href="#listingsget_started_2js-8"> 8</a>
-<a href="#listingsget_started_2js-9"> 9</a>
-<a href="#listingsget_started_2js-10">10</a>
-<a href="#listingsget_started_2js-11">11</a>
-<a href="#listingsget_started_2js-12">12</a>
-<a href="#listingsget_started_2js-13">13</a>
-<a href="#listingsget_started_2js-14">14</a>
-<a href="#listingsget_started_2js-15">15</a>
-<a href="#listingsget_started_2js-16">16</a>
-<a href="#listingsget_started_2js-17">17</a>
-<a href="#listingsget_started_2js-18">18</a>
-<a href="#listingsget_started_2js-19">19</a>
-<a href="#listingsget_started_2js-20">20</a>
-<a href="#listingsget_started_2js-21">21</a>
-<a href="#listingsget_started_2js-22">22</a>
-<a href="#listingsget_started_2js-23">23</a>
-<a href="#listingsget_started_2js-24">24</a>
-<a href="#listingsget_started_2js-25">25</a>
-<a href="#listingsget_started_2js-26">26</a>
-<a href="#listingsget_started_2js-27">27</a>
-<a href="#listingsget_started_2js-28">28</a>
-<a href="#listingsget_started_2js-29">29</a>
-<a href="#listingsget_started_2js-30">30</a>
-<a href="#listingsget_started_2js-31">31</a>
-<a href="#listingsget_started_2js-32">32</a>
-<a href="#listingsget_started_2js-33">33</a>
-<a href="#listingsget_started_2js-34">34</a>
-<a href="#listingsget_started_2js-35">35</a>
-<a href="#listingsget_started_2js-36">36</a>
-<a href="#listingsget_started_2js-37">37</a>
-<a href="#listingsget_started_2js-38">38</a>
-<a href="#listingsget_started_2js-39">39</a>
-<a href="#listingsget_started_2js-40">40</a>
-<a href="#listingsget_started_2js-41">41</a>
-<a href="#listingsget_started_2js-42">42</a>
-<a href="#listingsget_started_2js-43">43</a>
-<a href="#listingsget_started_2js-44">44</a>
-<a href="#listingsget_started_2js-45">45</a>
-<a href="#listingsget_started_2js-46">46</a>
-<a href="#listingsget_started_2js-47">47</a>
-<a href="#listingsget_started_2js-48">48</a>
-<a href="#listingsget_started_2js-49">49</a>
-<a href="#listingsget_started_2js-50">50</a>
-<a href="#listingsget_started_2js-51">51</a>
-<a href="#listingsget_started_2js-52">52</a>
-<a href="#listingsget_started_2js-53">53</a>
-<a href="#listingsget_started_2js-54">54</a>
-<a href="#listingsget_started_2js-55">55</a>
-<a href="#listingsget_started_2js-56">56</a>
-<a href="#listingsget_started_2js-57">57</a>
-<a href="#listingsget_started_2js-58">58</a>
-<a href="#listingsget_started_2js-59">59</a>
-<a href="#listingsget_started_2js-60">60</a>
-<a href="#listingsget_started_2js-61">61</a>
-<a href="#listingsget_started_2js-62">62</a>
-<a href="#listingsget_started_2js-63">63</a>
-<a href="#listingsget_started_2js-64">64</a>
-<a href="#listingsget_started_2js-65">65</a>
-<a href="#listingsget_started_2js-66">66</a>
-<a href="#listingsget_started_2js-67">67</a>
-<a href="#listingsget_started_2js-68">68</a>
-<a href="#listingsget_started_2js-69">69</a>
-<a href="#listingsget_started_2js-70">70</a>
-<a href="#listingsget_started_2js-71">71</a>
-<a href="#listingsget_started_2js-72">72</a>
-<a href="#listingsget_started_2js-73">73</a></pre></div></td>
-<td class="code"><pre class="code literal-block"><a name="listingsget_started_2js-1"></a><span class="cm">/**</span>
-<a name="listingsget_started_2js-2"></a><span class="cm"> * Instance mode implementation of a simple sketch that draws blue circles</span>
-<a name="listingsget_started_2js-3"></a><span class="cm"> * on a white background when the user moves the mouse cursor over it, basing</span>
-<a name="listingsget_started_2js-4"></a><span class="cm"> * the size of the circles on how fast the cursor is moving. If the user clicks</span>
-<a name="listingsget_started_2js-5"></a><span class="cm"> * and drags the mouse it draws white circles on a blue background instead.</span>
-<a name="listingsget_started_2js-6"></a><span class="cm"> **/</span>
-<a name="listingsget_started_2js-7"></a><span class="kr">class</span> <span class="nx">GetStarted2</span> <span class="p">{</span>
-<a name="listingsget_started_2js-8"></a>  <span class="cm">/**</span>
-<a name="listingsget_started_2js-9"></a><span class="cm">   * The constructor sets up the p5 functions</span>
-<a name="listingsget_started_2js-10"></a><span class="cm">   *</span>
-<a name="listingsget_started_2js-11"></a><span class="cm">   * @param {object} p: the `p5` object</span>
-<a name="listingsget_started_2js-12"></a><span class="cm">   * @param {string} parent_div_id: ID of the div to attach the canvas to</span>
-<a name="listingsget_started_2js-13"></a><span class="cm">   * @param {integer} height: Pixel-heght for the canvas</span>
-<a name="listingsget_started_2js-14"></a><span class="cm">   **/</span>
-<a name="listingsget_started_2js-15"></a>  <span class="nx">constructor</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">parent_div_id</span><span class="p">,</span> <span class="nx">height</span><span class="p">){</span>
-<a name="listingsget_started_2js-16"></a>    <span class="cm">/**</span>
-<a name="listingsget_started_2js-17"></a><span class="cm">     * Creates the canvas using ``height`` and the width of the parent div</span>
-<a name="listingsget_started_2js-18"></a><span class="cm">     * Also sets up some coloring</span>
-<a name="listingsget_started_2js-19"></a><span class="cm">     **/</span>
-<a name="listingsget_started_2js-20"></a>    <span class="nx">p</span><span class="p">.</span><span class="nx">setup</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<a name="listingsget_started_2js-21"></a>      <span class="kd">var</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">createCanvas</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">"#"</span> <span class="o">+</span> <span class="nx">parent_div_id</span><span class="p">).</span><span class="nx">outerWidth</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span>
-<a name="listingsget_started_2js-22"></a>                                  <span class="nx">height</span><span class="p">);</span>
-<a name="listingsget_started_2js-23"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="listingsget_started_2js-24"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">strokeWeight</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<a name="listingsget_started_2js-25"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="listingsget_started_2js-26"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="listingsget_started_2js-27"></a>    <span class="p">};</span>
-<a name="listingsget_started_2js-28"></a>
-<a name="listingsget_started_2js-29"></a>    <span class="cm">/** </span>
-<a name="listingsget_started_2js-30"></a><span class="cm">     * sets the background and fill to blue</span>
-<a name="listingsget_started_2js-31"></a><span class="cm">     * and the stroke to white </span>
-<a name="listingsget_started_2js-32"></a><span class="cm">     **/</span>
-<a name="listingsget_started_2js-33"></a>    <span class="nx">p</span><span class="p">.</span><span class="nx">mousePressed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
-<a name="listingsget_started_2js-34"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="listingsget_started_2js-35"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="listingsget_started_2js-36"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="listingsget_started_2js-37"></a>    <span class="p">};</span>
-<a name="listingsget_started_2js-38"></a>
-<a name="listingsget_started_2js-39"></a>    <span class="cm">/**</span>
-<a name="listingsget_started_2js-40"></a><span class="cm">     * sets the background and fill to white </span>
-<a name="listingsget_started_2js-41"></a><span class="cm">     * and the stroke to blue </span>
-<a name="listingsget_started_2js-42"></a><span class="cm">     **/</span>
-<a name="listingsget_started_2js-43"></a>    <span class="nx">p</span><span class="p">.</span><span class="nx">mouseReleased</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<a name="listingsget_started_2js-44"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="listingsget_started_2js-45"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-<a name="listingsget_started_2js-46"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
-<a name="listingsget_started_2js-47"></a>    <span class="p">};</span>
-<a name="listingsget_started_2js-48"></a>
-<a name="listingsget_started_2js-49"></a>    <span class="cm">/**</span>
-<a name="listingsget_started_2js-50"></a><span class="cm">     * Draws circles that change diameter based on mouse speed</span>
-<a name="listingsget_started_2js-51"></a><span class="cm">     **/</span>
-<a name="listingsget_started_2js-52"></a>    <span class="nx">p</span><span class="p">.</span><span class="nx">draw</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<a name="listingsget_started_2js-53"></a>      <span class="kd">var</span> <span class="nx">diameter</span><span class="p">;</span>
-<a name="listingsget_started_2js-54"></a>      <span class="nx">diameter</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">dist</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">pmouseX</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">);</span>
-<a name="listingsget_started_2js-55"></a>      <span class="nx">p</span><span class="p">.</span><span class="nx">ellipse</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">);</span>
-<a name="listingsget_started_2js-56"></a>    <span class="p">};</span>
-<a name="listingsget_started_2js-57"></a>  <span class="p">};</span> <span class="c1">// end constructor</span>
-<a name="listingsget_started_2js-58"></a><span class="p">};</span><span class="c1">// end GetStarted2</span>
-<a name="listingsget_started_2js-59"></a>
-<a name="listingsget_started_2js-60"></a><span class="cm">/** </span>
-<a name="listingsget_started_2js-61"></a><span class="cm"> * Builds the GetStarted2 sketch</span>
-<a name="listingsget_started_2js-62"></a><span class="cm"> * </span>
-<a name="listingsget_started_2js-63"></a><span class="cm"> * p5 thinks it's getting a function, not a class      </span>
-<a name="listingsget_started_2js-64"></a><span class="cm"> * so it doesn't use the `new` statement. This function </span>
-<a name="listingsget_started_2js-65"></a><span class="cm"> * works around that and passes in some parameters</span>
-<a name="listingsget_started_2js-66"></a><span class="cm"> *</span>
-<a name="listingsget_started_2js-67"></a><span class="cm"> * @param {object} p: a ``p5`` instance</span>
-<a name="listingsget_started_2js-68"></a><span class="cm"> **/</span>
-<a name="listingsget_started_2js-69"></a><span class="kd">function</span> <span class="nx">build_get_started_2</span><span class="p">(</span><span class="nx">p</span><span class="p">){</span>
-<a name="listingsget_started_2js-70"></a>  <span class="k">return</span> <span class="k">new</span> <span class="nx">GetStarted2</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="s2">"get_started_2"</span><span class="p">,</span> <span class="mi">300</span><span class="p">);</span>
-<a name="listingsget_started_2js-71"></a><span class="p">};</span>
-<a name="listingsget_started_2js-72"></a>
-<a name="listingsget_started_2js-73"></a><span class="kd">var</span> <span class="nx">p5_retest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">p5</span><span class="p">(</span><span class="nx">build_get_started_2</span><span class="p">,</span> <span class="s2">"get_started_2"</span><span class="p">);</span>
-</pre></td>
-</tr></table>
+<!-- /.navbar-collapse --></div>
+<!-- /.container --></nav>
+<!-- End of Menubar -->
+<div class="container" id="content" role="main">
+<div class="body-content"><!--Body content-->
+<nav class="breadcrumbs">
+<ul class="breadcrumb">
+<li class="breadcrumb-item"><a href=".">listings</a></li>
+<li class="breadcrumb-item active">get_started_2.js</li>
+</ul>
+</nav>
+<h1>get_started_2.js <small><a href="get_started_2.js">(Source)</a></small></h1>
+<div class="code">
+<table class="codetable">
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-1"><code data-line-number="1"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-1" name="listingsget_started_2js-1"></a><span class="cm">/**</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-2"><code data-line-number="2"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-2" name="listingsget_started_2js-2"></a> <span class="cm">* Instance mode implementation of a simple sketch that draws blue circles</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-3"><code data-line-number="3"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-3" name="listingsget_started_2js-3"></a> <span class="cm">* on a white background when the user moves the mouse cursor over it, basing</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-4"><code data-line-number="4"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-4" name="listingsget_started_2js-4"></a> <span class="cm">* the size of the circles on how fast the cursor is moving. If the user clicks</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-5"><code data-line-number="5"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-5" name="listingsget_started_2js-5"></a> <span class="cm">* and drags the mouse it draws white circles on a blue background instead.</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-6"><code data-line-number="6"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-6" name="listingsget_started_2js-6"></a> <span class="cm">**/</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-7"><code data-line-number="7"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-7" name="listingsget_started_2js-7"></a><span class="kd">class</span> <span class="nx">GetStarted2</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-8"><code data-line-number="8"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-8" name="listingsget_started_2js-8"></a>&nbsp;&nbsp;<span class="cm">/**</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-9"><code data-line-number="9"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-9" name="listingsget_started_2js-9"></a><span class="cm">&nbsp;&nbsp;&nbsp;* The constructor sets up the p5 functions</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-10"><code data-line-number="10"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-10" name="listingsget_started_2js-10"></a><span class="cm">&nbsp;&nbsp;&nbsp;*</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-11"><code data-line-number="11"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-11" name="listingsget_started_2js-11"></a><span class="cm">&nbsp;&nbsp;&nbsp;* @param {object} p: the `p5` object</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-12"><code data-line-number="12"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-12" name="listingsget_started_2js-12"></a><span class="cm">&nbsp;&nbsp;&nbsp;* @param {string} parent_div_id: ID of the div to attach the canvas to</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-13"><code data-line-number="13"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-13" name="listingsget_started_2js-13"></a><span class="cm">&nbsp;&nbsp;&nbsp;* @param {integer} height: Pixel-heght for the canvas</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-14"><code data-line-number="14"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-14" name="listingsget_started_2js-14"></a><span class="cm">&nbsp;&nbsp;&nbsp;**/</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-15"><code data-line-number="15"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-15" name="listingsget_started_2js-15"></a>&nbsp;&nbsp;<span class="nx">constructor</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">parent_div_id</span><span class="p">,</span> <span class="nx">height</span><span class="p">){</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-16"><code data-line-number="16"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-16" name="listingsget_started_2js-16"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">/**</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-17"><code data-line-number="17"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-17" name="listingsget_started_2js-17"></a><span class="cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Creates the canvas using ``height`` and the width of the parent div</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-18"><code data-line-number="18"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-18" name="listingsget_started_2js-18"></a><span class="cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Also sets up some coloring</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-19"><code data-line-number="19"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-19" name="listingsget_started_2js-19"></a><span class="cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**/</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-20"><code data-line-number="20"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-20" name="listingsget_started_2js-20"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">p</span><span class="p">.</span><span class="nx">setup</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-21"><code data-line-number="21"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-21" name="listingsget_started_2js-21"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kd">var</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">createCanvas</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">"#"</span> <span class="o">+</span> <span class="nx">parent_div_id</span><span class="p">).</span><span class="nx">outerWidth</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-22"><code data-line-number="22"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-22" name="listingsget_started_2js-22"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">height</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-23"><code data-line-number="23"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-23" name="listingsget_started_2js-23"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="mf">255</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-24"><code data-line-number="24"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-24" name="listingsget_started_2js-24"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">p</span><span class="p">.</span><span class="nx">strokeWeight</span><span class="p">(</span><span class="mf">3</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-25"><code data-line-number="25"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-25" name="listingsget_started_2js-25"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">255</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-26"><code data-line-number="26"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-26" name="listingsget_started_2js-26"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mf">255</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-27"><code data-line-number="27"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-27" name="listingsget_started_2js-27"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="p">};</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-28"><code data-line-number="28"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-28" name="listingsget_started_2js-28"></a></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-29"><code data-line-number="29"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-29" name="listingsget_started_2js-29"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">/**</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-30"><code data-line-number="30"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-30" name="listingsget_started_2js-30"></a><span class="cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* sets the background and fill to blue</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-31"><code data-line-number="31"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-31" name="listingsget_started_2js-31"></a><span class="cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* and the stroke to white</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-32"><code data-line-number="32"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-32" name="listingsget_started_2js-32"></a><span class="cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**/</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-33"><code data-line-number="33"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-33" name="listingsget_started_2js-33"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">p</span><span class="p">.</span><span class="nx">mousePressed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-34"><code data-line-number="34"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-34" name="listingsget_started_2js-34"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">255</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-35"><code data-line-number="35"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-35" name="listingsget_started_2js-35"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">255</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-36"><code data-line-number="36"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-36" name="listingsget_started_2js-36"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="mf">255</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-37"><code data-line-number="37"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-37" name="listingsget_started_2js-37"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="p">};</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-38"><code data-line-number="38"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-38" name="listingsget_started_2js-38"></a></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-39"><code data-line-number="39"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-39" name="listingsget_started_2js-39"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">/**</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-40"><code data-line-number="40"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-40" name="listingsget_started_2js-40"></a><span class="cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* sets the background and fill to white</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-41"><code data-line-number="41"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-41" name="listingsget_started_2js-41"></a><span class="cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* and the stroke to blue</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-42"><code data-line-number="42"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-42" name="listingsget_started_2js-42"></a><span class="cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**/</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-43"><code data-line-number="43"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-43" name="listingsget_started_2js-43"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">p</span><span class="p">.</span><span class="nx">mouseReleased</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-44"><code data-line-number="44"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-44" name="listingsget_started_2js-44"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">p</span><span class="p">.</span><span class="nx">background</span><span class="p">(</span><span class="mf">255</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-45"><code data-line-number="45"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-45" name="listingsget_started_2js-45"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">p</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mf">255</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-46"><code data-line-number="46"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-46" name="listingsget_started_2js-46"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">p</span><span class="p">.</span><span class="nx">stroke</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">255</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-47"><code data-line-number="47"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-47" name="listingsget_started_2js-47"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="p">};</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-48"><code data-line-number="48"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-48" name="listingsget_started_2js-48"></a></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-49"><code data-line-number="49"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-49" name="listingsget_started_2js-49"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">/**</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-50"><code data-line-number="50"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-50" name="listingsget_started_2js-50"></a><span class="cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Draws circles that change diameter based on mouse speed</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-51"><code data-line-number="51"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-51" name="listingsget_started_2js-51"></a><span class="cm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**/</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-52"><code data-line-number="52"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-52" name="listingsget_started_2js-52"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">p</span><span class="p">.</span><span class="nx">draw</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-53"><code data-line-number="53"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-53" name="listingsget_started_2js-53"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kd">var</span> <span class="nx">diameter</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-54"><code data-line-number="54"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-54" name="listingsget_started_2js-54"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">diameter</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">dist</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">pmouseX</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-55"><code data-line-number="55"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-55" name="listingsget_started_2js-55"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nx">p</span><span class="p">.</span><span class="nx">ellipse</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">mouseX</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">mouseY</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">,</span> <span class="nx">diameter</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-56"><code data-line-number="56"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-56" name="listingsget_started_2js-56"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="p">};</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-57"><code data-line-number="57"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-57" name="listingsget_started_2js-57"></a>&nbsp;&nbsp;<span class="p">};</span> <span class="c1">// end constructor</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-58"><code data-line-number="58"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-58" name="listingsget_started_2js-58"></a><span class="p">};</span><span class="c1">// end GetStarted2</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-59"><code data-line-number="59"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-59" name="listingsget_started_2js-59"></a></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-60"><code data-line-number="60"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-60" name="listingsget_started_2js-60"></a><span class="cm">/**</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-61"><code data-line-number="61"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-61" name="listingsget_started_2js-61"></a> <span class="cm">* Builds the GetStarted2 sketch</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-62"><code data-line-number="62"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-62" name="listingsget_started_2js-62"></a> <span class="cm">*</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-63"><code data-line-number="63"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-63" name="listingsget_started_2js-63"></a> <span class="cm">* p5 thinks it's getting a function, not a class&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-64"><code data-line-number="64"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-64" name="listingsget_started_2js-64"></a> <span class="cm">* so it doesn't use the `new` statement. This function</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-65"><code data-line-number="65"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-65" name="listingsget_started_2js-65"></a> <span class="cm">* works around that and passes in some parameters</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-66"><code data-line-number="66"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-66" name="listingsget_started_2js-66"></a> <span class="cm">*</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-67"><code data-line-number="67"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-67" name="listingsget_started_2js-67"></a> <span class="cm">* @param {object} p: a ``p5`` instance</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-68"><code data-line-number="68"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-68" name="listingsget_started_2js-68"></a> <span class="cm">**/</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-69"><code data-line-number="69"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-69" name="listingsget_started_2js-69"></a><span class="kd">function</span> <span class="nx">build_get_started_2</span><span class="p">(</span><span class="nx">p</span><span class="p">){</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-70"><code data-line-number="70"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-70" name="listingsget_started_2js-70"></a>&nbsp;&nbsp;<span class="k">return</span> <span class="k">new</span> <span class="nx">GetStarted2</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="s2">"get_started_2"</span><span class="p">,</span> <span class="mf">300</span><span class="p">);</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-71"><code data-line-number="71"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-71" name="listingsget_started_2js-71"></a><span class="p">};</span></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-72"><code data-line-number="72"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-72" name="listingsget_started_2js-72"></a></code></td>
+</tr>
+<tr>
+<td class="linenos linenodiv"><a href="#listingsget_started_2js-73"><code data-line-number="73"></code></a></td>
+<td class="code"><code><a id="listingsget_started_2js-73" name="listingsget_started_2js-73"></a><span class="kd">var</span> <span class="nx">p5_retest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">p5</span><span class="p">(</span><span class="nx">build_get_started_2</span><span class="p">,</span> <span class="s2">"get_started_2"</span><span class="p">);</span></code></td>
+</tr>
+</table>
 </div>
-        <!--End of body content-->
-
-        <footer id="footer">
-            Contents © 2018         <a href="mailto:necromuralist@gmail.com/p5_explorations">The Cloistered Monkey</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
-            
-        </footer>
+<!--End of body content-->
+<footer id="footer">Contents © 2021 Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a>
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a href="https://necromuralist.github.io/Ape-Iron/" property="dct:title" rel="cc:attributionURL">Ape Iron</a> by <a href="https://github.com/necromuralist" property="cc:attributionName" rel="cc:attributionURL dct:creator">The Cloistered Monkey</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" rel="license noopener noreferrer" style="display:inline-block;" target="_blank">CC BY 4.0<img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"></a></p>
+<a href="https://commons.wikimedia.org/wiki/File:Seth-gehend.png">Nephiliskos</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons</footer>
 </div>
 </div>
+<script src="../assets/js/all-nocdn.js"></script>
+<script>
 
-
-            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
-    moment.locale("en");
-    fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates -->
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+</script>
 </body>
 </html>

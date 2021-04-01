@@ -7,86 +7,162 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/</loc>
-  <lastmod>2018-03-25T21:10:00Z</lastmod>
+  <lastmod>2021-04-01T02:05:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/2017/</loc>
-  <lastmod>2018-03-25T21:10:00Z</lastmod>
+  <lastmod>2021-04-01T01:37:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/2018/</loc>
-  <lastmod>2018-03-25T21:10:00Z</lastmod>
+  <lastmod>2021-04-01T01:37:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/2019/</loc>
+  <lastmod>2021-04-01T01:37:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/2021/</loc>
+  <lastmod>2021-03-31T02:59:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/archive.html</loc>
-  <lastmod>2018-03-26T00:20:00Z</lastmod>
+  <lastmod>2021-04-01T01:59:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/categories/</loc>
-  <lastmod>2018-03-26T04:30:00Z</lastmod>
+  <lastmod>2021-04-01T02:05:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/categories/bibliography/</loc>
-  <lastmod>2018-03-25T22:57:00Z</lastmod>
+  <lastmod>2021-03-31T02:44:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/categories/cat_bibliography-p5/</loc>
-  <lastmod>2018-03-25T22:57:00Z</lastmod>
+  <lastmod>2021-03-31T02:44:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/categories/cat_emergence/</loc>
-  <lastmod>2018-03-26T00:20:00Z</lastmod>
+  <lastmod>2021-03-31T02:44:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/categories/cat_howto/</loc>
-  <lastmod>2018-03-25T21:10:00Z</lastmod>
+  <lastmod>2021-04-01T01:37:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/categories/cat_p5js/</loc>
+  <lastmod>2021-04-01T01:37:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/categories/javascript/</loc>
+  <lastmod>2021-04-01T02:05:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/categories/p5-emergence-draft/</loc>
-  <lastmod>2018-03-26T04:30:00Z</lastmod>
+  <lastmod>2021-03-31T01:54:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/categories/p5-emergence/</loc>
-  <lastmod>2018-03-26T00:20:00Z</lastmod>
+  <lastmod>2021-03-31T02:44:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/categories/p5js/</loc>
+  <lastmod>2021-04-01T01:37:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/categories/processing-p5-nikola/</loc>
-  <lastmod>2018-03-25T21:10:00Z</lastmod>
+  <lastmod>2021-04-01T01:37:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/categories/processing/</loc>
+  <lastmod>2021-04-01T02:05:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/index-1.html</loc>
+  <lastmod>2021-04-01T01:41:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/index-2.html</loc>
+  <lastmod>2021-04-01T01:38:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/index-3.html</loc>
+  <lastmod>2021-04-01T02:24:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/index-4.html</loc>
+  <lastmod>2021-04-01T02:22:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/index-5.html</loc>
+  <lastmod>2021-04-01T02:15:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/index-6.html</loc>
+  <lastmod>2021-04-01T02:20:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/index-7.html</loc>
+  <lastmod>2021-04-01T02:16:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/listings/</loc>
-  <lastmod>2018-03-25T21:18:00Z</lastmod>
+  <lastmod>2021-04-01T01:37:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/listings/class_based_instance_mode.js.html</loc>
-  <lastmod>2018-03-25T22:38:00Z</lastmod>
+  <lastmod>2021-04-01T01:37:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/listings/get_started.js.html</loc>
-  <lastmod>2018-03-25T21:10:00Z</lastmod>
+  <lastmod>2021-04-01T01:37:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/listings/get_started_2.js.html</loc>
-  <lastmod>2018-03-25T21:10:00Z</lastmod>
+  <lastmod>2021-04-01T01:37:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/posts/a-mouse-follower/</loc>
+  <lastmod>2021-04-01T02:05:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/posts/a-random-accelerator/</loc>
+  <lastmod>2021-04-01T02:05:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/posts/a-random-walker/</loc>
+  <lastmod>2021-04-01T02:05:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/posts/bibliography/</loc>
-  <lastmod>2018-03-25T22:56:00Z</lastmod>
+  <lastmod>2021-03-31T02:44:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/posts/emergent-circles/</loc>
-  <lastmod>2018-03-26T02:06:00Z</lastmod>
+  <lastmod>2021-04-01T01:37:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/posts/p5-instance-mode-revisited/</loc>
-  <lastmod>2018-03-25T22:52:00Z</lastmod>
+  <lastmod>2021-04-01T01:37:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/posts/processing-test/</loc>
+  <lastmod>2021-04-01T01:37:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/posts/random-walker-take-two/</loc>
+  <lastmod>2021-04-01T02:05:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://necromuralist.github.io/p5_explorations/posts/testing-testing/</loc>
+  <lastmod>2021-03-31T02:59:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/posts/testing-the-re-post/</loc>
-  <lastmod>2018-03-25T21:10:00Z</lastmod>
+  <lastmod>2021-04-01T01:37:00Z</lastmod>
  </url>
  <url>
   <loc>https://necromuralist.github.io/p5_explorations/posts/testing-with-rst/</loc>
-  <lastmod>2018-03-25T21:10:00Z</lastmod>
+  <lastmod>2021-04-01T01:37:00Z</lastmod>
  </url>
 </urlset>
