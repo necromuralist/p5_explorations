@@ -24,7 +24,7 @@ SITE_URL = "https://necromuralist.github.io/p5_explorations/"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
 # BASE_URL = "https://necromuralist.github.io/"
-BLOG_EMAIL = "necromuralist@protonmail.com"
+BLOG_EMAIL = "cloisteredmonkey.jmark@slmail.me"
 BLOG_DESCRIPTION = "Be sure and tell her seitan."  # (translatable)
 
 # Nikola is multilingual!
